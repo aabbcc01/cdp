@@ -1,0 +1,119 @@
+<style>
+
+/*ログインページ用の拝啓画像*/
+img.ph1 {
+    width: 100%;
+    height: 100%;
+    }
+img.ph2{
+    width: 100%;
+    height:100%;
+}
+
+div.ph_style1 {/*親div*/
+        position: relative;/*相対配置*/
+        }
+div.ph_style1 p{
+   
+        position: absolute;/*絶対配置*/
+        color: white;/*文字は白に*/
+        top: 130;
+        left: 320;
+        font-weight: bold;
+        font-size:34;
+}
+
+div.ph_style2 {/*親div*/
+    position: relative;/*相対配置*/
+}
+    div.ph_style2 table{
+   
+        position: absolute;/*絶対配置*/
+       /* opacity: 0.85; /*透明度*/
+        background-color: rgba(29, 33, 100, 0.5); /*透明度*/
+       
+        top: 45;
+        left: 25%;
+         /*検索フォームを中央配置にする場合 */
+      /*   transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%); */
+       
+        width:600px;
+    }
+        div.ph_style2 table td{
+        color: white;/*文字色*/
+        font-size:18;
+        font-weight: bold;
+        line-height:2.0;
+        text-align:left;
+        }
+
+            div.ph_style2 table td span{
+                position: absolute;
+                left:190px;
+                width:20px;
+                padding:5px;
+                
+            }
+
+         
+span input{
+    width: 250px;
+    height:2em; 
+}
+span select { width: 250px;
+height:2em; 
+}
+
+tr.multiple td{width:250px;height:7em} 
+tr.multiple td span select {
+    position: absolute;/*絶対配置*/
+    top:-30;
+    width: 250px;
+    height:8em; }
+ 
+
+.table_col{      
+        
+    font-weight: bold;
+    font-family: 'Meiryo UI';
+    
+}
+
+.btn{
+    height:30px;
+    width:70px;
+    padding:3px;
+    margin:3px;
+
+    border: none;
+
+    font-size:16px;
+    font-weight: bold;
+    font-family: 'Meiryo UI';
+    color:black;
+    background-color:white;
+}
+
+.cbox_chart{
+
+    margin-left:480px;
+}
+
+table {
+    border-collapse: collapse;
+    
+  }
+
+
+thead {background-color:#c2cea0; color:#191970; padding:5px 10px; }
+thead th{border:solid 1px}
+td {border: solid 1px #aaa; color:#191970; padding:5px 12px; line-height:28px; }
+
+/* label#cbox_comp span{font-size:"2"; white-space : nowrap;} */
+p.title{
+    font-weight: bold;
+    font-family: 'Meiryo UI';
+}
+</style>
