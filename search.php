@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="style.css">
+<script src="js/visible_c2.js"></script> 
 </head>
 
 <?php
@@ -100,7 +100,12 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
           </td>
       </tr> 
 
-       <tr>
+      <tr>
+        <td>
+          <a href="#" id="visible_C2_href" ><font color="#FFFFFF">Specialized for C2.(Risk and Opp)</font></a>
+        </td>
+      </tr>  
+      <tr class="cdp_c2">
          <td>
         Value Chain<span><select name="value_chain">  
             <option value=""></option>
@@ -112,31 +117,8 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
         </span>
         </td>
         </tr>
-       <!--  <tr>
-          <td>
-        Impact<span> <select name="impact" >
-            <option value=""></option>
-            <option value="High">High</option>
-            <option value="Medium-high">Medium-high</option>
-            <option value="Medium">Medium</option>
-            <option value="Medium-low">Medium-low</option>
-            <option value="Low">Low</option>
-            <option value="Unknown">Unknown</option>
-            <option value="Please select">未回答</option>
-            
-        </select>
-        </span>
-          </td>
-        </tr> -->
 
-        <!-- <tr>
-          <td>Draw chart
-            <label ><span style="margin-left:-18px;white-space: nowrap;font-size:12px;">Group by company</span>
-            <input type="checkbox" name="charts_comp" style="margin-left:190px;"></label>
-            <label ><span style="margin-left: 190px; white-space: nowrap;font-size:12px;">Group by value chain</span>
-            <input type="checkbox" name="charts_vc" style="margin-left:200px;"></label></td>
-        </tr> -->
-        <tr>
+        <tr class="cdp_c2">
           <td>Draw chart<span><select name="value_chain">  
           <option value=""></option>
             <option value="company">Company</option>
@@ -144,6 +126,12 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
             </select>
           </td>
         </tr>
+
+      <!-- <tr>
+        <td>
+          <a href="http://localhost/php_apps/cdp3/specialized.php">Sepecialized for C2.(Risk and Opp)</a>
+        </td>
+      </tr> -->
 
        <tr>
           <td style="white-space : nowrap;" ><input type="submit" value="Search" id="search_btn" class="btn" >
