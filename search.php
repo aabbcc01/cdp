@@ -53,67 +53,64 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
 
         <tr>
           <td>
-          Year <span><select name="year">  
-                  <option value=""></option>
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-              </span>
+            Year: <label><input type="checkbox" name="year" value="2020"/>2020</label>
+                  <label><input type="checkbox" name="year" value="2019"/>2019</label>
           </td>
         </tr>
 
-        <tr class="multiple">
-        <td>
+        <tr>
+            <td>
               Industry : <br>
               <label><input type="checkbox" name="industry" value="auto mobile"/>Auto mobile</label>
               <label><input type="checkbox" name="industry" value="chemical"/>Chemical</label>
               <label><input type="checkbox" name="industry" value="construction"/>Construction</label>
               <label><input type="checkbox" name="industry" value="energy"/>Energy</label>
               <label><input type="checkbox" name="industry" value="food/drink"/>Food/Drink</label>
-             
             </td>
        </tr>
        
        <tr><td>  Company:<div id="comp_list"></div> </td></tr>
-       
-       <tr class="multiple">
-           <td > Chapter<span><select name="chapter"  multiple>
-              <option value=""></option>
-              <option value="1">C0. Introduction</option>
-              <option value="2">C1. Governance</option>
-              <option value="3">C2. Risks and opportunities</option>
-              <option value="16">C2.3a</option>
-              <option value="17">C2.4a</option>
-              <option value="4">C3. Business Strategy</option>
-              <option value="5">C4. Targets and performance</option>
-              <option value="6">C5. Emissions methodology</option>
-              <option value="7">C6. Emissions data</option>
-              <option value="8">C7. Emissions breakdowns</option>
-              <option value="9">C8. Energy</option>
-              <option value="10">C9. Additional metrics</option>
-              <option value="11">C10. Verification</option>
-              <option value="12">C11. Carbon pricing</option>
-              <option value="13">C12. Engagement</option>
-              <option value="14">C14. Signoff</option>
-              <option value="15">C15. Signoff</option>
-           </select>
+
+       <tr>
+        <td>
+          <a href="#" id="chapter_href" ><font color="#FFFFFF">Chapter</font></a>
+        </td>
+      </tr>  
+       <tr class="chapter">
+          <td>
+              Chapter : <br>
+              <label><input type="checkbox" name="chapter" vlue=""1/>C0. Introduction</label>
+              <label><input type="checkbox" name="chapter" vlue=""2/>C1. Governance</label>
+              <label><input type="checkbox" name="chapter" vlue=""3/>C2. Risks and opportunities</label>
+              <label><input type="checkbox" name="chapter" vlue=""16/>C14. Signoff</label>
+              <label><input type="checkbox" name="chapter" vlue=""17/>C15. Signoff</label>
+              <label><input type="checkbox" name="chapter" vlue=""4/>C2.3a</label>
+              <label><input type="checkbox" name="chapter" vlue=""5/>C2.4a</label>
+              <label><input type="checkbox" name="chapter" vlue=""6/>C3. Business Strategy</label>
+              <label><input type="checkbox" name="chapter" vlue=""7/>C4. Targets and performance</label>
+              <label><input type="checkbox" name="chapter" vlue=""8/>C5. Emissions methodology</label>
+              <label><input type="checkbox" name="chapter" vlue=""9/>C6. Emissions data</label>
+              <label><input type="checkbox" name="chapter" vlue=""10/>C7. Emissions breakdowns</label>
+              <label><input type="checkbox" name="chapter" vlue=""11/>C8. Energy</label>
+              <label><input type="checkbox" name="chapter" vlue=""12/>C9. Additional metrics</label>
+              <label><input type="checkbox" name="chapter" vlue=""13/>C10. Verification</label>
+              <label><input type="checkbox" name="chapter" vlue=""14/>C11. Carbon pricing</label>
+              <label><input type="checkbox" name="chapter" vlue=""15/>C12. Engagement</label>
           </td>
       </tr> 
 
       <tr>
         <td>
-          <a href="#" id="visible_C2_href" ><font color="#FFFFFF">Specialized for C2.(Risk and Opp)</font></a>
+          <a href="#" id="c2_href" ><font color="#FFFFFF">Specialized for C2.(Risk and Opp)</font></a>
         </td>
       </tr>  
+
       <tr class="cdp_c2">
          <td>
-        Value Chain<span><select name="value_chain">  
-            <option value=""></option>
-            <option value="Upstream">Upstream</option>
-            <option value="Direct operations">Direct operations</option>
-            <option value="Downstream">Downstream</option>
-            <option value="Please select">Please select</option>
-        </select>
-        </span>
+        Value Chain : <br>
+            <label><input type="checkbox" name="value_chain" value="Upstream"/>Upstream</label>
+            <label><input type="checkbox" name="value_chain" value="Direct operations"/>Direct operations</label>
+            <label><input type="checkbox" name="value_chain" value="Downstream"/>Downstream</label>
         </td>
         </tr>
 
@@ -124,18 +121,11 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
             <option value="value_chain">Value chain</option>
             </select>
           </td>
-        </tr>
+        </tr> 
 
-      <!-- <tr>
-        <td>
-          <a href="http://localhost/php_apps/cdp3/specialized.php">Sepecialized for C2.(Risk and Opp)</a>
-        </td>
-      </tr> -->
 
        <tr>
           <td style="white-space : nowrap;" ><input type="submit" value="Search" id="search_btn" class="btn" >
-            <!-- <span style="margin-left: 270px; font-size:15px;"> Draw Charts</span>
-            <input type="checkbox" name="charts" class="cbox_chart"> -->
           </td>
         </tr> 
         
