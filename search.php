@@ -2,8 +2,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="style.css">
-<script src="js/visible_c2.js"></script> 
+    <link rel="stylesheet" href="style.css">
+    <script src="js/visible_c2.js"></script> 
+    <script src="js/ajax_industry.js"></script> 
 </head>
 
 <?php
@@ -60,21 +61,19 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
           </td>
         </tr>
 
-        <tr>
-          <td> 
-            Industry <span><select name="industry">  
-            <option value=""></option>
-                <option value="construction">construction</option>
-                <option value="energy">energy</option>
-                <option value="chemical">chemical</option>
-                <option value="food/drink">food/drink</option>
-                <option value="auto mobile">auto mobile</option>
-            </select>
-            </span>
+        <tr class="multiple">
+        <td>
+              Industry : <br>
+              <label><input type="checkbox" name="industry" value="auto mobile"/>Auto mobile</label>
+              <label><input type="checkbox" name="industry" value="chemical"/>Chemical</label>
+              <label><input type="checkbox" name="industry" value="construction"/>Construction</label>
+              <label><input type="checkbox" name="industry" value="energy"/>Energy</label>
+              <label><input type="checkbox" name="industry" value="food/drink"/>Food/Drink</label>
+             
             </td>
        </tr>
        
-       <tr><td>  Company <span> <input type="text" name="comp-name"></span></td></tr>
+       <tr><td>  Company:<div id="comp_list"></div> </td></tr>
        
        <tr class="multiple">
            <td > Chapter<span><select name="chapter"  multiple>
@@ -146,7 +145,6 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
     
 </div>
 
-<div id="company_list"></div> <!--ここに表示-->
-<script src="scripts/hello_ajax.js"></script>
+
 </body>
 </html>
