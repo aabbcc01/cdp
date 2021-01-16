@@ -1,6 +1,7 @@
 <?php
+//industryタイプから企業名を取得
 require_once '../Encode.php';
-function getUserData($params){
+function byIndustry($params){
 	//DBの接続情報
 	require_once '../DbManager.php';
 
@@ -16,7 +17,7 @@ function getUserData($params){
    
     $ind=implode(' OR ',$industry); 
   
-    $sql=$db->prepare('SELECT company FROM v_company_industry where '.$ind);
+    $sql=$db->prepare('SELECT company_id,company FROM v_company_industry where '.$ind);
     $sql->execute();
        
     $result=[];
