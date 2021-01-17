@@ -62,11 +62,11 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
         <tr>
             <td>
               Industry : <br>
-              <label><input type="checkbox" name="industry[]" value="auto mobile"/>Auto mobile</label>
-              <label><input type="checkbox" name="industry[]" value="chemical"/>Chemical</label>
-              <label><input type="checkbox" name="industry[]" value="construction"/>Construction</label>
-              <label><input type="checkbox" name="industry[]" value="energy"/>Energy</label>
-              <label><input type="checkbox" name="industry[]" value="food/drink"/>Food/Drink</label>
+              <label><input type="checkbox" name="industry[]" id="ind_1" value="auto mobile"/>Auto mobile</label>
+              <label><input type="checkbox" name="industry[]" id="ind_2"value="chemical"/>Chemical</label>
+              <label><input type="checkbox" name="industry[]" id="ind_3" value="construction"/>Construction</label>
+              <label><input type="checkbox" name="industry[]" id="ind_4" value="energy"/>Energy</label>
+              <label><input type="checkbox" name="industry[]" id="ind_5" value="food/drink"/>Food/Drink</label>
             </td>
        </tr>
        

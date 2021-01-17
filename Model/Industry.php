@@ -17,7 +17,7 @@ function byIndustry($params){
    
     $ind=implode(' OR ',$industry); 
   
-    $sql=$db->prepare('SELECT company_id,company FROM v_company_industry where '.$ind);
+    $sql=$db->prepare('SELECT company_id,company,industry FROM v_company_industry where '.$ind);
     $sql->execute();
        
     $result=[];
