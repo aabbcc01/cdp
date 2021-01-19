@@ -60,9 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
                               if(!storage[`company_${input.id}`]){storage[`company_${input.id}`] =ds;};
                               var dp= JSON.parse(storage[`company_${input.id}`]);
                             
-                              if(dp['checked']===1 || dp['checked']==undefined){input.setAttribute('checked',true);}
+                              if(storage[`company_${input.id}`] || dp['checked']===1 || dp['checked']==undefined){input.setAttribute('checked',true);}
                                             
                               input.setAttribute('name','company[]');
+
                               input.addEventListener('change',function(){
                                   if(!this.checked){ 
                                   
@@ -104,21 +105,26 @@ document.addEventListener('DOMContentLoaded', function() {
                   xmlhttp.send();
 
               }
+              //industryボックスのチェックが外された場合の処理。
               else{
-              
+                   //チェックがはずされたindustryに応じてcompanyのチェックボックスを削除 。
                    var divNode=document.getElementById(ind_value);
                    if(ind_value==divNode.getAttribute('id')){ divNode.remove();}
               
                      //ストレージの削除
-                   for(var i=0; i< storage.length;i++){                                  
+                   for(var i=0; i<storage.length;i++){                                  
 
                            var key =storage.key(i); //i番目のstorageのキー名を取得
                            var dp=JSON.parse(storage[key]);
-                          if(dp['industry']=ind_value){
+                         
+                           if(dp['industry']==ind_value){
+                            
                               delete storage[key];
-                          }
+                              
+                          }      
+                         
                    }    
-
+                  
               }
                               
     });   
