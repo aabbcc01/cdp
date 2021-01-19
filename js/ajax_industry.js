@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
                           var div= document.createElement('div');
                               div.setAttribute('id',ind_value);
                           
-                              console.log('div_value=',div.getAttribute('id'));
                           for(var i=0; i<data.length; i++){
                                 
                               var label=document.createElement('label');
@@ -67,16 +66,21 @@ document.addEventListener('DOMContentLoaded', function() {
                               input.addEventListener('change',function(){
                                   if(!this.checked){ 
                                   
-                                       dp= JSON.parse(storage[`company_${this.id}`]);
-                                      dp['checked']=0;
-                                      storage[`company_${this.id}`]=JSON.stringify(dp);
-                                     
+                                      if(storage[`company_${this.id}`]){
+                                          dp= JSON.parse(storage[`company_${this.id}`]);
+                                          dp['checked']=0;
+                                          storage[`company_${this.id}`]=JSON.stringify(dp);
+                                    }
+
                                   }
                                   else{
-
-                                      dp= JSON.parse(storage[`company_${this.id}`]);
-                                      dp['checked']=1;
-                                      storage[`company_${this.id}`]=JSON.stringify(dp);
+                                      
+                                      if(storage[`company_${this.id}`]){
+                                          dp= JSON.parse(storage[`company_${this.id}`]);
+                                          dp['checked']=1;
+                                          storage[`company_${this.id}`]=JSON.stringify(dp);
+                                      }
+                                      
                                   }
 
                               },false);
@@ -85,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                               var label_text=document.createTextNode(data[i].company+": ");
                               label.appendChild(label_text);
                               
-                              //divのindustryと一致しているlabel要素のみdivに格納するようにする
+                              //divのidにはindustryタイプが入っている。divのindustryと一致しているlabel要素のみdivに格納するようにする.
                               if(div.id==label.getAttribute('data-industry')){div.appendChild(label);}
                               
                           }
