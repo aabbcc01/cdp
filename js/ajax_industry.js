@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var storage=sessionStorage;
   for(var index=0;index < industries.length;index++){
-    industries[index].addEventListener('change',function(e){
+    industries[index].addEventListener('change',function(){
               var ind_checked=this.checked;
               var ind_value=this.value;
               
@@ -60,7 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
                               if(!storage[`company_${input.id}`]){storage[`company_${input.id}`] =ds;};
                               var dp= JSON.parse(storage[`company_${input.id}`]);
                             
-                              if(storage[`company_${input.id}`] || dp['checked']===1 || dp['checked']==undefined){input.setAttribute('checked',true);}
+                              if(storage[`company_${input.id}`] || dp['checked']===1 || dp['checked']==undefined){
+                                  input.setAttribute('checked',true);
+                                  dp['checked']=1;
+                                  storage[`company_${input.id}`]=JSON.stringify(dp);
+                               }
                                             
                               input.setAttribute('name','company[]');
 
@@ -118,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
                            var dp=JSON.parse(storage[key]);
                          
                            if(dp['industry']==ind_value){
-                            
                               delete storage[key];
                               
                           }      
