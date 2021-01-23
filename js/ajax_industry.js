@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
       while(comp_list.lastChild){
         comp_list.removeChild(comp_list.lastChild);
       } };
-
   var storage=sessionStorage;
   for(var index=0;index < industries.length;index++){
     industries[index].addEventListener('change',function(){
