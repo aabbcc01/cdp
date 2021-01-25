@@ -24,7 +24,7 @@ if($comp_db){
  */ 
 function getGET($param){
     if(isset($param['industry']) && is_array($param['industry'])){
-        print_r($param);
+        /* print_r($param);
 		echo '<br>';
 		print_r($param['industry']); 
 		echo '<br>';
@@ -33,14 +33,28 @@ function getGET($param){
 		print_r($param['company']);
         echo '<br>';
 		print_r($param['value_chain']);
-		echo '<br>';
-		print_r($_SESSION['comp_6']);
-    }
+		echo '<br>'; */
+	/* 	
+		print 'hello';
+		$a=$param['queryStr'];
+		print_r(json_decode($a)); */
+	}
+/* 	$industry=[];
     
+		// $industry[]= のところはindustry = "chemical" のようになる。
+	foreach($param as $key=>$val){
+		$industry[]='industry = '.'"'.$val.'"'; 
+	}      
+
+	print_r($industry); */
+	print_r($param);
 
 };
 
-echo getGET($_POST);
+//echo getGET($_GET);
+
+echo print_r($_GET['test']);
+
 
  ?>
 </body>

@@ -50,7 +50,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
      
         <tr><td><p>Search</p></td></tr>
        
-        <form action="./test_result.php" method="POST">
+        <form action="./test_result_2.php" method="POST">
 
         <tr>
           <td>
@@ -130,11 +130,15 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
           <td style="white-space : nowrap;" ><input type="submit" value="Search" id="search_btn" class="btn" >
           </td>
         </tr> 
+
         
     </table>
    
     </form>
-    
+   
+      <input type="submit" value="Search2" id="search_btn2" class="btn" >
+
+   
 </div>
 
 

@@ -1,3 +1,4 @@
+//backup
 document.addEventListener('DOMContentLoaded', function() {
 
   var industries=document.querySelectorAll("input[name='industry[]']");
@@ -110,23 +111,27 @@ document.addEventListener('DOMContentLoaded', function() {
               }
               //industryボックスのチェックが外された場合の処理。
               else{
-                   //チェックがはずされたindustryに応じてcompanyのチェックボックスを削除 。
-                   var divNode=document.getElementById(ind_value);
-                   if(ind_value==divNode.getAttribute('id')){ divNode.remove();}
+                     //チェックがはずされたindustryに応じてcompanyのチェックボックスを削除 。
+                     var divNode=document.getElementById(ind_value);
+                     if(ind_value==divNode.getAttribute('id')){ divNode.remove();}
               
                      //ストレージの削除
-                   for(var i=0; i<storage.length;i++){                                  
+                     const delSto=()=>{
+                      for(var i=0; i<storage.length;i++){  
+                          var key =storage.key(i); //i番目のstorageのキー名を取得
+                          var dp=JSON.parse(storage[key]);
+                          if(dp['industry']==ind_value){
+                         
+                            delete storage[key];
+                          }
+                       }
 
-                           var key =storage.key(i); //i番目のstorageのキー名を取得
-                           var dp=JSON.parse(storage[key]);
-                         
-                           if(dp['industry']==ind_value){
-                              delete storage[key];
-                              
-                          }      
-                         
-                   }    
-                  
+                     };
+
+                     var t=0;
+                     var len=storage.length;
+                     do {delSto(); t++;}while(t<=len); //繰り返しの回数がストレージの数と同数になるまで繰り返す。
+
               }
                               
     });   
