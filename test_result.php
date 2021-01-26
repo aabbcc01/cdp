@@ -53,7 +53,7 @@ function getGET($param){
 
 //echo getGET($_GET);
 
-echo print_r($_GET['test']);
+echo print_r($_POST);
 
 
  ?>

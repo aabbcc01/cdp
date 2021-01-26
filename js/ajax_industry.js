@@ -1,4 +1,3 @@
-//backup
 document.addEventListener('DOMContentLoaded', function() {
 
   var industries=document.querySelectorAll("input[name='industry[]']");
@@ -8,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         comp_list.removeChild(comp_list.lastChild);
       } };
   var storage=sessionStorage;
+
   for(var index=0;index < industries.length;index++){
     industries[index].addEventListener('change',function(){
               var ind_checked=this.checked;
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                           var data= JSON.parse(this.responseText);
                           var d={}; 
-
                           var frag = document.createDocumentFragment(); 
                           var div= document.createElement('div');
                               div.setAttribute('id',ind_value);
@@ -46,32 +45,33 @@ document.addEventListener('DOMContentLoaded', function() {
                                 
                               var label=document.createElement('label');
                               label.setAttribute('data-industry',data[i].industry); //独自のindustry属性を用意しておく
-                              label.setAttribute('name','company[]');
+                             // label.setAttribute('name','company[]');
                               var input=document.createElement('input');
                               input.setAttribute('type','checkbox');
-                              input.setAttribute('value',data[i].company);
+                              input.setAttribute('name',"company[]");
+                              input.setAttribute('value',data[i].company_id);
                               input.setAttribute('data-industry',data[i].industry); //独自のindustry属性を用意しておく
                             
-                              input.id=data[i].company_id;
+                              input.id='company_'+data[i].company_id;
 
                               d['industry']=data[i].industry;
-                              d['company_id']=input.id;
+                              d['company_id']=data[i].company_id;
+
                               var ds= JSON.stringify(d);
-                              if(!storage[`company_${input.id}`]){storage[`company_${input.id}`] =ds;};
-                              var dp= JSON.parse(storage[`company_${input.id}`]);
+                              if(!storage[input.id]){storage[input.id] =ds;};
+                              var dp= JSON.parse(storage[input.id]);
                             
-                              if(storage[`company_${input.id}`] || dp['checked']===1 || dp['checked']==undefined){
+                              if(storage[input.id] || dp['checked']===1 || dp['checked']==undefined){
                                   input.setAttribute('checked',true);
                                   dp['checked']=1;
-                                  storage[`company_${input.id}`]=JSON.stringify(dp);
-                               }
-                                            
-                              input.setAttribute('name','company[]');
+                                  storage[input.id]=JSON.stringify(dp);
+                               } 
 
                               input.addEventListener('change',function(){
                                   if(!this.checked){ 
                                   
                                       if(storage[`company_${this.id}`]){
+                                        
                                           dp= JSON.parse(storage[`company_${this.id}`]);
                                           dp['checked']=0;
                                           storage[`company_${this.id}`]=JSON.stringify(dp);
@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                   else{
                                       
                                       if(storage[`company_${this.id}`]){
+
                                           dp= JSON.parse(storage[`company_${this.id}`]);
                                           dp['checked']=1;
                                           storage[`company_${this.id}`]=JSON.stringify(dp);
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                           }
                          
                           comp_list.appendChild(div);
+                          
 
                       }
 
@@ -113,8 +115,12 @@ document.addEventListener('DOMContentLoaded', function() {
               else{
                      //チェックがはずされたindustryに応じてcompanyのチェックボックスを削除 。
                      var divNode=document.getElementById(ind_value);
-                     if(ind_value==divNode.getAttribute('id')){ divNode.remove();}
-              
+                     if(divNode){
+                      if(ind_value==divNode.getAttribute('id')){ 
+                        divNode.remove();
+                      }
+                    }
+
                      //ストレージの削除
                      const delSto=()=>{
                       for(var i=0; i<storage.length;i++){  
@@ -136,5 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
                               
     });   
   }
+   // 動的に作成した要素をフォームに追加。追加しないとサーバーに値が送られない。
+   document.getElementById('search_btn').addEventListener('click',function(){
+    document.getElementById('form_1').appendChild(comp_list);
+  }); 
+
 },false);  
 

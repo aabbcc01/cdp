@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="js/visible_c2.js"></script> 
     <script src="js/ajax_industry.js"></script> 
-    <script src="js/search_btn.js"></script>
+    
 </head>
 
 <?php
@@ -50,8 +50,8 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
      
         <tr><td><p>Search</p></td></tr>
        
-        <form action="./test_result_2.php" method="POST">
-
+        <form action="./test_result_2.php" method="GET" id="form_1"> 
+      
         <tr>
           <td>
             Year: <label><input type="checkbox" name="year[]" value="2020"/>2020</label>
@@ -70,8 +70,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
             </td>
        </tr>
        
-       
-       <tr><td>  Company:<div id="comp_list"></div> </td></tr> 
+       <tr><td>  Company:<div id="comp_list"></div> </td></tr>
       
        <tr>
         <td>
@@ -141,6 +140,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
    
 </div>
 
+</div id="test"><div>
 
 </body>
 </html>
