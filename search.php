@@ -50,7 +50,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
      
         <tr><td><p>Search</p></td></tr>
        
-        <form action="./test_result_2.php" method="GET" id="form_1"> 
+        <form action="./result2.php" method="GET" id="form_1"> 
       
         <tr>
           <td>
@@ -99,6 +99,50 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
               <label><input type="checkbox" name="chapter[]" value="17"/>C15. Signoff</label>
           </td>
       </tr> 
+      <tr>
+        <td>
+          <a href="#" id="q_href" ><font color="#FFFFFF">Question</font></a>
+        </td>
+      </tr>  
+
+      <tr class="question">
+      <td> 
+        <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
+        <label><input type="checkbox" name="question[]" value="2"/>(C2.2a) Which risk types are considered in your organization's climate-related risk assessments?</label>
+        <label><input type="checkbox" name="question[]" value="3"/>Value chain stage(s) covered</label>
+        <label><input type="checkbox" name="question[]" value="4"/>Identifier</label>
+        <label><input type="checkbox" name="question[]" value="5"/>Where in the value chain does the risk driver occur?</label>
+        <label><input type="checkbox" name="question[]" value="6"/>Risk type & Primary climate-related risk driver</label>
+        <label><input type="checkbox" name="question[]" value="7"/>Primary potential financial impact</label>
+        <label><input type="checkbox" name="question[]" value="8"/>Climate risk type mapped to traditional financial services industry risk classification</label>
+        <label><input type="checkbox" name="question[]" value="9"/>Company-specific description</label>
+        <label><input type="checkbox" name="question[]" value="10"/>Time horizon</label>
+        <label><input type="checkbox" name="question[]" value="11"/>Likelihood</label>
+        <label><input type="checkbox" name="question[]" value="12"/>Magnitude of impact</label>
+        <label><input type="checkbox" name="question[]" value="13"/>Are you able to provide a potential financial impact figure?</label>
+        <label><input type="checkbox" name="question[]" value="14"/>Potential financial impact figure (currency)</label>
+        <label><input type="checkbox" name="question[]" value="15"/>Potential financial impact figure – minimum (currency)</label>
+        <label><input type="checkbox" name="question[]" value="16"/>Potential financial impact figure – maximum (currency)</label>
+        <label><input type="checkbox" name="question[]" value="17"/>Explanation of financial impact figure</label>
+        <label><input type="checkbox" name="question[]" value="18"/>Cost of response to risk</label>
+        <label><input type="checkbox" name="question[]" value="19"/>Description of response and explanation of cost calculation</label>
+        <label><input type="checkbox" name="question[]" value="20"/>Where in the value chain does the opportunity occur?</label>
+        <label><input type="checkbox" name="question[]" value="21"/>Opportunity type</label>
+        <label><input type="checkbox" name="question[]" value="22"/>Primary climate-related opportunity driver</label>
+        <label><input type="checkbox" name="question[]" value="23"/>Cost to realize opportunity</label>
+        <label><input type="checkbox" name="question[]" value="24"/>Strategy to realize opportunity and explanation of cost calculation</label>
+        <label><input type="checkbox" name="question[]" value="25"/>(C3.1a) Does your organization use climate-related scenario analysis to inform its strategy?</label>
+        <label><input type="checkbox" name="question[]" value="26"/>(C3.1b) Provide details of your organization’s use of climate-related scenario analysis.</label>
+        <label><input type="checkbox" name="question[]" value="27"/>(C3.1d) Describe where and how climate-related risks and opportunities have influenced your strategy.</label>
+        <label><input type="checkbox" name="question[]" value="28"/>(C3.1f) Provide any additional information on how climate-related risks and opportunities have influenced your strategy and financial planning (optional).</label>
+        <label><input type="checkbox" name="question[]" value="29"/>(C4.3c) What methods do you use to drive investment in emissions reduction activities?</label>
+        <label><input type="checkbox" name="question[]" value="30"/>C3.1</label>
+        <label><input type="checkbox" name="question[]" value="31"/>(C3.1d) Provide details of your organization’s use of climate-related scenario analysis.</label>
+        <label><input type="checkbox" name="question[]" value="32"/>C3.1c</label>
+        <label><input type="checkbox" name="question[]" value="33"/>C3.1a</label>
+      </td>
+      </tr>
+      
 
       <tr>
         <td>
@@ -109,9 +153,11 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
       <tr class="cdp_c2">
          <td>
         Value Chain : <br>
-            <label><input type="checkbox" name="value_chain[]" value="Upstream"/>Upstream</label>
-            <label><input type="checkbox" name="value_chain[]" value="Direct operations"/>Direct operations</label>
-            <label><input type="checkbox" name="value_chain[]" value="Downstream"/>Downstream</label>
+            <label><input type="checkbox" name="value_chain[]" value="1"/>Upstream/Supply chain</label>
+            <label><input type="checkbox" name="value_chain[]" value="2"/>Direct operations</label>
+            <label><input type="checkbox" name="value_chain[]" value="3"/>Downstream/Customer</label>
+            <label><input type="checkbox" name="value_chain[]" value="4"/>Investment Chain</label>
+            <label><input type="checkbox" name="value_chain[]" value="5"/>Please select</label>
         </td>
         </tr>
 
@@ -134,9 +180,6 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
     </table>
    
     </form>
-   
-      <input type="submit" value="Search2" id="search_btn2" class="btn" >
-
    
 </div>
 

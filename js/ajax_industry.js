@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 
                               var label=document.createElement('label');
                               label.setAttribute('data-industry',data[i].industry); //独自のindustry属性を用意しておく
-                             // label.setAttribute('name','company[]');
+                             // label.setAttribute('name','comp_id[]');
                               var input=document.createElement('input');
                               input.setAttribute('type','checkbox');
-                              input.setAttribute('name',"company[]");
+                              input.setAttribute('name',"comp_id[]");
                               input.setAttribute('value',data[i].company_id);
                               input.setAttribute('data-industry',data[i].industry); //独自のindustry属性を用意しておく
                             
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                               },false);
                               
                               label.appendChild(input)
-                              var label_text=document.createTextNode(data[i].company+": ");
+                              var label_text=document.createTextNode(data[i].company+" ");
                               label.appendChild(label_text);
                               
                               //divのidにはindustryタイプが入っている。divのindustryと一致しているlabel要素のみdivに格納するようにする.

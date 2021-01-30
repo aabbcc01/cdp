@@ -10,8 +10,8 @@ class UniqueArray {
         $uniqueArray = [];              
         foreach ($this->forComp as $value){
 
-            if (!in_array($value['company'], $tmp)) {
-                $tmp[] = $value['company'];
+            if (!in_array($value['company_id'], $tmp)) {
+                $tmp[] = $value['company_id'];
                 $uniqueArray[] = $value;
              }  
 
