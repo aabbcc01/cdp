@@ -8,6 +8,8 @@ function getCDP($params){
     $db=getDb();
     
     $where=[];
+    $year_comp=[];
+
     if(isset($params['year']) && is_array($params['year'])){
 
         $year=[];
@@ -16,13 +18,11 @@ function getCDP($params){
         }
         //sql用の変数。
         $year=implode(',',$year);
-        $yearSql='year IN ('.$val.') ';
-        $where[]=$yearSql;
-       
+        $yearSql='year IN ('.$year.') ';
+        $year_comp[]=$yearSql;
     }
 
     if(isset($params['comp_id']) && is_array($params['comp_id'])){
-
 
         $comp_id=[];
     
@@ -34,11 +34,18 @@ function getCDP($params){
          //sql用の変数。company_id=xx OR company_id=xx ...
         $compid=implode(',',$comp_id);
         $compidSql='company_id IN ('.$compid.') ';
-        $where[]=$compidSql;
-    }   
-   
+        $year_comp[]=$compidSql;
+    }      
 
-     if(!empty($params['chapter'])){
+    // (A AND B) のsqlを作成： (year IN (2020) AND company_id IN (14) )
+    if(!empty($year_comp)){
+        $year_compSql=implode(' AND ',$year_comp);
+        $where[]='('.$year_compSql.')';
+    }
+
+    $chapter_question=[];
+
+     if(isset($params['chapter']) && is_array($params['chapter'])){
         $chapter=[];
     
         // $chapter[]= のところはchapter_id = 21のようになる。
@@ -48,32 +55,20 @@ function getCDP($params){
          //sql用の変数。
          $chapterid=implode(',',$chapter);
          $chapteridSql='chapter_id IN ('.$chapterid.') ';
-         $where[]=$chapteridSql;
+         $chapter_question[]=$chapteridSql;
      } 
-/* 
-     if(isset($params['question']) && is_array($params['question'])){
-         $question=[];
-        foreach($params['question'] as $key=>$val){
-            $question[]=$val;
-         } 
-         //sql用の変数。
-         $questionid=implode(',',$question);
-         $questionidSql='question_id IN ('.$questionid.') ';
-         $where[]=$questionidSql;
-     }
-      print_r($question); */
-      if(isset($params['question'])){
+
+      if(isset($params['question'])  && is_array($params['question'])){
           $question=[];
           foreach($params['question'] as $key=>$val){
             $question[]= $val;
           }
           $qid=implode(',',$question);
           $qidSql='question_id IN ('.$qid.') ';
-          $where[]=$qidSql;
+          $chapter_question[]=$qidSql;
           
       }
-      print_r($qidSql);
-
+    
      if(!empty($params['value_chain'])){
         $vc_id=[];
     
@@ -84,18 +79,40 @@ function getCDP($params){
          //sql用の変数。
          $vcid=implode(',',$vc_id);
          $vcidSql='value_chain_id IN ('.$vcid.') ';
-         $where[]=$vcidSql;
+         $chapter_question[]=$vcidSql;
      } 
 
-    
-         if($where){
+     // (A AND B) のsqlを作成：
+     if(!empty($chapter_question)){
+         $chapter_questionSql=implode(' OR ',$chapter_question);
+        $where[]='('.$chapter_questionSql.')';
+    }
+
+     
+         if(!empty($year_comp) && !empty($chapter_question)){
+        /* $whereSql の最終形態：は(year IN (x,y) AND company_id IN (x,y) )
+         AND (chapter_id IN (x,y) OR question_id IN (x,y) OR value_chain_id IN (x,y) )    */  
         $whereSql = implode(' AND ', $where);
-       // print_r('$whereSql= '.$whereSql);
-		$sql =$db->prepare('select year,company_id,company,chapter_id,question,question_id,answer_1, answer_2, answer_3, answer_4, answer_5, answer_6
-        from v_table where ' .$whereSql);
-        }else{
+        //print_r('$whereSql= '.$whereSql."<br>");
+        $sql =$db->prepare('select year,company_id,company,chapter_id,question,question_id,
+        identifier,answer_1, answer_2, answer_3, answer_4, answer_5, answer_6
+        from v_table where '.'(' .$whereSql.')'.' ORDER BY id');
+
+        }elseif(empty($year_comp) && empty($chapter_question)){
+            //全てのチェックボックスにチェックがされていない場合：全件検索
             $sql =$db->prepare('select * from v_table');
-        }; 
+        }else{
+            if(!empty($year_compSql)){
+                $a=$year_compSql;
+            }elseif(!empty($chapter_questionSql)){
+                $a=$chapter_questionSql;
+            }
+            $whereSql = $a;
+           //print_r('$whereSql= '.$whereSql."<br>");
+            $sql =$db->prepare('select year,company_id,company,chapter_id,question,question_id,
+            identifier,answer_1, answer_2, answer_3, answer_4, answer_5, answer_6
+            from v_table where '.'(' .$whereSql.')'.' ORDER BY id');
+        } 
 
        
     //SQL文を実行する

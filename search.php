@@ -50,7 +50,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
      
         <tr><td><p>Search</p></td></tr>
        
-        <form action="./result2.php" method="GET" id="form_1"> 
+        <form action="./result2.php" target="_blank" method="GET" id="form_1"> 
       
         <tr>
           <td>
@@ -80,6 +80,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
        <tr class="chapter">
           <td>
               Chapter : <br>
+              <div>
               <label><input type="checkbox" name="chapter[]" value="1"/>C0. Introduction</label>
               <label><input type="checkbox" name="chapter[]" value="2"/>C1. Governance</label>
               <label><input type="checkbox" name="chapter[]" value="3"/>C2. Risks and opportunities</label>
@@ -88,6 +89,8 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
               <label><input type="checkbox" name="chapter[]" value="6"/>C3. Business Strategy</label>
               <label><input type="checkbox" name="chapter[]" value="7"/>C4. Targets and performance</label>
               <label><input type="checkbox" name="chapter[]" value="8"/>C5. Emissions methodology</label>
+              </div>
+              <div>
               <label><input type="checkbox" name="chapter[]" value="9"/>C6. Emissions data</label>
               <label><input type="checkbox" name="chapter[]" value="10"/>C7. Emissions breakdowns</label>
               <label><input type="checkbox" name="chapter[]" value="11"/>C8. Energy</label>
@@ -97,6 +100,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
               <label><input type="checkbox" name="chapter[]" value="15"/>C12. Engagement</label>
               <label><input type="checkbox" name="chapter[]" value="16"/>C14. Signoff</label>
               <label><input type="checkbox" name="chapter[]" value="17"/>C15. Signoff</label>
+              </div>
           </td>
       </tr> 
       <tr>
@@ -107,9 +111,12 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
 
       <tr class="question">
       <td> 
+        <div>
         <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
         <label><input type="checkbox" name="question[]" value="2"/>(C2.2a) Which risk types are considered in your organization's climate-related risk assessments?</label>
+        </div>
         <label><input type="checkbox" name="question[]" value="3"/>Value chain stage(s) covered</label>
+        <div>
         <label><input type="checkbox" name="question[]" value="4"/>Identifier</label>
         <label><input type="checkbox" name="question[]" value="5"/>Where in the value chain does the risk driver occur?</label>
         <label><input type="checkbox" name="question[]" value="6"/>Risk type & Primary climate-related risk driver</label>
@@ -127,19 +134,25 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
         <label><input type="checkbox" name="question[]" value="18"/>Cost of response to risk</label>
         <label><input type="checkbox" name="question[]" value="19"/>Description of response and explanation of cost calculation</label>
         <label><input type="checkbox" name="question[]" value="20"/>Where in the value chain does the opportunity occur?</label>
+        </div>
+        <div>
         <label><input type="checkbox" name="question[]" value="21"/>Opportunity type</label>
         <label><input type="checkbox" name="question[]" value="22"/>Primary climate-related opportunity driver</label>
         <label><input type="checkbox" name="question[]" value="23"/>Cost to realize opportunity</label>
         <label><input type="checkbox" name="question[]" value="24"/>Strategy to realize opportunity and explanation of cost calculation</label>
+        </div>
+        <label><input type="checkbox" name="question[]" value="30"/>C3.1</label>
         <label><input type="checkbox" name="question[]" value="25"/>(C3.1a) Does your organization use climate-related scenario analysis to inform its strategy?</label>
         <label><input type="checkbox" name="question[]" value="26"/>(C3.1b) Provide details of your organization’s use of climate-related scenario analysis.</label>
         <label><input type="checkbox" name="question[]" value="27"/>(C3.1d) Describe where and how climate-related risks and opportunities have influenced your strategy.</label>
         <label><input type="checkbox" name="question[]" value="28"/>(C3.1f) Provide any additional information on how climate-related risks and opportunities have influenced your strategy and financial planning (optional).</label>
-        <label><input type="checkbox" name="question[]" value="29"/>(C4.3c) What methods do you use to drive investment in emissions reduction activities?</label>
-        <label><input type="checkbox" name="question[]" value="30"/>C3.1</label>
+        
         <label><input type="checkbox" name="question[]" value="31"/>(C3.1d) Provide details of your organization’s use of climate-related scenario analysis.</label>
         <label><input type="checkbox" name="question[]" value="32"/>C3.1c</label>
         <label><input type="checkbox" name="question[]" value="33"/>C3.1a</label>
+        <div>
+        <label><input type="checkbox" name="question[]" value="29"/>(C4.3c) What methods do you use to drive investment in emissions reduction activities?</label>
+        </div>
       </td>
       </tr>
       

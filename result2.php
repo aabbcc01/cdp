@@ -45,7 +45,8 @@ if(isset($CdpData) && count($CdpData)): ?>
 
 	<table class="columns">
 		<thead><tr><th>Year</th><th>Company</th><th>Chapter</th>
-		<th>question</th><th>question_id</th><th>CDP Response</th></tr></thead>
+		<th>question</th><th>question_id</th><th>Identifier</th><th colspan="3">CDP Response 1</th>
+		</tr></thead>
         <?php foreach($CdpData as $row): ?>
 				<tr>
 					<td><?php echo htmlspecialchars($row['year']) ?></td>
@@ -53,6 +54,7 @@ if(isset($CdpData) && count($CdpData)): ?>
 					<td><?php echo htmlspecialchars($row['chapter_id']) ?></td>
 					<td><?php echo htmlspecialchars($row['question']) ?></td>
 					<td><?php echo htmlspecialchars($row['question_id']) ?></td>
+					<td><?php echo htmlspecialchars($row['identifier']) ?></td>
                     <td><?php echo htmlspecialchars($row['answer_1']) ?></td>
 					<td><?php echo htmlspecialchars($row['answer_2']) ?></td>
 					<td><?php echo htmlspecialchars($row['answer_3']) ?></td>
