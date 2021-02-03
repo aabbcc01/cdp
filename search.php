@@ -50,7 +50,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
      
         <tr><td><p>Search</p></td></tr>
        
-        <form action="./result2.php" target="_blank" method="GET" id="form_1"> 
+        <form action="./branch.php" target="_blank" method="GET" id="form_1"> 
       
         <tr>
           <td>
@@ -177,8 +177,8 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
         <tr class="cdp_c2">
           <td>Draw chart<span><select name="chart">  
           <option value=""></option>
-            <option value="by_company">Company</option>
-            <option value="by_value_chain">Value chain</option>
+            <option value="1">Company</option>
+            <option value="2">Value chain</option>
             </select>
           </td>
         </tr> 

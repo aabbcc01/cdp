@@ -44,16 +44,16 @@ if(isset($CdpData) && count($CdpData)): ?>
 	<p class="alert alert-success"><?php echo count($CdpData) ?>件見つかりました。</p>
 
 	<table class="columns">
-		<thead><tr><th>Year</th><th>Company</th><th>Chapter</th>
-		<th>question</th><th>question_id</th><th>Identifier</th><th colspan="3">CDP Response 1</th>
+		<thead><tr><th>Year</th><th>Company</th><!-- <th>Chapter</th> -->
+		<th>question</th><!-- <th>question_id</th> --><th>Identifier</th><th colspan="3">CDP Response 1</th>
 		</tr></thead>
         <?php foreach($CdpData as $row): ?>
 				<tr>
 					<td><?php echo htmlspecialchars($row['year']) ?></td>
                     <td><?php echo htmlspecialchars($row['company']) ?></td>
-					<td><?php echo htmlspecialchars($row['chapter_id']) ?></td>
-					<td><?php echo htmlspecialchars($row['question']) ?></td>
-					<td><?php echo htmlspecialchars($row['question_id']) ?></td>
+					<!-- <td><?php echo htmlspecialchars($row['chapter_id']) ?></td> -->
+					<!-- <td><?php echo htmlspecialchars($row['question']) ?></td> -->
+					<!-- <td><?php echo htmlspecialchars($row['question_id']) ?></td> -->
 					<td><?php echo htmlspecialchars($row['identifier']) ?></td>
                     <td><?php echo htmlspecialchars($row['answer_1']) ?></td>
 					<td><?php echo htmlspecialchars($row['answer_2']) ?></td>

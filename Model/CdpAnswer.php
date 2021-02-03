@@ -93,7 +93,7 @@ function getCDP($params){
         /* $whereSql の最終形態：は(year IN (x,y) AND company_id IN (x,y) )
          AND (chapter_id IN (x,y) OR question_id IN (x,y) OR value_chain_id IN (x,y) )    */  
         $whereSql = implode(' AND ', $where);
-        print_r('$whereSql= '.$whereSql."<br>");
+       // print_r('$whereSql= '.$whereSql."<br>");
         $sql =$db->prepare('select year,company_id,company,chapter_id,question,question_id,
         identifier,answer_1, answer_2, answer_3, answer_4, answer_5, answer_6
         from v_table where '.'(' .$whereSql.')'.' ORDER BY id');
