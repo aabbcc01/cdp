@@ -3,9 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
     <script src="js/visible_c2.js"></script> 
     <script src="js/ajax_industry.js"></script> 
-    
 </head>
 
 <?php
@@ -29,7 +30,6 @@ require_once './Encode.php';
     $db=getDb();
     $userName=strval(e($_POST['name']));
     $userPass=strval(e($_REQUEST['password']));
-    //$sql=$db->prepare('SELECT * FROM users WHERE name=:name and password=:password');
     $sql=$db->prepare('SELECT * FROM user where name=:name and password=:password');
     
     $sql->bindvalue(':name',$userName,PDO::PARAM_STR);
@@ -185,7 +185,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
 
 
         <tr>
-          <td style="white-space : nowrap;" ><input type="submit" value="Search" id="search_btn" class="btn" >
+          <td style="white-space : nowrap;" ><input type="button" value="Search" id="search_btn" class="btn" >
           </td>
         </tr> 
 

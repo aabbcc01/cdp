@@ -62,32 +62,19 @@ document.addEventListener('DOMContentLoaded', function() {
                               var dp= JSON.parse(storage[input.id]);
                             
                               if(storage[input.id] || dp['checked']===1 || dp['checked']==undefined){
-                                  input.setAttribute('checked',true);
+                                  input.setAttribute('checked',1);
                                   dp['checked']=1;
                                   storage[input.id]=JSON.stringify(dp);
                                } 
 
                               input.addEventListener('change',function(){
-                                  if(!this.checked){ 
-                                  
+                                
                                       if(storage[`company_${this.id}`]){
                                         
                                           dp= JSON.parse(storage[`company_${this.id}`]);
-                                          dp['checked']=0;
+                                          dp['checked']=this.checked;
                                           storage[`company_${this.id}`]=JSON.stringify(dp);
                                     }
-
-                                  }
-                                  else{
-                                      
-                                      if(storage[`company_${this.id}`]){
-
-                                          dp= JSON.parse(storage[`company_${this.id}`]);
-                                          dp['checked']=1;
-                                          storage[`company_${this.id}`]=JSON.stringify(dp);
-                                      }
-                                      
-                                  }
 
                               },false);
                               
@@ -101,8 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                           }
                          
                           comp_list.appendChild(div);
-                          
-
+                        
                       }
 
                   }
@@ -121,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       }
                     }
 
-                     //ストレージの削除
+                     //ストレージの削除用の関数
                      const delSto=()=>{
                       for(var i=0; i<storage.length;i++){  
                           var key =storage.key(i); //i番目のstorageのキー名を取得
@@ -143,9 +129,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });   
   }
    // 動的に作成した要素をフォームに追加。追加しないとサーバーに値が送られない。
-   document.getElementById('search_btn').addEventListener('click',function(){
-    document.getElementById('form_1').appendChild(comp_list);
-  }); 
+    document.getElementById('search_btn').addEventListener('click',function(){
+    var form=document.getElementById('form_1');
+    form.appendChild(comp_list);
+    form.submit();
+    location.reload();
+    //location=location;
+  });  
 
 },false);  
 
