@@ -1,47 +1,48 @@
 <?php
 require_once '../cdp/Encode.php';
-include_once('./Model/RiskAnswers.php');
-//$userData = getUserData($_REQUEST); //answersの取得
 
-function getChartData($userData){
-	//DBの接続情報
-	require_once '../cdp/DbManager.php';
+//$CdpData = getUserData($_REQUEST); //answersの取得
 
-	//DBコネクタを生成
+function getChartData($params){
+	
+    //DBの接続情報
+    require_once '../cdp/DbManager.php';
+    //DBコネクタを生成
     $db=getDb();
-    $impact_figure=[];
-    foreach($userData as $row){
-        $sql=$db->prepare('SELECT figure FROM impacts where term_by_cdp=:impact');
-        $impact=strval($row['Magnitude_of_impact']);
-        $sql->bindvalue(":impact",$impact,PDO::PARAM_STR);
-        $sql->execute();
-        $impact_figure[]=$sql->fetch(PDO::FETCH_ASSOC);
-
-        
-    }
-    $likelihood_figure=[];
-    foreach($userData as $row){
-        $sql=$db->prepare('SELECT figure FROM likelihoods where term_by_cdp=:likelihood');
-        $likelihood=strval($row['Likelihood']);
-        $sql->bindvalue(":likelihood",$likelihood,PDO::PARAM_STR);
-        $sql->execute();
-        $likelihood_figure[]=$sql->fetch(PDO::FETCH_ASSOC);
-    }
-       
-    $tmhz_figure=[];
-    foreach($userData as $row){
-
-        $sql=$db->prepare('SELECT figure FROM time_horizons where term_by_cdp=:time_horizon');
-        $time_horizon=strval($row['time_horizon']);
-        $sql->bindvalue(":time_horizon",$time_horizon,PDO::PARAM_STR);
-        $sql->execute();
-        $tmhz_figure[]=$sql->fetch(PDO::FETCH_ASSOC);
-    }
-
-
-    $result =array($impact_figure,$likelihood_figure,$tmhz_figure);
     
+   
+     
+    if(isset($params['comp_id']) && is_array($params['comp_id'])){
 
-    return $result;
+        $comp_id=[];
+    
+        // $comp_id[]= のところはcompany_id = 21のようになる。
+          foreach($params['comp_id'] as $key=>$val){
+            $comp_id[]=$val;
+         }  
+       
+         //sql用の変数。company_id=xx OR company_id=xx ...
+        $compid=implode(',',$comp_id);
+        $compidSql='company_id IN ('.$compid.') ';
+        $year_comp[]=$compidSql;
+    }    
+
+
+
+    foreach($params['comp_id'] as $row){
+        $sql=$db->prepare('SELECT company,identifier,value_chain,Time_horizon,Likelihood,
+        impact,description,fig_TMHZ,fig_likelihood,fig_impact 
+        FROM v_fig_chart where company_id=:comp_id');
+        $id=strval($row['comp_id']);
+        $sql->bindvalue(":comp_id",$id,PDO::PARAM_STR);
+        $sql->execute();
+        
+    }$result = [];
+	while($chart = $sql->fetch(PDO::FETCH_ASSOC)){
+		$result[] = $chart;
+    };
+   
+    return $result;   
+    
 }
 

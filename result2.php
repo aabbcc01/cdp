@@ -45,7 +45,7 @@ if(isset($CdpData) && count($CdpData)): ?>
 
 	<table class="columns">
 		<thead><tr><th>Year</th><th>Company</th><!-- <th>Chapter</th> -->
-		<th>question</th><!-- <th>question_id</th> --><th>Identifier</th><th colspan="3">CDP Response 1</th>
+		<!-- <th>question</th> --><!-- <th>question_id</th> --><th>Identifier</th><th colspan="3">CDP Response</th>
 		</tr></thead>
         <?php foreach($CdpData as $row): ?>
 				<tr>

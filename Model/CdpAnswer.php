@@ -1,8 +1,9 @@
 <?php
-require_once '../cdp3/Encode.php';
+//require_once '../cdp3/Encode.php';
 function getCDP($params){
 	//DBの接続情報
-	require_once '../cdp3/DbManager.php';
+    require_once '../cdp3/DbManager.php';
+   
 
 	//DBコネクタを生成
     $db=getDb();

@@ -1,11 +1,11 @@
 <?php
 if(!empty($_GET['chart'])){
-    print 'hello'.'<br>';
-    print_r($_GET['chart']);
-	/* require_once('./Model/ChartData.php');
-	$chartData = getChartData($CdpData); */
+   //Chartを作成する場合
+    require_once('chart_risk.php');
+    require_once('chart_opp.php'); 
+   
 } else{
-    require_once('./result2.php');
+    require_once('result2.php');
 }
  
 
