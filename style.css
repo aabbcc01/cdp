@@ -57,6 +57,9 @@ div.ph_style2 {/*親div*/
                 
             }
 
+div.back-ground{
+    background-color:rgba(239, 242, 248, 0.932);
+}
          
 span input{
     width: 250px;
@@ -107,9 +110,35 @@ table {
   }
 
 
-thead {background-color:#c2cea0; color:#191970; padding:5px 10px; }
+thead {background-color:rgb(207, 12, 201); color:white; padding:5px 10px; }
 thead th{border:solid 1px}
 td {border: solid 1px #aaa; color:#191970; padding:5px 12px; line-height:28px; }
+
+span.header_1{
+    color: rgb(207, 12, 201);
+    font-weight: bold;
+    font-family: 'Meiryo UI';
+    
+}
+span.header_2{
+    font-family: 'Meiryo UI';
+    font-family: bold;
+    color:white;
+}
+
+
+td.header_2{
+    background-color : rgb(207, 12, 201);
+    font-family: 'Meiryo UI';
+    font-family: bold;
+    
+}
+td.header_3{
+    background-color:rgba(239, 242, 248, 0.932);
+}
+tr.results{
+    background-color:white;
+}
 
 /* label#cbox_comp span{font-size:"2"; white-space : nowrap;} */
 p.title{

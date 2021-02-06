@@ -46,7 +46,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
 <div class ="ph_style2">
 <img src="img/2-1.png"  class="ph2">
 
-    <table frame="void">
+    <table  frame="void">
      
         <tr><td><p>Search</p></td></tr>
        
@@ -155,48 +155,44 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
         </div>
       </td>
       </tr>
-      
-
-      <tr>
-        <td>
-          <a href="#" id="c2_href" ><font color="#FFFFFF">Specialized for C2.(Risk and Opp)</font></a>
-        </td>
-      </tr>  
-
-      <tr class="cdp_c2">
-         <td>
-        Value Chain : <br>
-            <label><input type="checkbox" name="value_chain[]" value="1"/>Upstream/Supply chain</label>
-            <label><input type="checkbox" name="value_chain[]" value="2"/>Direct operations</label>
-            <label><input type="checkbox" name="value_chain[]" value="3"/>Downstream/Customer</label>
-            <label><input type="checkbox" name="value_chain[]" value="4"/>Investment Chain</label>
-            <label><input type="checkbox" name="value_chain[]" value="5"/>Please select</label>
-        </td>
-        </tr>
-
-        <tr class="cdp_c2">
-          <td>Draw chart<span><select name="chart">  
-          <option value=""></option>
-            <option value="1">Company</option>
-            <option value="2">Value chain</option>
-            </select>
-          </td>
-        </tr> 
-
 
         <tr>
           <td style="white-space : nowrap;" ><input type="button" value="Search" id="search_btn" class="btn" >
           </td>
         </tr> 
 
+        </form>
+
+        <tr>
+            <td>
+              <a href="#" id="c2_href" ><font color="#FFFFFF">Specialized for C2.(Risk and Opp)</font></a>
+            </td>
+          </tr>  
+        <tr class="cdp_c2">
+            <td>
+            Value Chain : <br>
+                <label><input type="checkbox" name="value_chain[]" value="1"/>Upstream/Supply chain</label>
+                <label><input type="checkbox" name="value_chain[]" value="2"/>Direct operations</label>
+                <label><input type="checkbox" name="value_chain[]" value="3"/>Downstream/Customer</label>
+                <label><input type="checkbox" name="value_chain[]" value="4"/>Investment Chain</label>
+                <label><input type="checkbox" name="value_chain[]" value="5"/>Please select</label>
+            </td>
+          </tr>
+
+          <tr class="cdp_c2">
+              <td>Draw chart<span><select name="chart">  
+              <option value=""></option>
+                <option value="1">Company</option>
+                <option value="2">Value chain</option>
+                </select>
+              </td>
+          </tr> 
         
     </table>
    
-    </form>
    
 </div>
 
-</div id="test"><div>
 
 </body>
 </html>
