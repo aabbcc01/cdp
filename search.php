@@ -46,7 +46,7 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
 <div class ="ph_style2">
 <img src="img/2-1.png"  class="ph2">
 
-    <table  frame="void">
+    <table  frame="void" id="interface">
      
         <tr><td><p>Search</p></td></tr>
        

@@ -1,4 +1,5 @@
 <?php
+
 function getGET($param){
     if(isset($param['industry']) && is_array($param['industry'])){
         print_r($param);
@@ -16,3 +17,4 @@ function getGET($param){
 echo getGET($_GET);
 
 ?>
+

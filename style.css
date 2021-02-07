@@ -26,7 +26,7 @@ div.ph_style1 p{
 div.ph_style2 {/*親div*/
     position: relative;/*相対配置*/
 }
-    div.ph_style2 table{
+    div.ph_style2 table#interface{
    
         position: absolute;/*絶対配置*/
        /* opacity: 0.85; /*透明度*/
@@ -41,15 +41,18 @@ div.ph_style2 {/*親div*/
        
         width:780px;
     }
-        div.ph_style2 table td{
+    div table#interface tr{ border: solid 1px #aaa;}
+       div table#interface td{
         color: white;/*文字色*/
         font-size:18;
         font-weight: bold;
         line-height:2.0;
         text-align:left;
+        padding:5px 12px; line-height:28px;
+       
         }
 
-            div.ph_style2 table td span{
+            div.ph_style2 table#interface td span{
                 position: absolute;
                 left:190px;
                 width:20px;
@@ -59,6 +62,7 @@ div.ph_style2 {/*親div*/
 
 div.back-ground{
     background-color:rgba(239, 242, 248, 0.932);
+   /* background-color:white; */
 }
          
 span input{
@@ -69,13 +73,7 @@ span select { width: 250px;
 height:2em; 
 }
 
-tr.multiple td{width:250px;height:7em} 
-tr.multiple td span select {
-    position: absolute;/*絶対配置*/
-    top:-30;
-    width: 250px;
-    height:8em; }
- 
+
 
 .table_col{      
         
@@ -104,41 +102,71 @@ tr.multiple td span select {
     margin-left:480px;
 }
 
-table {
-    border-collapse: collapse;
+table#u_comps{
+    
+    background-color:white;
+    border:1px solid black;
+}
+table#u_comps tr{border:1px solid black;}
+
+table{
+   
+     border-collapse: collapse; 
     
   }
 
-
 thead {background-color:rgb(207, 12, 201); color:white; padding:5px 10px; }
 thead th{border:solid 1px}
-td {border: solid 1px #aaa; color:#191970; padding:5px 12px; line-height:28px; }
 
-span.header_1{
+/* table#interface tr{border: solid 1px #aaa; color:#191970; padding:5px 12px; line-height:28px; } */
+
+
+table#results span.header_1{
     color: rgb(207, 12, 201);
     font-weight: bold;
     font-family: 'Meiryo UI';
     
 }
-span.header_2{
+table#results span.header_2{
     font-family: 'Meiryo UI';
     font-family: bold;
     color:white;
 }
 
 
-td.header_2{
+table#results td.header_2{
     background-color : rgb(207, 12, 201);
     font-family: 'Meiryo UI';
     font-family: bold;
     
 }
-td.header_3{
+table#results td.header_3{
     background-color:rgba(239, 242, 248, 0.932);
 }
-tr.results{
+
+table#results{
+    /* テーブルの外枠線 */
+    border-top:1px solid black;
+    border-bottom:1px black solid;
     background-color:white;
+   
 }
+
+/* table#results tdのデフォルト設定 */
+table#results td {  padding:5px 12px; line-height:28px; border:0px none;}
+
+table#results tr.results td.set-underb{
+  
+    border-bottom:1px black solid;
+   
+ }
+
+
+ table#results tr.results td.border{
+  
+    border:1px solid;
+   }  
+  
 
 /* label#cbox_comp span{font-size:"2"; white-space : nowrap;} */
 p.title{

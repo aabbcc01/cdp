@@ -1,3 +1,8 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+<body>
 <?php
 
 /* if($_SERVER["REQUEST_METHOD"] != "POST"){
@@ -17,7 +22,7 @@ require('style.css');
 $comp_db = getCDP($_GET);
 $unique_array= new UniqueArray;
 $unique_array->forComp=$comp_db;
-$unique_name=$unique_array->unique();
+$u_compid=$unique_array->unique();
 
 $CdpData = getCDP($_GET); //answersの取得
 
@@ -34,10 +39,10 @@ if(isset($_GET['charts'])){
 <?php if(isset($CdpData) && count($CdpData)): ?>
 
 <!--重複なしで該当企業を表示-->
-    <table class="results"> 
-			<thead><tr><th>該当企業：（<?php echo count($unique_name) ?> 件)</th></tr>
+    <table id="u_comps" > 
+			<thead><tr><th>該当企業：（<?php echo count($u_compid) ?> 件)</th></tr>
    		</thead>
-			<?php foreach($unique_name as $row): ?>
+			<?php foreach($u_compid as $row): ?>
 					<tr class="results">
 						<td><?= htmlspecialchars($row['company']) ?></td>
 					</tr>
@@ -47,87 +52,118 @@ if(isset($_GET['charts'])){
     
 	<p class="alert alert-success"><?php echo count($CdpData) ?>件見つかりました。</p>
 
-	<table class="results">
-		<thead><tr><th>Year</th><th>Company</th><!-- <th>Chapter</th> -->
-		<!-- <th>question</th> --><!-- <th>question_id</th> --><!-- <th>Identifier</th> --><th colspan="6">CDP Response</th>
-		</tr></thead>
-        <?php foreach($CdpData as $row): ?>
-				<tr class="results">
-					<td><?php echo htmlspecialchars($row['year']) ?></td>
-                    <td><?php echo htmlspecialchars($row['company']) ?></td>
-					<!-- <td><?php echo htmlspecialchars($row['chapter_id']) ?></td> -->
-					<!-- <td><?php echo htmlspecialchars($row['question']) ?></td> -->
-					<!-- <td><?php echo htmlspecialchars($row['question_id']) ?></td> -->
-				   
-				<!-- 	<td><?php echo htmlspecialchars($row['identifier']) ?></td> -->
-				
-			
-					<td class="<?= header_.$row['header']?>"
-					colspan="<?php if (intval($row['header'])==1
-					OR $row['answer_2']=="" && $row['answer_3']=="" 
-					&& $row['answer_4']==""): ?> 6<?php endif; ?>"
-					>
-						<span class="<?= header_.$row['header']?>">
-							<?php echo htmlspecialchars($row['answer_1']) ?>
-						</span>
-					</td>
-
-					<?php $chap_id=intval($row['chapter_id']); ?>
-
-					<?php if (intval($row['header'])!==1 
-					AND !($row['answer_2']=="" && $row['answer_3']=="" && $row['answer_4']=="" 
-					&& $row['answer_5']=="" && $row['answer_6']=="" ) 
-					): ?>
-
-								<td class="<?= header_.$row['header']?>"
-								colspan="<?php if ($row['answer_3']=="" &&
-									$row['answer_4']=="" && $row['answer_5']=="" 
-									AND $chap_id<10): ?> 5 <?php endif; ?>"
-								>
-									<span class="<?= header_.$row['header']?>">
-										<?php echo htmlspecialchars($row['answer_2']) ?>
-									</span>
-								</td>
-							
-							<?php if($row['answer_3']!=="" ||$chap_id>=10 OR $chap_id==2 && $row['answer_3']!==""):?>
-								<td class="<?= header_.$row['header']?>" >
-									<span class="<?= header_.$row['header']?>">
-										<?= htmlspecialchars($row['answer_3']) ?>
-									</span>
-								</td>
-							<?php endif; ?>
-
-							<?php if($row['answer_4']!=="" ||$chap_id>=10 OR $chap_id==2 && $row['answer_4']!==""):?>
-								<td class="<?= header_.$row['header']?>" >
-										<span class="<?= header_.$row['header']?>">
-											<?= htmlspecialchars($row['answer_4']) ?>
-										</span>
-								</td>
-							<?php endif; ?>
-
-							<?php if($row['answer_5']!=="" ||$chap_id>=10 OR $chap_id==2 && $row['answer_5']!==""):?>
-								<td class="<?= header_.$row['header']?>">
-
-										<span class="<?= header_.$row['header']?>">
-											<?php echo htmlspecialchars($row['answer_5']) ?>
-										</span>
-								</td>
-							
-							<?php endif; ?>
-
-							<?php if($row['answer_6']!=="" ||$chap_id>=10 OR $chap_id==2 && $row['answer_6']!==""):?>
-								<td class="<?= header_.$row['header']?>">
-										<span class="<?= header_.$row['header']?>">
-											<?php echo htmlspecialchars($row['answer_6']) ?>
-										</span>
-								</td>
-							<?php endif; ?>
+	<table id="results">
+	
+	<?php foreach($u_compid as $u_row): ?>
+		<thead>
+		<tr>
+			<th colspan="6">CDP Response</th>
+		</tr>
+		<tr >
 					
-					<?php endif; ?>
+					<th>Year: <?php echo htmlspecialchars($u_row['year']) ?></th>
+					<th colspan="5">Company: <?php echo htmlspecialchars($u_row['company']) ?></th>
+					
+		</tr>
+		</thead>
+		<?php foreach($CdpData as $row): ?>
+			
+			<?php if (intval($row['company_id'])==intval($u_row['company_id'])):?>
 
+				<?php if(intval($row['header'])==1):?>
+				<tr class="results">
+					<td	colspan="6" class="<?php if(preg_match('/^C[0-9]/',$row['answer_1']) ||
+					preg_match('/^C-C/',$row['answer_1']) ):
+						?> set-underb<?php endif; ?>">
+					<span class="<?= header_.$row['header']?>">
+							<?php echo htmlspecialchars($row['answer_1']) ?>
+					</span>
+					</td>
 				</tr>
-		<?php endforeach; ?>
+				<?php endif;?>
 
+				<?php if(intval($row['header'])!==1):?>
+
+					<tr class="results">
+					
+						<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1):?>border<?php endif;?>"
+							colspan="<?php if($row['answer_2']=="" && $row['answer_3']==""
+							&& $row['answer_4']=="" && $row['answer_5']=="" && $row['answer_6']==""):?>6<?php endif;?>"
+						>
+
+							<span class="<?= header_.$row['header']?>">
+								<?php echo htmlspecialchars($row['answer_1']) ?>
+							</span>
+						</td>
+		
+						<?php $chap_id=intval($row['chapter_id']); ?>
+
+								<?php if($row['answer_2']!=="" || ($row['answer_3']!=="")) :?>
+									<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
+									AND $row['answer_2']!=="" || ($row['answer_3']!=="")):?>border<?php endif;?>"
+									
+									colspan="<?php if($row['answer_3']=="" && $row['answer_4']==""
+									&& $row['answer_5']=="" && $row['answer_6']=="" 
+									AND $chap_id<10):?>5<?php endif;?>">
+											
+											<span class="<?= header_.$row['header']?>">
+												<?= htmlspecialchars($row['answer_2']) ?>
+											</span>
+									</td>
+								<?php endif;?>
+								
+									<?php if($row['answer_3']!=="" ):?>
+										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
+										&& $row['answer_3']!==""):?>border<?php endif;?>"
+										
+										colspan="<?php if($row['answer_4']=="" && $row['answer_5']==""
+										&& $row['answer_6']=="" AND $chap_id<10):?>4<?php endif;?>">
+
+											<span class="<?= header_.$row['header']?>">
+												<?= htmlspecialchars($row['answer_3']) ?>
+											</span>
+										</td>
+									<?php endif;?>
+
+									<?php if($row['answer_4']!=="" ):?>
+										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
+										&& $row['answer_4']!==""):?>border<?php endif;?>"
+										
+										colspan="<?php if($row['answer_5']=="" && $row['answer_6']==""
+										AND $chap_id<10):?>3<?php endif;?>" >
+												
+												<span class="<?= header_.$row['header']?>">
+													<?= htmlspecialchars($row['answer_4']) ?>
+												</span>
+										</td>
+									<?php endif;?>
+									
+
+									<?php if($row['answer_5']!=="" ):?>
+										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
+										&& $row['answer_5']!==""):?>border<?php endif;?>">
+
+												<span class="<?= header_.$row['header']?>">
+													<?php echo htmlspecialchars($row['answer_5']) ?>
+												</span>
+										</td>
+									<?php endif; ?>
+							
+
+									<?php if($row['answer_6']!==""):?>
+										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
+										&& $row['answer_6']!==""):?>border<?php endif;?>">
+
+												<span class="<?= header_.$row['header']?>">
+													<?php echo htmlspecialchars($row['answer_6']) ?>
+												</span>
+										</td>
+									<?php endif;?>
+					</tr>	
+				<?php endif; ?>	
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php endforeach; ?>
     </table>
 
 <?php else: ?>
