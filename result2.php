@@ -46,6 +46,7 @@ if(isset($_GET['charts'])){
 					<tr class="results">
 						<td><?= htmlspecialchars($row['company']) ?></td>
 					</tr>
+					
 			<?php endforeach; ?>
 
     </table>
@@ -56,15 +57,17 @@ if(isset($_GET['charts'])){
 	
 	<?php foreach($u_compid as $u_row): ?>
 		<thead>
-		<tr>
-			<th colspan="6">CDP Response</th>
-		</tr>
-		<tr >
-					
-					<th>Year: <?php echo htmlspecialchars($u_row['year']) ?></th>
-					<th colspan="5">Company: <?php echo htmlspecialchars($u_row['company']) ?></th>
-					
-		</tr>
+
+			<tr>
+				<th colspan="6">CDP Response</th>
+			</tr>
+
+			<tr >
+						
+				<th>Year: <?php echo htmlspecialchars($u_row['year']) ?></th>
+				<th colspan="5">Company: <?php echo htmlspecialchars($u_row['company']) ?></th>
+						
+			</tr>
 		</thead>
 		<?php foreach($CdpData as $row): ?>
 			
@@ -87,8 +90,7 @@ if(isset($_GET['charts'])){
 					<tr class="results">
 					
 						<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1):?>border<?php endif;?>"
-							colspan="<?php if($row['answer_2']=="" && $row['answer_3']==""
-							&& $row['answer_4']=="" && $row['answer_5']=="" && $row['answer_6']==""):?>6<?php endif;?>"
+						colspan="<?php if(intval($row['colnum'])==1):?>6<?php endif;?>"
 						>
 
 							<span class="<?= header_.$row['header']?>">
@@ -98,13 +100,11 @@ if(isset($_GET['charts'])){
 		
 						<?php $chap_id=intval($row['chapter_id']); ?>
 
-								<?php if($row['answer_2']!=="" || ($row['answer_3']!=="")) :?>
+								<?php if($row['colnum'] & 10) :?>
 									<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-									AND $row['answer_2']!=="" || ($row['answer_3']!=="")):?>border<?php endif;?>"
-									
-									colspan="<?php if($row['answer_3']=="" && $row['answer_4']==""
-									&& $row['answer_5']=="" && $row['answer_6']=="" 
-									AND $chap_id<10):?>5<?php endif;?>">
+									):?>border<?php endif;?>"
+									colspan="<?php if(intval($row['colnum'])==3):?>5<?php endif;?>"
+								    >
 											
 											<span class="<?= header_.$row['header']?>">
 												<?= htmlspecialchars($row['answer_2']) ?>
@@ -112,12 +112,11 @@ if(isset($_GET['charts'])){
 									</td>
 								<?php endif;?>
 								
-									<?php if($row['answer_3']!=="" ):?>
+								<?php if($row['colnum'] & 100) :?>
 										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										&& $row['answer_3']!==""):?>border<?php endif;?>"
-										
-										colspan="<?php if($row['answer_4']=="" && $row['answer_5']==""
-										&& $row['answer_6']=="" AND $chap_id<10):?>4<?php endif;?>">
+										):?>border<?php endif;?>"
+										colspan="<?php if(intval($row['colnum'])==7):?>4<?php endif;?>"
+							>
 
 											<span class="<?= header_.$row['header']?>">
 												<?= htmlspecialchars($row['answer_3']) ?>
@@ -125,12 +124,11 @@ if(isset($_GET['charts'])){
 										</td>
 									<?php endif;?>
 
-									<?php if($row['answer_4']!=="" ):?>
+									<?php if($row['colnum'] & 1000) :?>
 										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										&& $row['answer_4']!==""):?>border<?php endif;?>"
-										
-										colspan="<?php if($row['answer_5']=="" && $row['answer_6']==""
-										AND $chap_id<10):?>3<?php endif;?>" >
+										):?>border<?php endif;?>"
+										colspan="<?php if(intval($row['colnum'])==15):?>3<?php endif;?>"
+										>
 												
 												<span class="<?= header_.$row['header']?>">
 													<?= htmlspecialchars($row['answer_4']) ?>
@@ -139,9 +137,11 @@ if(isset($_GET['charts'])){
 									<?php endif;?>
 									
 
-									<?php if($row['answer_5']!=="" ):?>
+									<?php if($row['colnum'] & 10000) :?>
 										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										&& $row['answer_5']!==""):?>border<?php endif;?>">
+										):?>border<?php endif;?>"
+										colspan="<?php if(intval($row['colnum'])==31):?>2<?php endif;?>"
+										>
 
 												<span class="<?= header_.$row['header']?>">
 													<?php echo htmlspecialchars($row['answer_5']) ?>
@@ -150,9 +150,9 @@ if(isset($_GET['charts'])){
 									<?php endif; ?>
 							
 
-									<?php if($row['answer_6']!==""):?>
+									<?php if($row['colnum'] & 100000) :?>
 										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										&& $row['answer_6']!==""):?>border<?php endif;?>">
+										):?>border<?php endif;?>">
 
 												<span class="<?= header_.$row['header']?>">
 													<?php echo htmlspecialchars($row['answer_6']) ?>
