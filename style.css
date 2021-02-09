@@ -107,7 +107,8 @@ table#u_comps{
     background-color:white;
     border:1px solid black;
 }
-table#u_comps tr{border:1px solid black;}
+table#u_comps tr td{border:1px solid black;
+    padding:5px 12px; line-height:20px;}
 
 table{
    

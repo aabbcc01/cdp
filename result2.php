@@ -39,14 +39,33 @@ if(isset($_GET['charts'])){
 <?php if(isset($CdpData) && count($CdpData)): ?>
 
 <!--重複なしで該当企業を表示-->
+<?php $c=1; $i=1; $comps=[];
+ foreach($u_compid as $row){
+    
+	$comps["${i}"][]=$row['company'];
+	$c++;
+	if($c%3===0){$i++;}
+
+} 
+
+?>
+
+
+
     <table id="u_comps" > 
-			<thead><tr><th>該当企業：（<?php echo count($u_compid) ?> 件)</th></tr>
-   		</thead>
-			<?php foreach($u_compid as $row): ?>
+			<thead><tr><th colspan="3">該当企業：（<?php echo count($u_compid) ?> 件)</th></tr>
+		   </thead>
+		   <tr>
+		  <!--  <td><?php print_r($comps) ?></td></tr> -->
+		   <?php foreach($comps as $row): ?>
 					<tr class="results">
-						<td><?= htmlspecialchars($row['company']) ?></td>
-					</tr>
 					
+					<td><?php if(isset($row[0])):?><?= htmlspecialchars($row[0]) ?><?php endif;?></td>
+					<td><?php if(isset($row[1])):?><?= htmlspecialchars($row[1]) ?><?php endif;?></td>
+					<td><?php if(isset($row[2])):?><?= htmlspecialchars($row[2]) ?><?php endif;?></td>
+							
+					
+					</tr>
 			<?php endforeach; ?>
 
     </table>
