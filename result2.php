@@ -38,20 +38,17 @@ if(isset($_GET['charts'])){
  <!-- ③取得データを表示する  -->
 <?php if(isset($CdpData) && count($CdpData)): ?>
 
-<!--重複なしで該当企業を表示-->
-<?php $c=1; $i=1; $comps=[];
- foreach($u_compid as $row){
-    
-	$comps["${i}"][]=$row['company'];
-	$c++;
-	if($c%3===0){$i++;}
+	<!--重複なしで該当企業を表示-->
+	<?php $c=1; $i=1; $comps=[];
+	foreach($u_compid as $row){
+		
+		$comps["${i}"][]=$row['company'];
+		$c++;
+		if($c%3===0){$i++;}
 
-} 
+	} 
 
-?>
-
-
-
+	?>
     <table id="u_comps" > 
 			<thead><tr><th colspan="3">該当企業：（<?php echo count($u_compid) ?> 件)</th></tr>
 		   </thead>
@@ -60,9 +57,10 @@ if(isset($_GET['charts'])){
 		   <?php foreach($comps as $row): ?>
 					<tr class="results">
 					
-					<td><?php if(isset($row[0])):?><?= htmlspecialchars($row[0]) ?><?php endif;?></td>
-					<td><?php if(isset($row[1])):?><?= htmlspecialchars($row[1]) ?><?php endif;?></td>
-					<td><?php if(isset($row[2])):?><?= htmlspecialchars($row[2]) ?><?php endif;?></td>
+					<?php if(isset($row[0])):?><td><?= htmlspecialchars($row[0]) ?></td><?php endif;?>
+					<?php if(isset($row[1])):?><td><?= htmlspecialchars($row[1]) ?></td><?php endif;?>
+						
+					<?php if(isset($row[2])):?><td><?= htmlspecialchars($row[2]) ?></td><?php endif;?>
 							
 					
 					</tr>
@@ -72,122 +70,90 @@ if(isset($_GET['charts'])){
     
 	<p class="alert alert-success"><?php echo count($CdpData) ?>件見つかりました。</p>
 
-	<table id="results">
-	
-	<?php foreach($u_compid as $u_row): ?>
-		<thead>
+	<?php
 
-			<tr>
-				<th colspan="6">CDP Response</th>
-			</tr>
+		class Table {
+			function border($border){
+				if(intval($border)===1){
+					return " border";
+				}
+			}
+			function colspan($colnum,$n){
+				if($colnum ===$n){
+					$result=7-$colnum;
+					return $result;
+				}
+			}
+			function setUnderb($header,$answer){
+				if(preg_match('/^C[0-9]/',$answer) ||
+				preg_match('/^C-C/',$answer) AND $header===1){
+					return " set-underb";
+				}
+			}
+		}
 
-			<tr >
-						
-				<th>Year: <?php echo htmlspecialchars($u_row['year']) ?></th>
-				<th colspan="5">Company: <?php echo htmlspecialchars($u_row['company']) ?></th>
-						
-			</tr>
-		</thead>
-		<?php foreach($CdpData as $row): ?>
+		function make_td($header,$border,$colnum,$answer,$n){
+			$table=new Table(); 
+			$h_answer=htmlspecialchars($answer); 
 			
-			<?php if (intval($row['company_id'])==intval($u_row['company_id'])):?>
+			$html=<<<EOL
+			<td class="header_{$header} {$table->border($border)} {$table->setUnderb($header,$answer)}" 
+			colspan="{$table->colspan($colnum,$n)}">
+														
+			<span class="header_{$header}">
+			{$h_answer}
+			</span>
+			</td>
 
-				<?php if(intval($row['header'])==1):?>
-				<tr class="results">
-					<td	colspan="6" class="<?php if(preg_match('/^C[0-9]/',$row['answer_1']) ||
-					preg_match('/^C-C/',$row['answer_1']) ):
-						?> set-underb<?php endif; ?>">
-					<span class="<?= header_.$row['header']?>">
-							<?php echo htmlspecialchars($row['answer_1']) ?>
-					</span>
-					</td>
+			EOL;
+			return $html;
+		}
+	?>
+
+	<table id="results">
+		
+		<?php foreach($u_compid as $u_row): ?>
+			<thead>
+
+				<tr>
+					<th colspan="6">CDP Response</th>
 				</tr>
-				<?php endif;?>
 
-				<?php if(intval($row['header'])!==1):?>
+				<tr>
+							
+					<th>Year: <?php echo htmlspecialchars($u_row['year']) ?></th>
+					<th colspan="5">Company: <?php echo htmlspecialchars($u_row['company']) ?></th>
+							
+				</tr>
+			</thead>
+
+			<?php foreach($CdpData as $row): ?>
+				
+				<?php if (intval($row['company_id'])===intval($u_row['company_id'])):?>
 
 					<tr class="results">
-					
-						<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1):?>border<?php endif;?>"
-						colspan="<?php if(intval($row['colnum'])==1):?>6<?php endif;?>"
-						>
 
-							<span class="<?= header_.$row['header']?>">
-								<?php echo htmlspecialchars($row['answer_1']) ?>
-							</span>
-						</td>
-		
-						<?php $chap_id=intval($row['chapter_id']); ?>
+						<?php for($i=0;$i<intval($row['colnum']);$i++) {
+								$n=$i+1;
+								$td= make_td(intval($row['header']),intval($row['border']),intval($row['colnum']),$row["answer_${n}"],$n); 
+								echo $td;
+								}
+						?>
 
-								<?php if($row['colnum'] & 10) :?>
-									<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-									):?>border<?php endif;?>"
-									colspan="<?php if(intval($row['colnum'])==3):?>5<?php endif;?>"
-								    >
-											
-											<span class="<?= header_.$row['header']?>">
-												<?= htmlspecialchars($row['answer_2']) ?>
-											</span>
-									</td>
-								<?php endif;?>
-								
-								<?php if($row['colnum'] & 100) :?>
-										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										):?>border<?php endif;?>"
-										colspan="<?php if(intval($row['colnum'])==7):?>4<?php endif;?>"
-							>
-
-											<span class="<?= header_.$row['header']?>">
-												<?= htmlspecialchars($row['answer_3']) ?>
-											</span>
-										</td>
-									<?php endif;?>
-
-									<?php if($row['colnum'] & 1000) :?>
-										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										):?>border<?php endif;?>"
-										colspan="<?php if(intval($row['colnum'])==15):?>3<?php endif;?>"
-										>
-												
-												<span class="<?= header_.$row['header']?>">
-													<?= htmlspecialchars($row['answer_4']) ?>
-												</span>
-										</td>
-									<?php endif;?>
-									
-
-									<?php if($row['colnum'] & 10000) :?>
-										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										):?>border<?php endif;?>"
-										colspan="<?php if(intval($row['colnum'])==31):?>2<?php endif;?>"
-										>
-
-												<span class="<?= header_.$row['header']?>">
-													<?php echo htmlspecialchars($row['answer_5']) ?>
-												</span>
-										</td>
-									<?php endif; ?>
-							
-
-									<?php if($row['colnum'] & 100000) :?>
-										<td class="<?= header_.$row['header']?> <?php if(intval($row['border'])==1
-										):?>border<?php endif;?>">
-
-												<span class="<?= header_.$row['header']?>">
-													<?php echo htmlspecialchars($row['answer_6']) ?>
-												</span>
-										</td>
-									<?php endif;?>
 					</tr>	
-				<?php endif; ?>	
-			<?php endif; ?>
+					
+				<?php endif; ?>
+
+			<?php endforeach; ?>
+
 		<?php endforeach; ?>
-	<?php endforeach; ?>
-    </table>
+
+	</table>
 
 <?php else: ?>
 	<p class="alert alert-danger">検索対象は見つかりませんでした。</p>
 <?php endif; ?>
+
 </div>
 </body>
 </html>
