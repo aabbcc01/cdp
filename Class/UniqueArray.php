@@ -7,11 +7,16 @@ class UniqueArray {
     public function unique(){
 
         $tmp=[];
-        $uniqueArray = [];              
+        $uniqueArray = [];          
+       
         foreach ($this->forComp as $value){
 
-            if (!in_array($value['company_id'], $tmp)) {
-                $tmp[] = $value['company_id'];
+            $comp_year=$value['company_id'].'_'.$value['year'];
+            
+            if (!in_array($comp_year, $tmp)) {
+                $comp_year=$value['company_id'].'_'.$value['year'];
+                $tmp[] = $comp_year;
+
                 $uniqueArray[] = $value;
              }  
 

@@ -5,7 +5,7 @@ if(!empty($_GET['chart'])){
     require_once('chart_opp.php'); 
    
 } else{
-    require_once('result2.php');
+    require_once('result.php');
 }
  
 

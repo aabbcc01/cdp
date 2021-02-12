@@ -30,7 +30,7 @@ div.ph_style2 {/*親div*/
    
         position: absolute;/*絶対配置*/
        /* opacity: 0.85; /*透明度*/
-        background-color: rgba(29, 33, 100, 0.5); /*透明度*/
+        background-color: #485464; 
        
         top: 45;
         left: 25%;
@@ -110,20 +110,30 @@ table#u_comps{
 table#u_comps tr td{border:1px solid black;
     padding:5px 12px; line-height:20px;}
 
+table#u_comps a{
+        text-decoration: none;
+      }
+table#u_comps a:hover {
+        /* ▼マウスが載ったときの装飾 */
+        background-color: #f1e7ef;              /* ←文字色 */
+        text-decoration: underline; /* ←下線あり */
+     }
+
+
 table{
    
      border-collapse: collapse; 
     
   }
 
-thead {background-color:rgb(207, 12, 201); color:white; padding:5px 10px; }
+thead {background-color:#82246f; color:white; padding:5px 10px; }
 thead th{border:solid 1px}
 
 /* table#interface tr{border: solid 1px #aaa; color:#191970; padding:5px 12px; line-height:28px; } */
 
 
 table#results span.header_1{
-    color: rgb(207, 12, 201);
+    color: #82246f;
     font-weight: bold;
     font-family: 'Meiryo UI';
     
@@ -136,7 +146,7 @@ table#results span.header_2{
 
 
 table#results td.header_2{
-    background-color : rgb(207, 12, 201);
+    background-color : #82246f;
     font-family: 'Meiryo UI';
     font-family: bold;
     
@@ -154,7 +164,7 @@ table#results{
 }
 
 /* table#results tdのデフォルト設定 */
-table#results td {  padding:5px 12px; line-height:28px; border:0px none;}
+table#results td {  padding:5px 12px; line-height:24px; border:0px none;}
 
 table#results tr.results td.set-underb{
   
@@ -174,4 +184,5 @@ p.title{
     font-weight: bold;
     font-family: 'Meiryo UI';
 }
+
 </style>
