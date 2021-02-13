@@ -43,33 +43,37 @@ if(isset($_GET['charts'])){
 
 	<!--重複なしで該当企業を表示-->
 	<?php $c=1; $i=1; $comps=[];
+	
 	foreach($u_compid as $row){
 		
-		$comps["${i}"][]=$row['year'].' '.$row['company'];
+		$comps["${i}"][]=array('year'=>$row['year'],'company'=>$row['company'],'company_id'=>$row['company_id']);
 		$c++;
 		if($c%3===0){$i++;}
 
 	} 
-
 	?>
+	<!-- <?php print_r($comps);?> -->
     <table id="u_comps" > 
 			<thead><tr><th colspan="3">該当企業：（<?= count($u_compid) ?> 件)</th></tr>
 		   </thead>
 		  
 		  <!--  <tr> <td><?php print_r($comps) ?></td></tr> -->
-		   <?php foreach($comps as $row): ?>
+		   <?php foreach($comps as $arr_1): ?>
+				
+				<tr>
+				<?php foreach($arr_1 as $arr_2):?>
 
-				<tr class="results">
-					<?php  for($i=0;$i<count($row);$i++):?>
-						
 						<td>
-						<?php if(isset($row[$i])):?>
-							<a href="#<?= htmlspecialchars($row[$i]) ?>">
-							<font color="black"><?= htmlspecialchars($row[$i]) ?></font><a>
-						<?php endif;?></td>
-				   <?php endfor;?>
+						<?php if(isset($arr_2['company_id'])):?>
+							<a href="#<?= htmlspecialchars($arr_2['company_id']); ?>">						
+							<font color="black"><?= htmlspecialchars($arr_2['year']),' ',
+							'<i>',htmlspecialchars($arr_2['company']),'</i>'; ?></font><a>
+						<?php endif;?>
+						</td>
 
-				</tr>
+				<?php endforeach;?>
+				
+			   </tr>
 
 			<?php endforeach; ?>
 
@@ -120,7 +124,7 @@ if(isset($_GET['charts'])){
 	<table id="results">
 
 		<?php foreach($u_compid as $u_row): ?>
-			<thead id="<?=htmlspecialchars($u_row['year']),' ',htmlspecialchars($u_row['company']); ?>">
+			<thead id="<?=htmlspecialchars($u_row['company_id']); ?>">
 
 				<tr>
 					<th colspan="6">CDP Response</th>
