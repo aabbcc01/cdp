@@ -28,9 +28,9 @@ div.ph_style2 {/*親div*/
 }
     div.ph_style2 table#interface{
    
-        position: absolute;/*絶対配置*/
-       /* opacity: 0.85; /*透明度*/
-        background-color: #485464; 
+        position: absolute;    /*絶対配置*/
+       /*  opacity: 0.85; */   /*透明度*/
+        background-color: rgba(29, 33, 100, 0.5); 
        
         top: 45;
         left: 25%;
