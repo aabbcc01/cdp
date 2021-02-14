@@ -65,12 +65,12 @@ if(isset($_GET['charts'])){
 
 						<td>
 						<?php if(isset($arr_2['company_id'])):?>
-							<a href="#<?= htmlspecialchars($arr_2['company_id']); ?>">						
+							<a href="#<?= htmlspecialchars($arr_2['year']),htmlspecialchars($arr_2['company_id']); ?>">						
 							<font color="black"><?= htmlspecialchars($arr_2['year']),' ',
 							'<i>',htmlspecialchars($arr_2['company']),'</i>'; ?></font><a>
 						<?php endif;?>
 						</td>
-
+						
 				<?php endforeach;?>
 				
 			   </tr>
@@ -124,7 +124,7 @@ if(isset($_GET['charts'])){
 	<table id="results">
 
 		<?php foreach($u_compid as $u_row): ?>
-			<thead id="<?=htmlspecialchars($u_row['company_id']); ?>">
+			<thead id="<?=htmlspecialchars($u_row['year']),htmlspecialchars($u_row['company_id']); ?>">
 
 				<tr>
 					<th colspan="6">CDP Response</th>
