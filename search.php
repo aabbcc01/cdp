@@ -157,13 +157,6 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
       </tr>
 
         <tr>
-          <td style="white-space : nowrap;" ><input type="button" value="Search" id="search_btn" class="btn" >
-          </td>
-        </tr> 
-
-        </form>
-
-        <tr>
             <td>
               <a href="#" id="c2_href" ><font color="#FFFFFF">Specialized for C2.(Risk and Opp)</font></a>
             </td>
@@ -187,6 +180,12 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
                 </select>
               </td>
           </tr> 
+
+          <tr>
+          <td style="white-space : nowrap;" ><input type="button" value="Search" id="search_btn" class="btn" ></td>
+        </tr> 
+
+        </form>
         
     </table>
    

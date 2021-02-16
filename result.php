@@ -64,11 +64,11 @@ if(isset($_GET['charts'])){
 				<?php foreach($arr_1 as $arr_2):?>
 
 						<td>
-						<?php if(isset($arr_2['company_id'])):?>
+						
 							<a href="#<?= htmlspecialchars($arr_2['year']),htmlspecialchars($arr_2['company_id']); ?>">						
 							<font color="black"><?= htmlspecialchars($arr_2['year']),' ',
 							'<i>',htmlspecialchars($arr_2['company']),'</i>'; ?></font><a>
-						<?php endif;?>
+					
 						</td>
 						
 				<?php endforeach;?>
@@ -83,33 +83,32 @@ if(isset($_GET['charts'])){
 
 	<?php
 
-		class Table {
-			function border(int $border){
-				if(intval($border)===1){
-					return " border";
-				}
-			}
-			function colspan(int $colnum,int $n){
-				if($colnum ===$n){
-					$result=7-$colnum;
-					return $result;
-				}
-			}
-			function setUnderb(int $header,string $answer){
-				if(preg_match('/^C[0-9]/',$answer) ||
-				preg_match('/^C-C/',$answer) AND $header===1){
-					return " set-underb";
-				}
-			}
+		
+		function border(int $border){
+			$result= intval($border)===1 ? "border" : "";
+			return $result;
 		}
 
-		function make_td(int $header,int $border,int $colnum,string $answer,int $n){
-			$table=new Table(); 
+		function colspan(int $colnum,int $n){
+
+			$result= $colnum ===$n ? 7-$colnum : 0;
+			return $result;
+		}
+
+		function setUnderb(int $header,string $answer){
+			if(preg_match('/^C[0-9]/',$answer) ||
+			preg_match('/^C-C/',$answer) AND $header===1){
+				return " set-underb";
+			}else { return "";}
+		}
+		
+		function make_td(int $header,string $border,int $colspan,string $setUnderb,string $answer){
+			
 			$h_answer=htmlspecialchars($answer); 
 			
 			$html=<<<EOL
-			<td class="header_{$header} {$table->border($border)} {$table->setUnderb($header,$answer)}" 
-			colspan="{$table->colspan($colnum,$n)}">
+			<td class="header_{$header} {$border} {$setUnderb}" 
+			colspan="{$colspan}">
 														
 			<span class="header_{$header}">
 			{$h_answer}
@@ -121,7 +120,7 @@ if(isset($_GET['charts'])){
 		}
 	?>
 
-	<table id="results">
+	<table id="results" target="a">
 
 		<?php foreach($u_compid as $u_row): ?>
 			<thead id="<?=htmlspecialchars($u_row['year']),htmlspecialchars($u_row['company_id']); ?>">
@@ -145,8 +144,13 @@ if(isset($_GET['charts'])){
 					<tr class="results">
 
 						<?php for($i=0;$i<intval($row['colnum']);$i++) {
+
+								$border= border(intval($row['border']));
 								$n=$i+1;
-								$td= make_td(intval($row['header']),intval($row['border']),intval($row['colnum']),$row["answer_${n}"],$n); 
+								$colspan=colspan(intval($row['colnum']),$n);
+								$setUnderb=setUnderb($row['header'],$row["answer_${n}"]);
+
+								$td= make_td(intval($row['header']),$border,$colspan,$setUnderb,$row["answer_${n}"]); 
 								echo $td;
 								}
 						?>
@@ -160,6 +164,7 @@ if(isset($_GET['charts'])){
 		<?php endforeach; ?>
 
 	</table>
+
 
 <?php else: ?>
 	<p class="alert alert-danger">検索対象は見つかりませんでした。</p>
