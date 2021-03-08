@@ -19,22 +19,15 @@
 //データ取得ロジックを呼び出す
 require_once('./Model/CdpAnswer.php');
 require_once('./Class/UniqueArray.php');
-require('style.css');
-require('scrollbtn.css');
+require('css/style.css');
+require('css/scrollbtn.css');
 //重複を除いた企業名の表示
-$comp_db = getCDP($_GET);
+$CdpData = getCDP($_GET);
 $unique_array= new UniqueArray;
-$unique_array->forComp=$comp_db;
+$unique_array->forComp=$CdpData;
 $u_compid=$unique_array->unique();
 
-$CdpData = getCDP($_GET); //answersの取得
-
-		
-if(isset($_GET['charts'])){
-	require_once('./Model/ChartData.php');
-	$chartData = getChartData($CdpData);
-} 
-?>
+?> 
 
 <div class="back-ground">
 
@@ -82,7 +75,6 @@ if(isset($_GET['charts'])){
 	<p class="alert alert-success"><?= count($CdpData) ?>件見つかりました。</p>
 
 	<?php
-
 		
 		function border(int $border){
 			$result= intval($border)===1 ? "border" : "";
@@ -164,7 +156,6 @@ if(isset($_GET['charts'])){
 		<?php endforeach; ?>
 
 	</table>
-
 
 <?php else: ?>
 	<p class="alert alert-danger">検索対象は見つかりませんでした。</p>

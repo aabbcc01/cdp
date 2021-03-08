@@ -42,19 +42,19 @@ document.addEventListener('DOMContentLoaded', function() {
                               div.setAttribute('id',ind_value);
                           
                           for(var i=0; i<data.length; i++){
-                                
+                                console.log(data);
                               var label=document.createElement('label');
-                              label.setAttribute('data-industry',data[i].industry); //独自のindustry属性を用意しておく
+                              label.setAttribute('data-industry',data[i].ind_id); //独自のindustry属性を用意しておく
                              // label.setAttribute('name','comp_id[]');
                               var input=document.createElement('input');
                               input.setAttribute('type','checkbox');
                               input.setAttribute('name',"comp_id[]");
                               input.setAttribute('value',data[i].company_id);
-                              input.setAttribute('data-industry',data[i].industry); //独自のindustry属性を用意しておく
+                              input.setAttribute('data-industry',data[i].ind_id); //独自のindustry属性を用意しておく
                             
                               input.id='company_'+data[i].company_id;
 
-                              d['industry']=data[i].industry;
+                              d['industry']=data[i].ind_id;
                               d['company_id']=data[i].company_id;
 
                               var ds= JSON.stringify(d);

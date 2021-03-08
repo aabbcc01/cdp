@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
     <script src="js/visible_c2.js"></script> 
@@ -62,11 +62,11 @@ if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
         <tr>
             <td>
               Industry : <br>
-              <label><input type="checkbox" name="industry[]" id="ind_1" value="auto mobile"/>Auto mobile</label>
-              <label><input type="checkbox" name="industry[]" id="ind_2"value="chemical"/>Chemical</label>
-              <label><input type="checkbox" name="industry[]" id="ind_3" value="construction"/>Construction</label>
-              <label><input type="checkbox" name="industry[]" id="ind_4" value="energy"/>Energy</label>
-              <label><input type="checkbox" name="industry[]" id="ind_5" value="food/drink"/>Food/Drink</label>
+              <label><input type="checkbox" name="industry[]" id="ind_1" value="1"/>Auto mobile</label>
+              <label><input type="checkbox" name="industry[]" id="ind_2"value="2"/>Chemical</label>
+              <label><input type="checkbox" name="industry[]" id="ind_3" value="3"/>Construction</label>
+              <label><input type="checkbox" name="industry[]" id="ind_4" value="4"/>Energy</label>
+              <label><input type="checkbox" name="industry[]" id="ind_5" value="5"/>Food/Drink</label>
             </td>
        </tr>
        

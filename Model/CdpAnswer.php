@@ -38,7 +38,7 @@ function getCDP($params){
         $year_comp[]=$compidSql;
     }      
 
-    // (A AND B) のsqlを作成： (year IN (2020) AND company_id IN (14) )
+    // (A AND B) のsqlを作成： (year IN (2020,2019,20xx,...) AND company_id IN (14,15,...) )
     if(!empty($year_comp)){
         $year_compSql=implode(' AND ',$year_comp);
         $where[]='('.$year_compSql.')';
@@ -71,16 +71,16 @@ function getCDP($params){
       }
     
      if(!empty($params['value_chain'])){
-        $vc_id=[];
+        $vc_type=[];
     
-        // value_cahin_id[]= のところはvalue_chain_id = 21のようになる。
+        // value_cahin_id[]= のところはvalue_chain_type = 21のようになる。
           foreach($params['value_chain'] as $key=>$val){
-            $vc_id[]= $val;
+            $vc_type[]= $val;
          } 
          //sql用の変数。
-         $vcid=implode(',',$vc_id);
-         $vcidSql='value_chain_id IN ('.$vcid.') ';
-         $chapter_question[]=$vcidSql;
+         $vctype=implode(',',$vc_type);
+         $vctypeSql='value_chain_type IN ('.$vctype.') ';
+         $chapter_question[]=$vctypeSql;
      } 
 
      // (A AND B) のsqlを作成：
@@ -92,7 +92,7 @@ function getCDP($params){
      
          if(!empty($year_comp) && !empty($chapter_question)){
         /* $whereSql の最終形態：は(year IN (x,y) AND company_id IN (x,y) )
-         AND (chapter_id IN (x,y) OR question_id IN (x,y) OR value_chain_id IN (x,y) )    */  
+         AND (chapter_id IN (x,y) OR question_id IN (x,y) OR value_chain_type IN (x,y) )    */  
         $whereSql = implode(' AND ', $where);
        // print_r('$whereSql= '.$whereSql."<br>");
         $sql =$db->prepare('select * from v_table where '.'(' .$whereSql.')'.' ORDER BY id');

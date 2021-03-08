@@ -12,12 +12,12 @@ function byIndustry($params){
     
     // $industry[]= のところはindustry = "chemical" のようになる。
      foreach($_GET as $key=>$val){
-        $industry[]='industry = '.'"'.$val.'"'; 
+        $industry[]='ind_id = '.'"'.$val.'"'; 
      }  
    
     $ind=implode(' OR ',$industry); 
   
-    $sql=$db->prepare('SELECT company_id,company,industry FROM v_company_industry where '.$ind);
+    $sql=$db->prepare('SELECT * FROM company_industry where '.$ind);
     $sql->execute();
        
     $result=[];

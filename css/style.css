@@ -140,7 +140,7 @@ table#results span.header_1{
 }
 table#results span.header_2{
     font-family: 'Meiryo UI';
-    font-family: bold;
+   /*  font-weight: bold; */
     color:white;
 }
 
@@ -148,7 +148,7 @@ table#results span.header_2{
 table#results td.header_2{
     background-color : #82246f;
     font-family: 'Meiryo UI';
-    font-family: bold;
+  /*   font-weight: bold; */
     
 }
 table#results td.header_3{
@@ -162,6 +162,7 @@ table#results{
     background-color:white;
    
 }
+
 
 /* table#results tdのデフォルト設定 */
 table#results td {  padding:5px 12px; line-height:24px; border:0px none;}
@@ -184,6 +185,5 @@ p.title{
     font-weight: bold;
     font-family: 'Meiryo UI';
 }
-
 
 </style>
