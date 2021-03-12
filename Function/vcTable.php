@@ -1,6 +1,6 @@
 <?php
-function make_html($toggle,$u_vc,$i,$tp,$d_str){
-    echo '<tr><th>上流(調達) </th><th>直接操業</th><th>下流(市場・需要)</th><th colspan="2">その他</th></th></thead> ';
+function make_html($toggle,$u_vc,$i,$tp,$d_str,$cvc){
+    echo '<tr><th>上流(調達) ',$cvc[1],'件','</th><th>直接操業 ',$cvc[2],'件','</th><th>下流(市場・需要) ',$cvc[3],'件','</th><th colspan="2">その他 ',$cvc[4],'件','</th></thead> ';
         if(isset($u_vc[$i][$tp])){
             foreach($u_vc[$i][$tp] as $arr_1){
                 echo '<tr>';

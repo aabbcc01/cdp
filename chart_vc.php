@@ -16,7 +16,8 @@
     require('css/c2_table.css');
     require('css/scrollbtn.css');
     //　table用のmake_html関数を用意しておく。  
-    require('./Function/vcTable.php');
+    require_once('./Function/vcTable.php');
+    require_once('./Function/CountVC.php');
 
  ?>
  <?php for($i=1; $i<3; $i++):  $toggle= $i==1 ?'Risk':'Opp'; $title= $i==1 ? 'C2.3a Risk':'C2.4a Opp';?>
@@ -73,7 +74,9 @@
             ?>
                 <table> 
                     <thead><tr><th colspan="5"><?= $tog_tp;?>&nbsp バリューチェーンごとの分類</th></tr>
-                    <?php make_html($toggle,$u_vc,$i,$tp,$d_str);?>
+                    <?php
+                    $cvc=CountVC($u_vcid,$tp);
+                    make_html($toggle,$u_vc,$i,$tp,$d_str,$cvc);?>
                 </table>
             <?php endfor;?>
 
@@ -81,7 +84,9 @@
 
             <table> 
                 <thead><tr><th colspan="5">機会 バリューチェーンごとの分類</th></tr>
-                <?php make_html($toggle,$u_vc,$i,0,$d_str);?>
+                <?php 
+                $cvc=CountVC($u_vcid,0);
+                make_html($toggle,$u_vc,$i,0,$d_str,$cvc);?>
             </table>
 
         <?php endif;?>
