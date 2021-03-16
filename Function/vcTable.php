@@ -8,8 +8,8 @@ function make_html($toggle,$u_vc,$i,$tp,$d_str,$cvc){
                         foreach($arr_1 as $key=>$arr_2){
                             if($arr_2!==$d_str){
                             echo '<td>';
-                                echo $arr_2['year'],' ',$arr_2['company'],' ｜',$arr_2['value_chain'],'｜',
-                                $toggle,' type : ', $arr_2['type'],'｜Driver: ',$arr_2['driver_20'],
+                                echo $arr_2['year'],' ',$arr_2['company'],'<br>',
+                                $toggle,' type : ', $arr_2['type_term'],'<br>','Driver: ',$arr_2['driver_20'],
                                 $arr_2['driver_19']; 
                                 /* <a href="#<?= 'Risk_',htmlspecialchars($arr_1['year']),htmlspecialchars(intval($arr_1['vc_type'])); ?>">						
                                 <font color="black"></font>Risk &nbsp;</a>

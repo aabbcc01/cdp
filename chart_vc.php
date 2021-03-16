@@ -20,26 +20,26 @@
     require_once('./Function/CountVC.php');
 
  ?>
- <?php for($i=1; $i<3; $i++):  $toggle= $i==1 ?'Risk':'Opp'; $title= $i==1 ? 'C2.3a Risk':'C2.4a Opp';?>
+<?php for($i=1; $i<3; $i++):  $toggle= $i==1 ?'Risk':'Opp'; $title= $i==1 ? 'C2.3a Risk':'C2.4a Opp';?>
     <?php
-        $table=$i==1 ?'v_fig_chart_r ':'v_fig_chart_o'; 
+        $table=$i==1 ?'v_cht_risk ':'v_cht_opportunity'; 
         $chartData = getChartData($_GET,$table);  
         //重複を除いた企業名の表示
         $unique_array_vc= new UniqueArrayVC;
         $unique_array_vc->forComp=$chartData;
-        $u_vcid=$unique_array_vc->unique();
+        $u_vcid=$unique_array_vc->unique(1);
     ?>
 
- <!--テーブル用の配列を準備。格納するデータは重複無し-->
- <?php    $u_vc=[];
+    <!--テーブル用の配列を準備。格納するデータは重複無し-->
+    <?php    $u_vc=[];
 	
 	foreach($u_vcid as $row){
 		
         $arr=array('year'=>intval($row['year']),'comp_id'=>intval($row['company_id']),'company'=>$row['company'],
         'risk_opp'=>intval($row['risk_opp']),'value_chain'=>$row['value_chain'],
-        'vc_type'=>intval($row['vc_type']),'tr_ph'=>intval($row['tr_ph']),'r_type'=>intval($row['r_type']),
-        'rd_type'=>intval($row['rd_type']),'o_type'=>intval($row['o_type']),'od_type'=>intval($row['od_type']),
-        'type'=>$row['type'],'driver_20'=>$row['driver_20'],'driver_19'=>$row['driver_19']);
+        'vc_type'=>intval($row['vc_type']),'tr_ph'=>intval($row['tr_ph']),'type'=>intval($row['type']),
+        'd_type'=>intval($row['d_type']),'type_term'=>$row['type_term'],'driver_20'=>$row['driver_20'],
+        'driver_19'=>$row['driver_19']);
 
         $ro=$arr['risk_opp'];
         $trph=$arr['tr_ph'];
@@ -59,9 +59,9 @@
             }  
         }     
     }
- /*  var_dump($u_vc);  */
-/* echo count($u_vc[2]);  */
-?> 
+     /*  var_dump($u_vc);  */
+    /* echo count($u_vc[2]);  */
+    ?> 
 
 <div class="back-ground">
    <div id="vc_results">
@@ -73,7 +73,7 @@
                 else{$tog_tp='その他';} 
             ?>
                 <table> 
-                    <thead><tr><th colspan="5"><?= $tog_tp;?>&nbsp バリューチェーンごとの分類</th></tr>
+                    <thead><tr><th colspan="5">C2.3a&nbsp:&nbsp<?= $tog_tp;?>&nbsp バリューチェーンごとの分類</th></tr>
                     <?php
                     $cvc=CountVC($u_vcid,$tp);
                     make_html($toggle,$u_vc,$i,$tp,$d_str,$cvc);?>
@@ -83,22 +83,161 @@
         <?php elseif($i==2):?>
 
             <table> 
-                <thead><tr><th colspan="5">機会 バリューチェーンごとの分類</th></tr>
+                <thead><tr><th colspan="5">C2.4a&nbsp:&nbsp機会 バリューチェーンごとの分類</th></tr>
                 <?php 
                 $cvc=CountVC($u_vcid,0);
                 make_html($toggle,$u_vc,$i,0,$d_str,$cvc);?>
             </table>
 
         <?php endif;?>
-
   
-  </div>
+    </div>
 
-
-	<p class="alert alert-success">該当件数(No information 除く): <?= count($chartData),' 件'; ?></p>
-    
 <?php endfor;?>    
 
+<!-- ここからはグラフ関連 -->
+
+<?php for($i=0; $i<2; $i++):  $toggle= $i==0 ?'Risk':'Opp'; $title= $i==0 ? 'C2.3a Risk':'C2.4a Opp';?>
+    <?php
+        $table=$i==0 ?'v_cht_risk ':'v_cht_opportunity'; 
+        $chartData = getChartData($_GET,$table);  
+        //重複を除いた企業名の表示
+        $unique_array_vc= new UniqueArrayVC;
+        $unique_array_vc->forComp=$chartData;
+        $u_vcid=$unique_array_vc->unique(2);
+    ?>
+
+    <?php $c=0; foreach($u_vcid as $u_row):?>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                // Load Charts and the corechart package.
+                google.charts.load('current', {'packages':['corechart']});
+                // Draw the bubble chart when Charts is loaded.
+                google.charts.setOnLoadCallback(Chart_<?= $toggle,'_',$c ; ?>);
+                function Chart_<?= $toggle,'_',$c ; ?>() {
+
+                    // Create the data table .
+                    var data = new google.visualization.arrayToDataTable([
+                   
+                    ['company','Magnitude of Impact', 'Likelihood', 'Time horizons',''],
+                    <?php if(!empty($chartData)):?> //note: if $chartData is empty, "foreach" doesn't loop it. 
+                        
+                        <?php foreach($chartData as $row): ?>
+                            
+                            <?php if ($u_row['year']==$row['year'] && intval($u_row['vc_type'])===intval($row['vc_type'])
+                            && intval($u_row['tr_ph'])===intval($row['tr_ph']) && intval($u_row['type'])===intval($row['type'])
+                            ) : ?>
+                        
+                                ["<?=$row['company'],' ',$row['identifier'];?>",<?=$row['fig_impact'];?> ,
+                                <?=$row['fig_likelihood'];?>,<?=$row['fig_TMHZ'];?>,<?=$row['fig_impact'];?>],
+                              
+                            <?php elseif(!in_array($u_row['vc_type'],array_column($chartData,'vc_type'))):?> 
+                               
+                                ['No information',0,0,0,0],
+                                <?php break;?>
+                            <?php endif; ?>  
+
+                        <?php endforeach;?>
+                    
+                    <?php elseif(empty($chartData)): ?>
+                        
+                        ['No information',0,0,0,0],
+                     
+                    <?php endif;?>
+                    
+                ]);
+
+                var options = {
+                    title: ' <?= $u_row['year']," ｜ CDP回答分析 ",$title,"｜",$u_row['value_chain'],"｜",$u_row['type_term'];?>',
+                    hAxis: {title: 'Magnitude of Impact',minValue:0, maxValue:7,minorGridlines:{count:0},
+                    ticks: [{v:1, f:'Unknown'}, {v:2, f:'Low'},{v:3, f:'Mid-Low'},{v:4, f:'Midium'},{v:5, f:'Mid-high'},{v:6, f:'High'},{v:7, f:''}],},
+                    vAxis: {title: 'Likelihood',
+                    ticks: [{v:1, f:'Unknown'},{v:2, f:'0-1%'}, {v:3, f:'0-10%'},{v:4, f:'0-33%'},{v:5, f:'33-66%'},
+                    {v:6, f:'50-100%'},{v:7, f:'66-100%'},{v:8, f:'90-100%'},{v:9, f:'99-100%'},{v:10, f:''}] ,
+                    minorGridlines:{count:0},minValue:0, maxValue:10,},
+                    colorAxis: {minValue:1,maxValue:5,colors: ['yellow', 'red']},
+                    bubble: { textStyle:{fontName:'Meiryo UI', fontSize: 11,auraColor: 'none'},ignoreBounds:true,},
+                    legend:{position:'none',alignment:'center'},
+                    tooltip: {isHtml: true,ignoreBounds:false},
+                    sizeSize:{maxValue:1},
+                    fontName:'Meiryo UI',
+                    };
+                
+                    // Instantiate and draw the chart .
+                    var chart = new google.visualization.BubbleChart(document.getElementById('Chart_<?= $toggle,'_',$c ; ?>'));
+                    chart.draw(data, options);
+                }
+            
+        </script>   
+   
+        <!-- Table and divs that hold the bubble charts  -->
+        <div id="<?=$toggle,'_',htmlspecialchars($u_row['year']),htmlspecialchars($u_row['vc_type']);?>"></div>
+        <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 1200px; height: 500px;"></div></td>
+        <br>
+        <div id="c2_exp" >
+            <table >
+           
+             <?php if(!empty($chartData)):?>   
+
+                <?php foreach($chartData as $row): ?>
+                    
+                    <?php if ( in_array($u_row['vc_type'],array_column($chartData,'vc_type')) 
+                        && intval($u_row['vc_type'])===intval($row['vc_type'])
+                        && intval($u_row['tr_ph'])===intval($row['tr_ph']) && intval($u_row['type'])===intval($row['type'])
+                         && $u_row['year']===$row['year']):?>            
+                    
+                        <tr class="header_2">
+                            <td><?= $row['year'],' ',$row['company'];?></td>
+                            <td width="70"><?= $row['identifier'];?></td>
+                            <td width="230"><?= 'Value chain: ',$row['value_chain'];?></td>               
+
+                            <td width="220"><?= 'Time horizon: ',$row['Time_horizon'];?></td>
+                            <td style="font-size : 13px;" class="<?='font_',$row['max_vc'];?>">[インパクト: <?= $row['impact'],'] [',$row['Likelihood'],': ',$row['fig2_likelihood'];?>]</td>
+
+                        </tr>
+
+                        <?php if($row['year']==2020 && preg_match('/^Risk/',$row['identifier'])){$ro_driver=$row['driver_20'];} else{$ro_driver=$row['driver_19'];}?>
+                        <tr>
+                            <td colspan="1"><font color="#82246f"><b><?=$toggle;?> type:</b> </font><?=$row['type_term'];?></td>
+                            <td colspan="4"><font color="#82246f"><b> Primary climate-related &nbsp<?=strtolower($toggle);?> driver:</b> </font><?=$ro_driver;?></td>
+                        </tr>
+                    
+                        <tr><td colspan="5" ><font color="#82246f"><b>Company Specific Description :</b><br></font> <?= $row['description'];?></td></tr>
+                        <tr><td colspan="5" ><font color="#82246f"><b>Explanation of financial impact figure :</b><br></font> <?= $row['fc_impact'];?></td></tr>
+                        <tr height="100"><td colspan="5" valign="top" >Memo:</td> </tr>
+
+                   
+                     <?php elseif(!in_array($u_row['vc_type'],array_column($chartData,'vc_type'))):?>   
+                        
+                        <tr class="header_2">
+                            <td ><?= $u_row['year'],' ',$u_row['value_chain'];?></td>
+                            <td ><?=$toggle;?></td><td>Value chain:</td><td>Time horizon:</td>
+                            <td >[インパクト: ][確率]</td>
+                        </tr>
+                        <tr><td colspan="5" align="center">No information</td></tr>
+                         
+                        <?php break;?>
+                     <?php endif;?>
+
+                <?php endforeach;?>
+
+            <?php elseif(empty($chartData)):?>   
+                
+                <tr class="header_2">
+                    <td ><?= $u_row['year'],' ',$u_row['value_chain'];?></td>
+                    <td ><?=$toggle;?></td><td>Value chain:</td><td>Time horizon:</td>
+                    <td>[インパクト: ][確率]</td>
+                </tr>
+                <tr><td colspan="5" align="center">No information</td></tr>
+
+            <?php endif;?>
+
+            </table>
+            <br>
+            </div>
+    <?php $c++; endforeach;?> 
+
+<?php endfor;?>    
 <p id="topbutton">
     <a href="#top" onclick="$('html,body').animate({ scrollTop: 0 }); return false;"> ▲ </a>
 </p>

@@ -17,7 +17,7 @@
     require('css/scrollbtn.css');
 
     /* $CdpData = getCDP($_GET); */
-    $CdpData = getChartData($_GET,'v_fig_chart');
+    $CdpData = getChartData($_GET,'v_chart');
 
     //重複を除いた企業名の表示
     $unique_array= new UniqueArray;
@@ -68,7 +68,7 @@
 	<p class="alert alert-success">該当件数(No information 除く): <?= count($CdpData),' 件'; ?></p>
     
 <?php for($i=0; $i<2; $i++):  $toggle= $i==0 ?'Risk':'Opp'; $title= $i==0 ? 'C2.3a Risk':'C2.4a Opp';?>
-    <?php $table=$i==0 ?'v_fig_chart_r ':'v_fig_chart_o'; $chartData = getChartData($_GET,$table);  ?>
+    <?php $table=$i==0 ?'v_cht_risk ':'v_cht_opportunity'; $chartData = getChartData($_GET,$table);  ?>
 <!-- <?php if($i==1){ if(empty($chartData)){print_r($chartData);};}?>  -->
 
     <?php $c=0; foreach($u_compid as $u_row):?>
@@ -154,13 +154,13 @@
                             <td width="230"><?= 'Value chain: ',$row['value_chain'];?></td>               
 
                             <td width="220"><?= 'Time horizon: ',$row['Time_horizon'];?></td>
-                            <td style="font-size : 13px;">[インパクト: <?= $row['impact'],'] [',$row['Likelihood'],': ',$row['fig2_likelihood'];?>]</td>
+                            <td style="font-size : 13px;" class="<?='font_',$row['max_comp'];?>"><span >[インパクト: <?= $row['impact'],'] [',$row['Likelihood'],': ',$row['fig2_likelihood'];?>]</span></td>
 
                         </tr>
 
                         <?php if($row['year']==2020 && preg_match('/^Risk/',$row['identifier'])){$ro_driver=$row['driver_20'];} else{$ro_driver=$row['driver_19'];}?>
                         <tr>
-                            <td colspan="1"><font color="#82246f"><b><?=$toggle;?> type:</b> </font><?=$row['type'];?></td>
+                            <td colspan="1"><font color="#82246f"><b><?=$toggle;?> type:</b> </font><?=$row['type_term'];?></td>
                             <td colspan="4"><font color="#82246f"><b> Primary climate-related &nbsp<?=strtolower($toggle);?> driver:</b> </font><?=$ro_driver;?></td>
                         </tr>
                     
