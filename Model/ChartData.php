@@ -1,6 +1,6 @@
 <?php
 require_once '../cdp3/Encode.php';
-function getChartData($params,$table){
+function getChartData($params,$stored_procedure,$table){
 	//DBの接続情報
     require_once '../cdp3/DbManager.php';
    
@@ -32,7 +32,7 @@ function getChartData($params,$table){
          $vctype=implode(',',$vc_type);
      }else{$vctype='';} 
 
-    $sql=$db->prepare('CALL sp_chart(:table,:year,:compid,:vctype)');
+    $sql=$db->prepare('CALL '.$stored_procedure.'(:table,:year,:compid,:vctype)');
     $sql->bindValue(':table',$table);
     $sql->bindValue(':year',$year);
     $sql->bindValue(':compid',$compid);

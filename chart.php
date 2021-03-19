@@ -17,7 +17,8 @@
     require('css/scrollbtn.css');
 
     /* $CdpData = getCDP($_GET); */
-    $CdpData = getChartData($_GET,'v_chart');
+    $stored_procedure='sp_cht_comp';
+    $CdpData = getChartData($_GET,$stored_procedure,'v_chart');
 
     //重複を除いた企業名の表示
     $unique_array= new UniqueArray;
@@ -68,7 +69,8 @@
 	<p class="alert alert-success">該当件数(No information 除く): <?= count($CdpData),' 件'; ?></p>
     
 <?php for($i=0; $i<2; $i++):  $toggle= $i==0 ?'Risk':'Opp'; $title= $i==0 ? 'C2.3a Risk':'C2.4a Opp';?>
-    <?php $table=$i==0 ?'v_cht_risk ':'v_cht_opportunity'; $chartData = getChartData($_GET,$table);  ?>
+    <?php $table=$i==0 ?'v_cht_risk ':'v_cht_opportunity';$stored_procedure='sp_cht_comp';
+     $chartData = getChartData($_GET,$stored_procedure,$table);  ?>
 <!-- <?php if($i==1){ if(empty($chartData)){print_r($chartData);};}?>  -->
 
     <?php $c=0; foreach($u_compid as $u_row):?>

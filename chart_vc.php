@@ -23,7 +23,8 @@
 <?php for($i=1; $i<3; $i++):  $toggle= $i==1 ?'Risk':'Opp'; $title= $i==1 ? 'C2.3a Risk':'C2.4a Opp';?>
     <?php
         $table=$i==1 ?'v_cht_risk ':'v_cht_opportunity'; 
-        $chartData = getChartData($_GET,$table);  
+        $stored_procedure='sp_cht_vc';
+        $chartData = getChartData($_GET,$stored_procedure,$table);  
         //重複を除いた企業名の表示
         $unique_array_vc= new UniqueArrayVC;
         $unique_array_vc->forComp=$chartData;
@@ -94,7 +95,8 @@
 <?php for($i=0; $i<2; $i++):  $toggle= $i==0 ?'Risk':'Opp'; $title= $i==0 ? 'C2.3a Risk':'C2.4a Opp';?>
     <?php
         $table=$i==0 ?'v_cht_risk ':'v_cht_opportunity'; 
-        $chartData = getChartData($_GET,$table);  
+        $stored_procedure='sp_cht_vc';
+        $chartData = getChartData($_GET,$stored_procedure,$table);  
         //重複を除いた企業名の表示
         $unique_array_vc= new UniqueArrayVC;
         $unique_array_vc->forComp=$chartData;
@@ -118,7 +120,8 @@
                         
                         <?php foreach($chartData as $row): ?>
                             
-                            <?php if ($u_row['year']==$row['year'] && intval($u_row['vc_type'])===intval($row['vc_type'])
+                            <?php if ($u_row['year']==$row['year'] && intval($u_row['ind_type'])===intval($row['ind_type']) 
+                            && intval($u_row['vc_type'])===intval($row['vc_type'])
                             && intval($u_row['tr_ph'])===intval($row['tr_ph']) && intval($u_row['type'])===intval($row['type'])
                             ) : ?>
                         
@@ -142,7 +145,7 @@
                 ]);
 
                 var options = {
-                    title: ' <?= $u_row['year']," ｜ CDP回答分析 ",$title,"｜",$u_row['value_chain'],"｜",$u_row['type_term'];?>',
+                    title: ' <?= $u_row['year']," ｜ CDP回答分析 ",$title,"｜",ucfirst($u_row['industry']),"｜",$u_row['value_chain'],"｜",$u_row['type_term'];?>',
                     hAxis: {title: 'Magnitude of Impact',minValue:0, maxValue:7,minorGridlines:{count:0},
                     ticks: [{v:1, f:'Unknown'}, {v:2, f:'Low'},{v:3, f:'Mid-Low'},{v:4, f:'Midium'},{v:5, f:'Mid-high'},{v:6, f:'High'},{v:7, f:''}],},
                     vAxis: {title: 'Likelihood',
@@ -176,12 +179,14 @@
                 <?php foreach($chartData as $row): ?>
                     
                     <?php if ( in_array($u_row['vc_type'],array_column($chartData,'vc_type')) 
+                        && intval($u_row['ind_type'])===intval($row['ind_type']) 
                         && intval($u_row['vc_type'])===intval($row['vc_type'])
                         && intval($u_row['tr_ph'])===intval($row['tr_ph']) && intval($u_row['type'])===intval($row['type'])
                          && $u_row['year']===$row['year']):?>            
                     
                         <tr class="header_2">
                             <td><?= $row['year'],' ',$row['company'];?></td>
+                            <td><?=ucfirst($u_row['industry']);?></td>
                             <td width="70"><?= $row['identifier'];?></td>
                             <td width="230"><?= 'Value chain: ',$row['value_chain'];?></td>               
                             <td width="220"><?= 'Time horizon: ',$row['Time_horizon'];?></td>
@@ -191,12 +196,12 @@
 
                         <?php if($row['year']==2020 && preg_match('/^Risk/',$row['identifier'])){$ro_driver=$row['driver_20'];} else{$ro_driver=$row['driver_19'];}?>
                         <tr>
-                            <td colspan="1"><font color="#82246f"><b><?=$toggle;?> type:</b> </font><?=$row['type_term'];?></td>
+                            <td colspan="2"><font color="#82246f"><b><?=$toggle;?> type:</b> </font><?=$row['type_term'];?></td>
                             <td colspan="4"><font color="#82246f"><b> Primary climate-related &nbsp<?=strtolower($toggle);?> driver:</b> </font><?=$ro_driver;?></td>
                         </tr>
-                        <tr><td colspan="5" ><font color="#82246f"><b>Company Specific Description :</b><br></font> <?= $row['description'];?></td></tr>
-                        <tr><td colspan="5" ><font color="#82246f"><b>Explanation of financial impact figure :</b><br></font> <?= $row['fc_impact'];?></td></tr>
-                        <tr height="100"><td colspan="5" valign="top" >Memo:</td> </tr>
+                        <tr><td colspan="6" ><font color="#82246f"><b>Company Specific Description :</b><br></font> <?= $row['description'];?></td></tr>
+                        <tr><td colspan="6" ><font color="#82246f"><b>Explanation of financial impact figure :</b><br></font> <?= $row['fc_impact'];?></td></tr>
+                        <tr height="100"><td colspan="6" valign="top" >Memo:</td> </tr>
 
                      <?php elseif(!in_array($u_row['vc_type'],array_column($chartData,'vc_type'))):?>   
                         
@@ -205,7 +210,7 @@
                             <td ><?=$toggle;?></td><td>Value chain:</td><td>Time horizon:</td>
                             <td >[インパクト: ][確率]</td>
                         </tr>
-                        <tr><td colspan="5" align="center">No information</td></tr>
+                        <tr><td colspan="6" align="center">No information</td></tr>
                          
                         <?php break;?>
                      <?php endif;?>
@@ -219,7 +224,7 @@
                     <td ><?=$toggle;?></td><td>Value chain:</td><td>Time horizon:</td>
                     <td>[インパクト: ][確率]</td>
                 </tr>
-                <tr><td colspan="5" align="center">No information</td></tr>
+                <tr><td colspan="6" align="center">No information</td></tr>
 
             <?php endif;?>
 
