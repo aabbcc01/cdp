@@ -88,7 +88,7 @@
                 $cvc=CountVC($u_vcid,0);
                 make_html($toggle,$u_vc,$i,0,$d_str,$cvc);?>
             </table>
-
+            <br>
         <?php endif;?>
   
     </div>
@@ -119,7 +119,7 @@
                     // Create the data table .
                     var data = new google.visualization.arrayToDataTable([
                    
-                    ['company','Magnitude of Impact', 'Likelihood', 'Time horizons',''],
+                    ['company','Magnitude of Impact', 'Likelihood', 'Time horizons'],
                     <?php if(!empty($chartData)):?> //note: if $chartData is empty, "foreach" doesn't loop it. 
                         
                         <?php foreach($chartData as $row): ?>
@@ -129,11 +129,11 @@
                             ) : ?>
                         
                                 ["<?=$row['company'],' ',$row['identifier'];?>",<?=$row['fig_impact'];?> ,
-                                <?=$row['fig_likelihood'];?>,<?=$row['fig_TMHZ'];?>,<?=$row['fig_impact'];?>],
+                                <?=$row['fig_likelihood'];?>,<?=$row['fig_TMHZ'];?>],
                               
                             <?php elseif(!in_array($u_row['vc_type'],array_column($chartData,'vc_type'))):?> 
                                
-                                ['No information',0,0,0,0],
+                                ['No information',0,0,0],
                                 <?php break;?>
                             <?php endif; ?>  
 
@@ -141,7 +141,7 @@
                     
                     <?php elseif(empty($chartData)): ?>
                         
-                        ['No information',0,0,0,0],
+                        ['No information',0,0,0],
                      
                     <?php endif;?>
                     
