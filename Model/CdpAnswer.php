@@ -51,17 +51,16 @@ function getCDP($params){
        
         /* $Sql の最終形態：は(year IN (x,y) AND company_id IN (x,y) )
          AND (chapter_id IN (x,y) OR question_id IN (x,y) OR vc_type IN (x,y) )    */  
-         $sql=$db->prepare('CALL sp_answer(:year,:compid,:chapterid,:questionid,:vctype)');
-         $sql->bindValue(':year',$year);
-         $sql->bindValue(':compid',$compid);
-         $sql->bindValue(':chapterid',$chapterid);
-         $sql->bindValue(':questionid',$qid);
-         $sql->bindValue(':vctype',$vctype);
+    $sql=$db->prepare('CALL sp_answer(:year,:compid,:chapterid,:questionid,:vctype)');
+    $sql->bindValue(':year',$year);
+    $sql->bindValue(':compid',$compid);
+    $sql->bindValue(':chapterid',$chapterid);
+    $sql->bindValue(':questionid',$qid);
+    $sql->bindValue(':vctype',$vctype);
 
-    //SQL文を実行する
 	$sql->execute(); 
 
-	  $result = [];
+	$result = [];
 	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 		$result[] = $row;
     };

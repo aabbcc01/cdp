@@ -35,15 +35,9 @@
 	
 	foreach($u_vcid as $row){
 		
-        $arr=array('year'=>intval($row['year']),'comp_id'=>intval($row['company_id']),'company'=>$row['company'],
-        'risk_opp'=>intval($row['risk_opp']),'value_chain'=>$row['value_chain'],
-        'vc_type'=>intval($row['vc_type']),'tr_ph'=>intval($row['tr_ph']),'type'=>intval($row['type']),
-        'd_type'=>intval($row['d_type']),'type_term'=>$row['type_term'],'driver_20'=>$row['driver_20'],
-        'driver_19'=>$row['driver_19']);
-
-        $ro=$arr['risk_opp'];
-        $trph=$arr['tr_ph'];
-        $vctype=$arr['vc_type'];
+        $ro=intval($row['risk_opp']);
+        $trph=intval($row['tr_ph']);
+        $vctype=intval($row['vc_type']);
         $d_str=' ';
 
         for($n=0;$n<count($u_vcid);$n++){           
@@ -53,7 +47,7 @@
                 }             
             }  
             if ($u_vc[$ro][$trph][$n][$vctype]==$d_str){
-                $u_vc[$ro][$trph][$n][$vctype]=$arr;
+                $u_vc[$ro][$trph][$n][$vctype]=$row;
                 ksort($u_vc[$ro][$trph][$n]);
                 break ;
             }  
@@ -190,7 +184,6 @@
                             <td><?= $row['year'],' ',$row['company'];?></td>
                             <td width="70"><?= $row['identifier'];?></td>
                             <td width="230"><?= 'Value chain: ',$row['value_chain'];?></td>               
-
                             <td width="220"><?= 'Time horizon: ',$row['Time_horizon'];?></td>
                             <td style="font-size : 13px;" class="<?='font_',$row['max_vc'];?>">[インパクト: <?= $row['impact'],'] [',$row['Likelihood'],': ',$row['fig2_likelihood'];?>]</td>
 
@@ -201,12 +194,10 @@
                             <td colspan="1"><font color="#82246f"><b><?=$toggle;?> type:</b> </font><?=$row['type_term'];?></td>
                             <td colspan="4"><font color="#82246f"><b> Primary climate-related &nbsp<?=strtolower($toggle);?> driver:</b> </font><?=$ro_driver;?></td>
                         </tr>
-                    
                         <tr><td colspan="5" ><font color="#82246f"><b>Company Specific Description :</b><br></font> <?= $row['description'];?></td></tr>
                         <tr><td colspan="5" ><font color="#82246f"><b>Explanation of financial impact figure :</b><br></font> <?= $row['fc_impact'];?></td></tr>
                         <tr height="100"><td colspan="5" valign="top" >Memo:</td> </tr>
 
-                   
                      <?php elseif(!in_array($u_row['vc_type'],array_column($chartData,'vc_type'))):?>   
                         
                         <tr class="header_2">

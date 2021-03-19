@@ -32,16 +32,15 @@ function getChartData($params,$table){
          $vctype=implode(',',$vc_type);
      }else{$vctype='';} 
 
-        $sql=$db->prepare('CALL sp_chart(:table,:year,:compid,:vctype)');
-        $sql->bindValue(':table',$table);
-        $sql->bindValue(':year',$year);
-        $sql->bindValue(':compid',$compid);
-        $sql->bindValue(':vctype',$vctype);
+    $sql=$db->prepare('CALL sp_chart(:table,:year,:compid,:vctype)');
+    $sql->bindValue(':table',$table);
+    $sql->bindValue(':year',$year);
+    $sql->bindValue(':compid',$compid);
+    $sql->bindValue(':vctype',$vctype);
  
-    //SQL文を実行する
 	$sql->execute(); 
 
-	  $result = [];
+	$result = [];
 	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 		$result[] = $row;
     };
