@@ -7,15 +7,12 @@ function make_html($toggle,$u_vc,$i,$tp,$d_str,$cvc){
                     if(isset($arr_1)){
                         foreach($arr_1 as $key=>$arr_2){
                             if($arr_2!==$d_str){
-                            echo '<td>';
-                                echo $arr_2['year'],' ',$arr_2['company'],'<br>',
-                                $toggle,' type : ', $arr_2['type_term'],'<br>','Driver: ',$arr_2['driver_20'],
-                                $arr_2['driver_19']; 
-                                /* <a href="#<?= 'Risk_',htmlspecialchars($arr_1['year']),htmlspecialchars(intval($arr_1['vc_type'])); ?>">						
-                                <font color="black"></font>Risk &nbsp;</a>
-                                <a href="#<?= 'Opp_',htmlspecialchars($arr_1['year']),htmlspecialchars(intval($arr_1['vc_type'])); ?>">						
-                                <font color="black"></font>Opp</a>  */
-                            echo '</td>';
+
+                            echo '<td><a href="#',$toggle,'_',$arr_2['year'],$arr_2['ind_type'],$arr_2['tr_ph'],$arr_2['vc_type'],$arr_2['type'],'">
+                                 ',$arr_2['year'],' ',$arr_2['company'],'<br>',
+                                 $toggle,' type : ', $arr_2['type_term'],'<br>','Driver: ',$arr_2['driver_20'],
+                                 $arr_2['driver_19'],'</a></td>';
+ 
                             }elseif($key !==4){  
                                 /* 値が初期値d_strのままで、かつ、インベストメントチェーン(vc_type=4)の時は<td>を作成
                                 しない。 */

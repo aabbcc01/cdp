@@ -53,9 +53,9 @@
 						<td>
 						    <?= htmlspecialchars($arr_2['year']),' ',htmlspecialchars($arr_2['company']),'：'; ?>
 							<a href="#<?= 'Risk_',htmlspecialchars($arr_2['year']),htmlspecialchars($arr_2['company_id']); ?>">						
-							<font color="black"></font>Risk &nbsp;</a>
+							Risk &nbsp;</a>
                             <a href="#<?= 'Opp_',htmlspecialchars($arr_2['year']),htmlspecialchars($arr_2['company_id']); ?>">						
-							<font color="black"></font>Opp</a>
+							Opp</a>
 						</td>
 						
 				<?php endforeach;?>
@@ -85,7 +85,7 @@
                     // Create the data table .
                     var data = new google.visualization.arrayToDataTable([
                    
-                    ['Identifier','Magnitude of Impact', 'Likelihood', 'Time horizons',''],
+                    ['Identifier','Magnitude of Impact', 'Likelihood', 'Time horizons'],
                     <?php if(!empty($chartData)):?> //note: if $chartData is empty, "foreach" doesn't loop it. 
                         
                         <?php foreach($chartData as $row): ?>
@@ -94,11 +94,11 @@
                             && $u_row['year']===$row['year']): ?>
                         
                                 ["<?=$row['identifier'],' ',$row['value_chain'];?>",<?=$row['fig_impact'];?> ,
-                                <?=$row['fig_likelihood'];?>,<?=$row['fig_TMHZ'];?>,<?=$row['fig_impact'];?>],
+                                <?=$row['fig_likelihood'];?>,<?=$row['fig_TMHZ'];?>],
                               
                             <?php elseif(!in_array($u_row['company_id'],array_column($chartData,'company_id'))):?> 
                                
-                                ['No information',0,0,0,0],
+                                ['No information',0,0,0],
                                 <?php break;?>
                             <?php endif; ?>  
 
@@ -106,7 +106,7 @@
                     
                     <?php elseif(empty($chartData)): ?>
                         
-                        ['No information',0,0,0,0],
+                        ['No information',0,0,0],
                      
                     <?php endif;?>
                     
@@ -137,7 +137,7 @@
    
         <!-- Table and divs that hold the bubble charts  -->
         <div id="<?=$toggle,'_',htmlspecialchars($u_row['year']),htmlspecialchars($u_row['company_id']);?>"></div>
-        <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 1200px; height: 500px;"></div></td>
+        <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 100%; height: 500px;"></div></td>
         <br>
         <div id="c2_exp" >
             <table >

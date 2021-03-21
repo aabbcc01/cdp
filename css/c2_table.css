@@ -53,19 +53,22 @@ table#u_comps{
     background-color:white;
     border:1px solid black;
     font-family: 'Meiryo UI';
+    
 }
-table#u_comps tr td{border:1px solid black;
-    padding:5px 12px; line-height:20px;}
+table#u_comps tr td{border:1px solid black; font-size:16;
+    padding:8px 12px; line-height:20px;}
 
 table#u_comps a{
         text-decoration: none;
         color:#82246f;
       }
+
 table#u_comps a:hover {
         /* ▼マウスが載ったときの装飾 */
         background-color: #f1e7ef;              /* ←文字色 */
         text-decoration: underline; /* ←下線あり */
      }
+
 
 
 div#vc_results table{
@@ -81,12 +84,23 @@ div#vc_results table{
     font-size:14;
     /* font-weight: bold; */
   
+  width:100%; /*ブラウザの横幅いっぱい*/
 }
+div#vc_results a{
+    text-decoration: none;
+        color:blue;
+}
+div#vc_results a:hover{
+background-color: #f1e7ef;              /* ←文字色 */
+text-decoration: underline; 
+}
+
 
 div#vc_results table td{
 
     border:1px solid black;
     padding:5px 12px; line-height:24px;
+    width :25%; /*親要素のtable のwidthは100%にしてある*/
     }
 
 </style>

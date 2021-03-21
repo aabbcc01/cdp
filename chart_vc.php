@@ -11,24 +11,25 @@
     //データ取得ロジックを呼び出す
     require_once('./Model/CdpAnswer.php');
     require_once('./Model/ChartData.php');
-    require_once('./Class/UniqueArray_VC.php');
     //require('css/style.css');
     require('css/c2_table.css');
     require('css/scrollbtn.css');
     //　table用のmake_html関数を用意しておく。  
     require_once('./Function/vcTable.php');
     require_once('./Function/CountVC.php');
-
+    require_once('./Function/vc_uniqueArray.php');
+    require_once('./Function/getSearchCriteria.php');
+    $indType=getSearchCriteria($_GET); //検索条件で指定された産業タイプを取得
  ?>
+ <h3  style="text-align:center" ><?=$indType;?></h2>
 <?php for($i=1; $i<3; $i++):  $toggle= $i==1 ?'Risk':'Opp'; $title= $i==1 ? 'C2.3a Risk':'C2.4a Opp';?>
     <?php
         $table=$i==1 ?'v_cht_risk ':'v_cht_opportunity'; 
         $stored_procedure='sp_cht_vc';
         $chartData = getChartData($_GET,$stored_procedure,$table);  
         //重複を除いた企業名の表示
-        $unique_array_vc= new UniqueArrayVC;
-        $unique_array_vc->forComp=$chartData;
-        $u_vcid=$unique_array_vc->unique(1);
+        $u_vcid=vc_uniqueArray($chartData,1);
+       
     ?>
 
     <!--テーブル用の配列を準備。格納するデータは重複無し-->
@@ -67,8 +68,9 @@
                 elseif($tp==2){$tog_tp='物理的リスク';}
                 else{$tog_tp='その他';} 
             ?>
-                <table> 
-                    <thead><tr><th colspan="5">C2.3a&nbsp:&nbsp<?= $tog_tp;?>&nbsp バリューチェーンごとの分類</th></tr>
+                <table > 
+                    <thead>
+                    <tr><th colspan="4">C2.3a&nbsp:&nbsp<?= $tog_tp;?>&nbsp バリューチェーンごとの分類</th></tr>
                     <?php
                     $cvc=CountVC($u_vcid,$tp);
                     make_html($toggle,$u_vc,$i,$tp,$d_str,$cvc);?>
@@ -78,7 +80,7 @@
         <?php elseif($i==2):?>
 
             <table> 
-                <thead><tr><th colspan="5">C2.4a&nbsp:&nbsp機会 バリューチェーンごとの分類</th></tr>
+                <thead><tr><th colspan="4">C2.4a&nbsp:&nbsp機会 バリューチェーンごとの分類</th></tr>
                 <?php 
                 $cvc=CountVC($u_vcid,0);
                 make_html($toggle,$u_vc,$i,0,$d_str,$cvc);?>
@@ -98,9 +100,7 @@
         $stored_procedure='sp_cht_vc';
         $chartData = getChartData($_GET,$stored_procedure,$table);  
         //重複を除いた企業名の表示
-        $unique_array_vc= new UniqueArrayVC;
-        $unique_array_vc->forComp=$chartData;
-        $u_vcid=$unique_array_vc->unique(2);
+        $u_vcid=vc_uniqueArray($chartData,2);
     ?>
 
     <?php $c=0; foreach($u_vcid as $u_row):?>
@@ -168,8 +168,9 @@
         </script>   
    
         <!-- Table and divs that hold the bubble charts  -->
-        <div id="<?=$toggle,'_',htmlspecialchars($u_row['year']),htmlspecialchars($u_row['vc_type']);?>"></div>
-        <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 1200px; height: 500px;"></div></td>
+        <div id="<?=$toggle,'_',htmlspecialchars($u_row['year']),htmlspecialchars($u_row['ind_type']),
+        htmlspecialchars($u_row['tr_ph']),htmlspecialchars($u_row['vc_type']),htmlspecialchars($u_row['type']);?>"></div>
+        <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 100%; height: 500px;"></div></td>
         <br>
         <div id="c2_exp" >
             <table >
