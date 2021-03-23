@@ -1,15 +1,17 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <form action="search.php" method="post">
-        ユーザー<input type="text" name="name"><br> 
-        パスワード<input type="text" name="password"><br>
+        ユーザー <input type="text" name="name" value="<?php if(isset($_SESSION['user']['name']))
+        {echo $_SESSION['user']['name'];};?>"><br> 
+        パスワード <input type="password" name="password" ><br>
         <input type="submit" value="ログイン">
     </form>
 

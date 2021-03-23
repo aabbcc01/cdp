@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
     form.appendChild(comp_list);
     form.submit();
     location.reload();
-    //location=location;
+    /* location=location; */
   });  
 
 },false);  

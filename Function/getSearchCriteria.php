@@ -17,7 +17,6 @@ function getSearchCriteria($params){
              }elseif($value==5){
                 $ind[]='Food/Drink';
              }
-
         }
         $industry='産業タイプ ('.count($ind).' 業種) : '.implode('　',$ind);
         return $industry;

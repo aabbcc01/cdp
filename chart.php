@@ -1,3 +1,13 @@
+<?php  
+ if(!isset($_SESSION)) 
+ { 
+     session_start(); 
+ } 
+require_once './DbManager.php';
+require_once './Encode.php';
+require_once './Function/verifyUser.php';
+verifyUser($_SESSION['user'],getDb());
+?>
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,7 +17,7 @@
 <body>
 
 <?php
-
+    
     //データ取得ロジックを呼び出す
     require_once('./Model/CdpAnswer.php');
     require_once('./Model/ChartData.php');

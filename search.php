@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,43 +12,40 @@
 
 <?php
 
-/*
-if($_SERVER["REQUEST_METHOD"] != "POST"){
-	// ブラウザからHTMLページを要求された場合
-	$no_login_url = "index.php";
-
-		echo 'Oops! invalid access is detected!  ';
-	    //header("Location: {$no_login_url}");
-	    exit;
-} */
-//require './header.php'; 
 require_once './DbManager.php';
 require_once './Encode.php';
+require_once './Function/verifyUser.php';
 ?>
 <body>
 <?php
+//ユーザーの認証を行う
 
-    $db=getDb();
-    $userName=strval(e($_POST['name']));
-    $userPass=strval(e($_REQUEST['password']));
-    $sql=$db->prepare('SELECT * FROM user where name=:name and password=:password');
+    unset($_SESSION['user']);
+    if(isset($_POST['name'])){
+      $_SESSION['user']=['name'=>e($_POST['name']),'password'=>e($_POST['password'])];
+      $registrant=verifyUser($_SESSION['user'],getDb());
+    }else{ 
+      //リンクのコピペ等、ログイン以外の方法でアクセスされた場合。
+      header("refresh:3; ../cdp3/login.php");
+      echo 'Invalid access. Please enter from login page. ';
+       exit;
+    }
     
-    $sql->bindvalue(':name',$userName,PDO::PARAM_STR);
-    
-    $sql->bindValue(':password',$userPass,PDO::PARAM_STR);
-   
-    $sql->execute();
-
-if(!$result=$sql->fetch(PDO::FETCH_ASSOC)){
-  header('Location:http://localhost/php_apps/cdp3/login.html'); //ログイン画面にリダイレクト
-    exit;}
     ?> 
 
 <div class ="ph_style2">
 <img src="img/2-1.png"  class="ph2">
 
+  
+ 
     <table  frame="void" id="interface">
-     
+        <?php if(intval($registrant['per_key']) & 4 ):?>
+          <tr>
+            <td> 
+            <a href="register/account_in.php" target="_blank"><font color="yellow">Administrator only</font></a>
+            </td>
+          </tr>
+        <?php endif;?>
         <tr><td><p>Search</p></td></tr>
        
         <form action="./branch.php" target="_blank" method="GET" id="form_1"> 

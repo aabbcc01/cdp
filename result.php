@@ -7,14 +7,6 @@
 <body>
 <?php
 
-/* if($_SERVER["REQUEST_METHOD"] != "POST"){
-	// ブラウザからHTMLページを要求された場合
-	$no_login_url = "index.php";
-
-		echo 'Oops! invalid access is detected!  ';
-	    //header("Location: {$no_login_url}");
-	    exit;
-} */
 
 //データ取得ロジックを呼び出す
 require_once('./Model/CdpAnswer.php');
