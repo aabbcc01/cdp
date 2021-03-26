@@ -7,6 +7,24 @@ document.addEventListener('DOMContentLoaded', function() {
         comp_list.removeChild(comp_list.lastChild);
       } };
   var storage=sessionStorage;
+  const converter=(indtype)=>{
+    if(indtype==1){
+      return 'Auto mobile ';
+    }else if(indtype==2){
+      return 'Chemical ';
+    }else if(indtype==3){
+      return 'Construction ';
+    }
+  };
+  const caseNotfound=(ind_value)=>{
+    /* if(typeof ind_value=="undefined"){return;} */
+    var text=document.createTextNode(converter(ind_value)+'Not found');
+    var div =document.createElement('div');
+
+    div.setAttribute('id','div_'+ind_value);
+    div.appendChild(text);
+    comp_list.appendChild(div);
+  };
 
   for(var index=0;index < industries.length;index++){
     industries[index].addEventListener('change',function(){
@@ -36,13 +54,20 @@ document.addEventListener('DOMContentLoaded', function() {
                       if (this.readyState==4 && this.status==200) {
 
                           var data= JSON.parse(this.responseText);
+                          
+                          if(data.length===0){
+                           
+                              caseNotfound(ind_value);
+                          }
+                         
                           var d={}; 
                           var frag = document.createDocumentFragment(); 
                           var div= document.createElement('div');
                               div.setAttribute('id',ind_value);
                           
                           for(var i=0; i<data.length; i++){
-                                console.log(data);
+                       
+                              console.log('data= ',data);
                               var label=document.createElement('label');
                               label.setAttribute('data-industry',data[i].ind_id); //独自のindustry属性を用意しておく
                              // label.setAttribute('name','comp_id[]');
@@ -51,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                               input.setAttribute('name',"comp_id[]");
                               input.setAttribute('value',data[i].company_id);
                               input.setAttribute('data-industry',data[i].ind_id); //独自のindustry属性を用意しておく
-                            
+                              console.log('ind_value= ',ind_value);
                               input.id='company_'+data[i].company_id;
 
                               d['industry']=data[i].ind_id;
@@ -99,6 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
               }
               //industryボックスのチェックが外された場合の処理。
               else{
+                
+                // not foundの削除
+                if(document.getElementById('div_'+ind_value)){
+                  document.getElementById('div_'+ind_value).remove();
+                }
                      //チェックがはずされたindustryに応じてcompanyのチェックボックスを削除 。
                      var divNode=document.getElementById(ind_value);
                      if(divNode){

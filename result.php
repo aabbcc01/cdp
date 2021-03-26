@@ -10,22 +10,21 @@
 
 //データ取得ロジックを呼び出す
 require_once('./Model/CdpAnswer.php');
-require_once('./Class/UniqueArray.php');
+require_once('./Function/comp_uniqueArray.php');
 require('css/style.css');
 require('css/scrollbtn.css');
-//重複を除いた企業名の表示
+
 $CdpData = getCDP($_GET);
-$unique_array= new UniqueArray;
-$unique_array->forComp=$CdpData;
-$u_compid=$unique_array->unique();
+
 
 ?> 
 
 <div class="back-ground">
 
- 	<!-- ③取得データを表示する  -->
+ 	
 	<?php if(isset($CdpData) && count($CdpData)): ?>
-
+	<!-- 重複を除いた企業名に紐づくデータの取得 -->
+	<?php $u_compid=comp_uniqueArray($CdpData);?>
 	<!--重複なしで該当企業を表示-->
 	<?php $c=1; $i=1; $comps=[];
 	

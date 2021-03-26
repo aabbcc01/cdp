@@ -110,44 +110,46 @@ require_once './Function/verifyUser.php';
       <tr class="question">
       <td> 
         <div>
-        <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
-        <label><input type="checkbox" name="question[]" value="2"/>(C2.2a) Which risk types are considered in your organization's climate-related risk assessments?</label>
-        </div>
-        <label><input type="checkbox" name="question[]" value="3"/>Value chain stage(s) covered</label>
-        <div>
-        <label><input type="checkbox" name="question[]" value="4"/>Identifier</label>
-        <label><input type="checkbox" name="question[]" value="5"/>Where in the value chain does the risk driver occur?</label>
-        <label><input type="checkbox" name="question[]" value="6"/>Risk type & Primary climate-related risk driver</label>
-        <label><input type="checkbox" name="question[]" value="7"/>Primary potential financial impact</label>
-        <label><input type="checkbox" name="question[]" value="8"/>Climate risk type mapped to traditional financial services industry risk classification</label>
-        <label><input type="checkbox" name="question[]" value="9"/>Company-specific description</label>
-        <label><input type="checkbox" name="question[]" value="10"/>Time horizon</label>
-        <label><input type="checkbox" name="question[]" value="11"/>Likelihood</label>
-        <label><input type="checkbox" name="question[]" value="12"/>Magnitude of impact</label>
-        <label><input type="checkbox" name="question[]" value="13"/>Are you able to provide a potential financial impact figure?</label>
-        <label><input type="checkbox" name="question[]" value="14"/>Potential financial impact figure (currency)</label>
-        <label><input type="checkbox" name="question[]" value="15"/>Potential financial impact figure – minimum (currency)</label>
-        <label><input type="checkbox" name="question[]" value="16"/>Potential financial impact figure – maximum (currency)</label>
-        <label><input type="checkbox" name="question[]" value="17"/>Explanation of financial impact figure</label>
-        <label><input type="checkbox" name="question[]" value="18"/>Cost of response to risk</label>
-        <label><input type="checkbox" name="question[]" value="19"/>Description of response and explanation of cost calculation</label>
-        <label><input type="checkbox" name="question[]" value="20"/>Where in the value chain does the opportunity occur?</label>
-        </div>
-        <div>
-        <label><input type="checkbox" name="question[]" value="21"/>Opportunity type</label>
-        <label><input type="checkbox" name="question[]" value="22"/>Primary climate-related opportunity driver</label>
-        <label><input type="checkbox" name="question[]" value="23"/>Cost to realize opportunity</label>
-        <label><input type="checkbox" name="question[]" value="24"/>Strategy to realize opportunity and explanation of cost calculation</label>
-        </div>
-        <label><input type="checkbox" name="question[]" value="30"/>C3.1</label>
-        <label><input type="checkbox" name="question[]" value="25"/>(C3.1a) Does your organization use climate-related scenario analysis to inform its strategy?</label>
-        <label><input type="checkbox" name="question[]" value="26"/>(C3.1b) Provide details of your organization’s use of climate-related scenario analysis.</label>
-        <label><input type="checkbox" name="question[]" value="27"/>(C3.1d) Describe where and how climate-related risks and opportunities have influenced your strategy.</label>
-        <label><input type="checkbox" name="question[]" value="28"/>(C3.1f) Provide any additional information on how climate-related risks and opportunities have influenced your strategy and financial planning (optional).</label>
+          <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
+          <label><input type="checkbox" name="question[]" value="2"/>(C2.2a) Which risk types are considered in your organization's climate-related risk assessments?</label>
+          </div>
+          <label><input type="checkbox" name="question[]" value="3"/>Value chain stage(s) covered</label>
+         <p> C2.3a Risk</p>
+          <label><input type="checkbox" name="question[]" value="4"/>Identifier</label>
+          <label><input type="checkbox" name="question[]" value="5"/>Where in the value chain does the risk driver occur?</label>
+          <label><input type="checkbox" name="question[]" value="6"/>Risk type & Primary climate-related risk driver</label>
+          <label><input type="checkbox" name="question[]" value="7"/>Primary potential financial impact</label>
+          <label><input type="checkbox" name="question[]" value="8"/>Climate risk type mapped to traditional financial services industry risk classification</label>
+          <label><input type="checkbox" name="question[]" value="9"/>Company-specific description</label>
+          <label><input type="checkbox" name="question[]" value="10"/>Time horizon</label>
+          <label><input type="checkbox" name="question[]" value="11"/>Likelihood</label>
+          <label><input type="checkbox" name="question[]" value="12"/>Magnitude of impact</label>
+          <label><input type="checkbox" name="question[]" value="13"/>Are you able to provide a potential financial impact figure?</label>
+          <label><input type="checkbox" name="question[]" value="14"/>Potential financial impact figure (currency)</label>
+          <label><input type="checkbox" name="question[]" value="15"/>Potential financial impact figure – minimum (currency)</label>
+          <label><input type="checkbox" name="question[]" value="16"/>Potential financial impact figure – maximum (currency)</label>
+          <label><input type="checkbox" name="question[]" value="17"/>Explanation of financial impact figure</label>
+          <label><input type="checkbox" name="question[]" value="18"/>Cost of response to risk</label>
+          <label><input type="checkbox" name="question[]" value="19"/>Description of response and explanation of cost calculation</label>
         
-        <label><input type="checkbox" name="question[]" value="31"/>(C3.1d) Provide details of your organization’s use of climate-related scenario analysis.</label>
-        <label><input type="checkbox" name="question[]" value="32"/>C3.1c</label>
-        <label><input type="checkbox" name="question[]" value="33"/>C3.1a</label>
+        <p> C2.4a Opportunity</p>
+        <label><input type="checkbox" name="question[]" value="20"/>Where in the value chain does the opportunity occur?</label>
+          <label><input type="checkbox" name="question[]" value="21"/>Opportunity type</label>
+          <label><input type="checkbox" name="question[]" value="22"/>Primary climate-related opportunity driver</label>
+          <label><input type="checkbox" name="question[]" value="23"/>Cost to realize opportunity</label>
+          <label><input type="checkbox" name="question[]" value="24"/>Strategy to realize opportunity and explanation of cost calculation</label>
+        
+        <p>C3</p>
+          <label><input type="checkbox" name="question[]" value="30"/>C3.1</label>
+          <label><input type="checkbox" name="question[]" value="25"/>(C3.1a) Does your organization use climate-related scenario analysis to inform its strategy?</label>
+          <label><input type="checkbox" name="question[]" value="26"/>(C3.1b) Provide details of your organization’s use of climate-related scenario analysis.</label>
+          <label><input type="checkbox" name="question[]" value="27"/>(C3.1d) Describe where and how climate-related risks and opportunities have influenced your strategy.</label>
+          <label><input type="checkbox" name="question[]" value="28"/>(C3.1f) Provide any additional information on how climate-related risks and opportunities have influenced your strategy and financial planning (optional).</label>
+          
+          <label><input type="checkbox" name="question[]" value="31"/>(C3.1d) Provide details of your organization’s use of climate-related scenario analysis.</label>
+          <label><input type="checkbox" name="question[]" value="32"/>C3.1c</label>
+          <label><input type="checkbox" name="question[]" value="33"/>C3.1a</label>
+          </div>
         <div>
         <label><input type="checkbox" name="question[]" value="29"/>(C4.3c) What methods do you use to drive investment in emissions reduction activities?</label>
         </div>

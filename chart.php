@@ -21,7 +21,7 @@ verifyUser($_SESSION['user'],getDb());
     //データ取得ロジックを呼び出す
     require_once('./Model/CdpAnswer.php');
     require_once('./Model/ChartData.php');
-    require_once('./Class/UniqueArray.php');
+    require_once('./Function/comp_uniqueArray.php');
     //require('css/style.css');
     require('css/c2_table.css');
     require('css/scrollbtn.css');
@@ -29,14 +29,12 @@ verifyUser($_SESSION['user'],getDb());
     /* $CdpData = getCDP($_GET); */
     $stored_procedure='sp_cht_comp';
     $CdpData = getChartData($_GET,$stored_procedure,'v_chart');
-
-    //重複を除いた企業名の表示
-    $unique_array= new UniqueArray;
-    $unique_array->forComp=$CdpData;
-    $u_compid=$unique_array->unique();
+  
 
  ?>
- <!--重複なしで該当企業を表示-->
+<?php if(isset($CdpData) && count($CdpData)): ?>
+ <!-- 重複を除いた企業名に紐づくデータの取得 -->
+ <?php $u_compid=comp_uniqueArray($CdpData);?>
  <?php $c=1; $i=1; $u_comps=[];
 	
 	foreach($u_compid as $row){
@@ -218,5 +216,8 @@ verifyUser($_SESSION['user'],getDb());
 </p>
 
 <div>
+<?php else: ?>
+	<p class="alert alert-danger">検索対象は見つかりませんでした。</p>
+<?php endif; ?>
 </body>
 </html>

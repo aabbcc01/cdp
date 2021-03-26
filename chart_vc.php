@@ -6,6 +6,7 @@
     require_once './DbManager.php';
     require_once './Encode.php';
     require_once './Function/verifyUser.php';
+    require_once './Function/vc_condition.php';
     verifyUser($_SESSION['user'],getDb());
 ?>
 <html>
@@ -37,6 +38,10 @@
         $table=$i==1 ?'v_cht_risk ':'v_cht_opportunity'; 
         $stored_procedure='sp_cht_vc';
         $chartData = getChartData($_GET,$stored_procedure,$table);  
+        if(!$chartData){
+            echo '<p class="alert alert-danger">検索対象は見つかりませんでした。</p>';
+            exit;
+        }
         //重複を除いた企業名の表示
         $u_vcid=vc_uniqueArray($chartData,1);
        
@@ -130,10 +135,7 @@
                         
                         <?php foreach($chartData as $row): ?>
                             
-                            <?php if ($u_row['year']==$row['year'] && intval($u_row['ind_type'])===intval($row['ind_type']) 
-                            && intval($u_row['vc_type'])===intval($row['vc_type'])
-                            && intval($u_row['tr_ph'])===intval($row['tr_ph']) && intval($u_row['type'])===intval($row['type'])
-                            ) : ?>
+                            <?php if (vc_condition($u_row,$row)) : ?>
                         
                                 ["<?=$row['company'],' ',$row['identifier'];?>",<?=$row['fig_impact'];?> ,
                                 <?=$row['fig_likelihood'];?>,<?=$row['fig_TMHZ'];?>],
@@ -190,10 +192,7 @@
                 <?php foreach($chartData as $row): ?>
                     
                     <?php if ( in_array($u_row['vc_type'],array_column($chartData,'vc_type')) 
-                        && intval($u_row['ind_type'])===intval($row['ind_type']) 
-                        && intval($u_row['vc_type'])===intval($row['vc_type'])
-                        && intval($u_row['tr_ph'])===intval($row['tr_ph']) && intval($u_row['type'])===intval($row['type'])
-                         && $u_row['year']===$row['year']):?>            
+                        && vc_condition($u_row,$row)):?>            
                     
                         <tr class="header_2">
                             <td><?= $row['year'],' ',$row['company'];?></td>

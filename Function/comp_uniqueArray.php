@@ -1,15 +1,11 @@
 <?php
 
-class UniqueArray {
-
-    public $forComp;
-
-    public function unique(){
+function comp_uniqueArray($data){
 
         $tmp=[];
         $uniqueArray = [];          
        
-        foreach ($this->forComp as $value){
+        foreach ($data as $value){
 
             $comp_year=$value['company_id'].'_'.$value['year'];
             
@@ -25,7 +21,7 @@ class UniqueArray {
 
         return $uniqueArray;
 
-    }
-            
 }
+            
+
 ?>
