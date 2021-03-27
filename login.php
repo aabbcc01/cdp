@@ -3,25 +3,27 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-
+<div id="registrant">
+<ul >
     <form action="search.php" method="post">
-        ユーザー <input type="text" name="name" value="<?php if(isset($_SESSION['user']['name']))
+       <input type="text" name="name" placeholder="Name" value="<?php if(isset($_SESSION['user']['name']))
         {echo $_SESSION['user']['name'];};?>"><br> 
-        パスワード <input type="password" name="password" ><br>
-        <input type="submit" value="ログイン">
-    </form>
-
-    <div class ="ph_style1">
+        <input type="password" placeholder="Password" name="password" ><br>
+        <!-- <input type="submit" value="Login"> -->
+        <input type="image" id="btn1" src="img/btn1.png" alt="Login">
+</ul>
+</div>
+<div class ="ph_style1">
         <img src="img/cape-banner.jpg"  class="ph1">
         <p>We focus investors, companies and cities <br>
             on taking urgent action to build a truly <br>
             sustainable economy by measuring and <br>
             understanding their environmental impact
         </p>
-    </div>
+</div>
 </body>
 </html>
