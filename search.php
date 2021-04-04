@@ -39,13 +39,13 @@ require_once './Function/verifyUser.php';
   
  
     <table  frame="void" id="interface">
-        <?php if(intval($registrant['per_key']) & 4 ):?>
+        <!-- <?php if(intval($registrant['per_key']) & 4 ):?> -->
           <tr>
             <td> 
             <a href="register/account_in.php" target="_blank"><font color="yellow">Administrator only</font></a>
             </td>
           </tr>
-        <?php endif;?>
+        <!-- <?php endif;?> -->
         <tr><td><p>Search</p></td></tr>
        
         <form action="./branch.php" target="_blank" method="GET" id="form_1"> 
