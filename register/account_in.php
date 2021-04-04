@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>ユーザー登録</h1>
-    <form action="http://localhost/php_apps/test/cdp/register/account_out.php" method="post">
+    <form action="http://localhost/php_apps/cdp/register/account_out.php" method="post">
         <p> ユーザー名とパスワードが共に既に登録されているものと一致するものは不可</p>
         <p>
             <label>Name：</label>
