@@ -1,7 +1,7 @@
 <?php
 function verifyUser($s,$db){
   if(!isset($s['name']) || !isset($s['password'])){
-    header("refresh:4; ../cdp3/login.php");
+    header("refresh:4; ../cdp/login.php");
      echo 'Invalid access. Redirect to login page in 4 seconds.';
      exit;
   }
@@ -20,7 +20,7 @@ function verifyUser($s,$db){
 /*    
       $_SESSION['user']['password']=$_POST['password']; */
       
-     header("refresh:4; ../cdp3/login.php");
+     header("refresh:4; ../cdp/login.php");
      echo 'Fail. Redirect in 4 seconds.';
       exit;
     }else{
