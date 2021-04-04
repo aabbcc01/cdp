@@ -43,19 +43,19 @@ document.addEventListener('DOMContentLoaded', function(){
        //var queryStr=Object.keys(compsInStorage).map(key=>key + '=' +compsInStorage[key]).join('&'); 
        //var queryStr=Object.keys(compsInStorage).map(key=>key + '=' +compsInStorage[key]).join('&'); 
       // var xmlhttp=new XMLHttpRequest();
-       //xmlhttp.open('GET',"../cdp3/test_result_2.php?q="+"test",true);   
-       //xmlhttp.open('GET',"../cdp3/test_result_2.php?q="+queryStr,true);      
-       //xmlhttp.open('GET',`../cdp3/test_result_2.php?${queryStr}`,true); 
+       //xmlhttp.open('GET',"../cdp/test_result_2.php?q="+"test",true);   
+       //xmlhttp.open('GET',"../cdp/test_result_2.php?q="+queryStr,true);      
+       //xmlhttp.open('GET',`../cdp/test_result_2.php?${queryStr}`,true); 
 
       /* 
-        xmlhttp.open('POST',"../cdp3/test_result_2.php",true);
+        xmlhttp.open('POST',"../cdp/test_result_2.php",true);
        xmlhttp.setRequestHeader('content-type','application/x-www-form-urlencoded;charset=UTF-8');
        xmlhttp.send('comps='+"this is test");    */ 
  
         //xmlhttp.send('comps='+encodeURIComponent(ds(compsInStorage)));     
        
      /*      var form = document.createElement('form');
-       form.action="../cdp3/test_result_2.php";
+       form.action="../cdp/test_result_2.php";
        form.method="POST";
        form.name="comps";
        form.value=ds(compsInStorage);
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(){
        div.value=ds(compsInStorage);
        var form_1=document.getElementById('form_1');
       form_1.appendChild(div);
-      form_1.action="../cdp3/test_result_2.php";
+      form_1.action="../cdp/test_result_2.php";
        form_1.method="POST";
       form_1.submit(); */
       
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* 
       var form_1=document.getElementById('form_1');
-       form_1.action="../cdp3/test_result_2.php";
+       form_1.action="../cdp/test_result_2.php";
        form_1.method="POST";
        form_1.name="comps2";
        form_1.value=ds(compsInStorage); 

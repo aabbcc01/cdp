@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                   }
 
-                  xmlhttp.open('GET',`../cdp3/Model/getIndustry.php?${queryStr}`,true);              
+                  xmlhttp.open('GET',`../cdp/Model/getIndustry.php?${queryStr}`,true);              
                   xmlhttp.send();
 
               }

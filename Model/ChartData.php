@@ -1,8 +1,8 @@
 <?php
-require_once '../cdp3/Encode.php';
+require_once '../cdp/Encode.php';
 function getChartData($params,$stored_procedure,$table){
 	//DBの接続情報
-    require_once '../cdp3/DbManager.php';
+    require_once '../cdp/DbManager.php';
    
 	//DBコネクタを生成
     $db=getDb();

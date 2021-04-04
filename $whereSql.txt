@@ -1,2 +1,0 @@
-$whereSql の最終形態は以下のようになる
-$whereSql= (year IN (2020) AND company_id IN (21,14) ) AND (chapter_id IN (1,2) OR question_id IN (31,29) OR value_chain_id IN (1,2,3) )
