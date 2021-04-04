@@ -1,7 +1,7 @@
 <?php
 function getDb() {
   $dsn = 'mysql:dbname=cdp; host=localhost; charset=utf8';
-  $usr = 'cdp';
+  $usr = 'root';
   $passwd = 'Tokissme?';
 
     $db = new PDO($dsn, $usr, $passwd);
