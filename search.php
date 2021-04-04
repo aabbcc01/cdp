@@ -26,7 +26,7 @@ require_once './Function/verifyUser.php';
       $registrant=verifyUser($_SESSION['user'],getDb());
     }else{ 
       //リンクのコピペ等、ログイン以外の方法でアクセスされた場合。
-      header("refresh:3; ../cdp3/login.php");
+      header("refresh:3; ../cdp/login.php");
       echo 'Invalid access. Please enter from login page. ';
        exit;
     }
