@@ -1,7 +1,7 @@
 <?php
 function getDb() {
-  $dsn = 'mysql:dbname=cdp; host=ec2-13-112-38-193.ap-northeast-1.compute.amazonaws.com; charset=utf8';
-  $usr = 'root';
+  $dsn = 'mysql:dbname=cdp; host=13.112.39.220; charset=utf8';
+  $usr = 'cdp';
   $passwd = 'Tokissme?';
 
     $db = new PDO($dsn, $usr, $passwd);
