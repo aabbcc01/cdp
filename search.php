@@ -23,7 +23,7 @@ require_once './Function/verifyUser.php';
     unset($_SESSION['user']);
     if(isset($_POST['name'])){
       $_SESSION['user']=['name'=>e($_POST['name']),'password'=>e($_POST['password'])];
-     // $registrant=verifyUser($_SESSION['user'],getDb());
+      $registrant=verifyUser($_SESSION['user'],getDb());
     }else{ 
       //リンクのコピペ等、ログイン以外の方法でアクセスされた場合。
       header("refresh:3; ../cdp/login.php");
@@ -39,13 +39,13 @@ require_once './Function/verifyUser.php';
   
  
     <table  frame="void" id="interface">
-       
+        <?php if(intval($registrant['per_key']) & 4 ):?>
           <tr>
             <td> 
             <a href="register/account_in.php" target="_blank"><font color="yellow">Administrator only</font></a>
             </td>
           </tr>
-       
+        <?php endif;?>
         <tr><td><p>Search</p></td></tr>
        
         <form action="./branch.php" target="_blank" method="GET" id="form_1"> 
