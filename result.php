@@ -85,12 +85,17 @@ $CdpData = getCDP($_GET);
 			}else { return "";}
 		}
 		
-		function make_td(){
+		function make_td(int $header,string $border,int $colspan,string $setUnderb,string $answer){
 			
-			
+			$h_answer=$answer; 
 			
 			$html=<<<EOL
-			<td>
+			<td class="header_{$header} {$border} {$setUnderb}" 
+			colspan="{$colspan}">
+														
+			<span class="header_{$header}">
+			{$h_answer}
+			</span>
 			</td>
 
 			EOL;
@@ -128,7 +133,7 @@ $CdpData = getCDP($_GET);
 								$colspan=colspan(intval($row['colnum']),$n);
 								$setUnderb=setUnderb($row['header'],$row["answer_${n}"]);
 
-								$td= make_td(); 
+								$td= make_td(intval($row['header']),$border,$colspan,$setUnderb,$row["answer_${n}"]); 
 								echo $td;
 								}
 						?>
