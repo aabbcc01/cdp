@@ -101,7 +101,7 @@ $CdpData = getCDP($_GET);
 			EOL;
 			return $html;
 		}
-		echo 'hello';
+	
 	?>
 
 	
