@@ -85,7 +85,7 @@ $CdpData = getCDP($_GET);
 			}else { return "";}
 		}
 		
-		function make_td(int $header,string $border,int $colspan,string $setUnderb,string $answer){
+		function make_td(){
 			
 			
 			
@@ -128,7 +128,7 @@ $CdpData = getCDP($_GET);
 								$colspan=colspan(intval($row['colnum']),$n);
 								$setUnderb=setUnderb($row['header'],$row["answer_${n}"]);
 
-								$td= make_td(intval($row['header']),$border,$colspan,$setUnderb,$row["answer_${n}"]); 
+								$td= make_td(); 
 								echo $td;
 								}
 						?>
