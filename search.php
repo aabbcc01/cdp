@@ -23,7 +23,7 @@ require_once './Function/verifyUser.php';
     unset($_SESSION['user']);
     if(isset($_POST['name'])){
       $_SESSION['user']=['name'=>e($_POST['name']),'password'=>e($_POST['password'])];
-      $registrant=verifyUser($_SESSION['user'],getDb());
+      //$registrant=verifyUser($_SESSION['user'],getDb());
     }else{ 
       //リンクのコピペ等、ログイン以外の方法でアクセスされた場合。
       header("refresh:3; ../cdp/login.php");
