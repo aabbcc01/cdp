@@ -89,7 +89,7 @@ $CdpData = getCDP($_GET);
 			
 			$h_answer=htmlspecialchars($answer); 
 			$ret='<td class="header_'.$header.$border.$setUnderb.'" colspan='.$colspan.'>';
-			$ret=$ret+'<span class="header_'.$header.'">'.$h_answer.'</span></td>';
+			$ret=$ret.'<span class="header_'.$header.'">'.$h_answer.'</span></td>';
 			return $ret;
 
 		}
