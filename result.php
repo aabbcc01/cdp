@@ -36,7 +36,7 @@ $CdpData = getCDP($_GET);
 
 	} 
 	?>
-	<!-- <?php print_r($comps);?> -->
+	<?php print_r($comps);?>
     <table id="u_comps" > 
 			<thead><tr><th colspan="3">該当企業：（<?= count($u_compid) ?> 件)</th></tr>
 		   </thead>
