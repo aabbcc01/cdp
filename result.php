@@ -78,7 +78,7 @@ $CdpData = getCDP($_GET);
 			return $result;
 		}
 
-		function setUnderb(int $header,string $answer){
+		function setUnderb($header,string $answer){
 			if(preg_match('/^C[0-9]/',$answer) ||
 			preg_match('/^C-C/',$answer) AND $header===1){
 				return " set-underb";
@@ -90,7 +90,6 @@ $CdpData = getCDP($_GET);
 			$h_answer=htmlspecialchars($answer); 
 			$ret='<td class="header_'.$header.$border.$setUnderb.'" colspan='.$colspan.'>';
 			$ret=$ret+'<span class="header_'.$header.'">'.$h_answer.'</span></td>';
-			
 			return $ret;
 
 		}
