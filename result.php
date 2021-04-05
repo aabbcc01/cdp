@@ -36,8 +36,36 @@ $CdpData = getCDP($_GET);
 
 	} 
 	?>
-	<?php print_r($comps);?>
+	<!-- <?php print_r($comps);?> -->
+    <table id="u_comps" > 
+			<thead><tr><th colspan="3">該当企業：（<?= count($u_compid) ?> 件)</th></tr>
+		   </thead>
+		  
+		  <!--  <tr> <td><?php print_r($comps) ?></td></tr> -->
+		   <?php foreach($comps as $arr_1): ?>
+				
+				<tr>
+				<?php foreach($arr_1 as $arr_2):?>
+
+						<td>
+						
+							<a href="#<?= htmlspecialchars($arr_2['year']),htmlspecialchars($arr_2['company_id']); ?>">						
+							<font color="black"><?= htmlspecialchars($arr_2['year']),' ',
+							'<i>',htmlspecialchars($arr_2['company']),'</i>'; ?></font><a>
+					
+						</td>
+						
+				<?php endforeach;?>
+				
+			   </tr>
+
+			<?php endforeach; ?>
+
+    </table>
     
+	<p class="alert alert-success"><?= count($CdpData) ?>件見つかりました。</p>
+
+	
 
 <?php else: ?>
 	<p class="alert alert-danger">検索対象は見つかりませんでした。</p>
