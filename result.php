@@ -85,12 +85,12 @@ $CdpData = getCDP($_GET);
 			}else { return "";}
 		}
 		
-		function make_td($header,$border,$colspan,$setUnderb,$answer){
+		function make_td(int $header,string $border,int $colspan,string $setUnderb,string $answer){
 			
 			$h_answer=htmlspecialchars($answer); 
 			
 			$html=<<<EOL
-			<td class="header_{$header} {$border} {$setUnderb}" 
+			<td class="header_1 border set-underb" 
 			colspan="{$colspan}">
 														
 			<span class="header_{$header}">
