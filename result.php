@@ -72,6 +72,19 @@ $CdpData = getCDP($_GET);
 			return $result;
 		}
 
+		function colspan(int $colnum,int $n){
+
+			$result= $colnum ===$n ? 7-$colnum : 0;
+			return $result;
+		}
+
+		function setUnderb(int $header,string $answer){
+			if(preg_match('/^C[0-9]/',$answer) ||
+			preg_match('/^C-C/',$answer) AND $header===1){
+				return " set-underb";
+			}else { return "";}
+		}
+		
 		
 	
 	?>
