@@ -72,35 +72,7 @@ $CdpData = getCDP($_GET);
 			return $result;
 		}
 
-		function colspan(int $colnum,int $n){
-
-			$result= $colnum ===$n ? 7-$colnum : 0;
-			return $result;
-		}
-
-		function setUnderb(int $header,string $answer){
-			if(preg_match('/^C[0-9]/',$answer) ||
-			preg_match('/^C-C/',$answer) AND $header===1){
-				return " set-underb";
-			}else { return "";}
-		}
 		
-		function make_td(int $header,string $border,int $colspan,string $setUnderb,string $answer){
-			
-			$h_answer=htmlspecialchars($answer); 
-			
-			$html=<<<EOL
-			<td class="header_{$header} {$border} {$setUnderb}" 
-			colspan="{$colspan}">
-														
-			<span class="header_{$header}">
-			{$h_answer}
-			</span>
-			</td>
-
-			EOL;
-			return $html;
-		}
 	
 	?>
 
