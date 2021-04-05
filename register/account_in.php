@@ -1,5 +1,11 @@
 
-
+<?php
+    session_start();
+    require_once '../DbManager.php';
+    require_once '../Encode.php';
+    require_once '../Function/verifyUser.php';
+    verifyUser($_SESSION['user'],getDb());
+?>
 
 <!DOCTYPE html>
 <html>
