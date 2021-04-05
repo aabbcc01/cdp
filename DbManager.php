@@ -1,6 +1,6 @@
 <?php
 function getDb() {
-  $dsn = 'mysql:dbname=cdp; host=localhost; charset=utf8';
+  $dsn = 'mysql:dbname=cdp; host=127.0.0.1; charset=utf8';
   $usr = 'root';
   $passwd = 'Tokissme?';
 
