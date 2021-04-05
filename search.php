@@ -50,7 +50,7 @@ require_once './Function/verifyUser.php';
       
         <tr>
           <td>
-            Year: <label><input type="checkbox" name="year[]" value="2020"/>2020</label>
+            Year: <label><input type="checkbox" name="year[]" value="2020" checked=1 />2020</label>
                   <label><input type="checkbox" name="year[]" value="2019"/>2019</label>
           </td>
         </tr>
