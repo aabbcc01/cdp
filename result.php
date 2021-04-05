@@ -16,7 +16,7 @@ require('css/scrollbtn.css');
 
 $CdpData = getCDP($_GET);
 
-
+print "1";
 ?> 
 
 <div class="back-ground">
