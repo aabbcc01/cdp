@@ -85,11 +85,68 @@ $CdpData = getCDP($_GET);
 			}else { return "";}
 		}
 		
-		
-	
+		function make_td(int $header,int $border,int $colspan,string $setUnderb,string $answer){
+			
+			$h_answer=htmlspecialchars($answer); 
+			
+			$html=<<<EOL
+			<td class="header_{$header} {$border} {$setUnderb}" 
+			colspan="{$colspan}">
+														
+			<span class="header_{$header}">
+			{$h_answer}
+			</span>
+			</td>
+
+			EOL;
+			return $html;
+		}
 	?>
 
-	
+	<table id="results" target="a">
+
+		<?php foreach($u_compid as $u_row): ?>
+			<thead id="<?=htmlspecialchars($u_row['year']),htmlspecialchars($u_row['company_id']); ?>">
+
+				<tr>
+					<th colspan="6">CDP Response</th>
+				</tr>
+
+				<tr>
+							
+					<th>Year: <?= htmlspecialchars($u_row['year']) ?></th>
+					<th colspan="5">Company: <?= htmlspecialchars($u_row['company']) ?></th>
+							
+				</tr>
+			</thead>
+
+			<?php foreach($CdpData as $row): ?>
+				
+				<?php if (intval($u_row['company_id'])===intval($row['company_id'])):?>
+
+					<tr class="results">
+
+						<?php for($i=0;$i<intval($row['colnum']);$i++) {
+
+								$border= border(intval($row['border']));
+								$n=$i+1;
+								$colspan=colspan(intval($row['colnum']),$n);
+								$setUnderb=setUnderb($row['header'],$row["answer_${n}"]);
+
+								$td= make_td(intval($row['header']),$border,$colspan,$setUnderb,$row["answer_${n}"]); 
+								echo $td;
+								}
+						?>
+
+					</tr>	
+					
+				<?php endif; ?>
+
+			<?php endforeach; ?>
+
+		<?php endforeach; ?>
+
+	</table>
 
 <?php else: ?>
 	<p class="alert alert-danger">検索対象は見つかりませんでした。</p>
