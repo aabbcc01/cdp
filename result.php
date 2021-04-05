@@ -85,22 +85,7 @@ $CdpData = getCDP($_GET);
 			}else { return "";}
 		}
 		
-		function make_td(int $header,int $border,int $colspan,string $setUnderb,string $answer){
-			
-			$h_answer=htmlspecialchars($answer); 
-			
-			$html=<<<EOL
-			<td class="header_{$header} {$border} {$setUnderb}" 
-			colspan="{$colspan}">
-														
-			<span class="header_{$header}">
-			{$h_answer}
-			</span>
-			</td>
-
-			EOL;
-			return $html;
-		}
+		
 	?>
 
 	<table id="results" target="a">
