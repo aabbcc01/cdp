@@ -87,7 +87,14 @@ $CdpData = getCDP($_GET);
 		
 		function make_td(int $header,string $border,int $colspan,string $setUnderb,string $answer){
 			
-			return '';
+			
+			
+			$html=<<<EOL
+			<td>
+			</td>
+
+			EOL;
+			return $html;
 		}
 	?>
 
