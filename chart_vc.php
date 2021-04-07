@@ -12,6 +12,7 @@
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/scrollbtn.js"></script> 
 	</head>
