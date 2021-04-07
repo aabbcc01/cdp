@@ -1,10 +1,10 @@
-<style>
-
+@charset "utf-8";
  div.ph_style2 {
+     border:red solid;
     position: relative;
 } 
     div.ph_style2 table#interface{
-   
+   border:black solid;
         position: absolute;    
        /*  opacity: 0.85; */   /*透明度*/
         /* background-color: rgba(29, 33, 100, 0.5);  */
@@ -162,5 +162,3 @@ p.title{
     font-weight: bold;
     font-family: 'Meiryo UI';
 }
-
-</style>

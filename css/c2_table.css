@@ -1,5 +1,4 @@
-<style>
-
+@charset "utf-8";
 div.back-ground{
     background-color:rgba(239, 242, 248, 0.932);
    /* background-color:white; */
@@ -102,5 +101,3 @@ div#vc_results table td{
     padding:5px 12px; line-height:24px;
     width :25%; /*親要素のtable のwidthは100%にしてある*/
     }
-
-</style>

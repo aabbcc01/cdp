@@ -1,4 +1,4 @@
-<style>
+@charset "utf-8";
     #topbutton {
        /* ▼ボタンの表示位置を画面の右下に固定 */
        position: fixed; /* ←表示場所を固定 */
@@ -32,4 +32,4 @@
        color: yellow;              /* ←文字色 */
        text-decoration: none; /* ←下線あり */
     }
-    </style>
+    
