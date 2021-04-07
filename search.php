@@ -57,7 +57,7 @@ require_once './Function/verifyUser.php';
         </tr>
 
         <tr>
-            <td>
+            <td class="industry">
               Industry : <br>
               <label><input type="checkbox" name="industry[]" id="ind_1" value="1"/>Auto mobile</label>
               <label><input type="checkbox" name="industry[]" id="ind_2"value="2"/>Chemical</label>
