@@ -42,26 +42,14 @@ div.ph_style2 img{
    
 }
 
-div.ph_style2 {
-    border:red solid;
-   position: relative;
-   width: 100%;
-} 
+@media screen and (min-width:600px) and (max-width:959px){
    div.ph_style2 table#interface{
     position: absolute;    
     /*  opacity: 0.85; */   /*透明度*/
      /* background-color: rgba(29, 33, 100, 0.5);  */
      background-color: rgba(12, 15, 71, 0.5); 
      top: 15%;
-     left: 20%;
-     margin-left:auto;
-     margin-right:auto;
-      /*検索フォームを中央配置にする場合 */
-    /*  transform: translateX(-50%);
-     -webkit-transform: translateX(-50%);
-     -ms-transform: translateX(-50%); */
-    
-     width:65%;
+    width:100%;
    }
    div table#interface tr{ border: solid 1px #aaa;}
       div table#interface td{
@@ -81,6 +69,7 @@ div.ph_style2 {
                padding:5px;
                
            }
+}
 
 div.back-ground{
     background-color:rgba(239, 242, 248, 0.932);
