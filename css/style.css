@@ -21,11 +21,14 @@ td label,input {margin:2px 2px;
          margin-right:auto;
          width:65%;
        }
-       div table#interface tr{ border: solid 1px #aaa;}
+       div table#interface tr{
+           border: solid 1px #aaa;
+           height:30px;
+        }
           div table#interface td{
            color: white;/*文字色*/
            font-size:18px;
-           line-height:20px;
+           line-height:28px;
            font-weight: bold;
            text-align:left;
            padding:5px 12px; 
@@ -53,7 +56,10 @@ td label,input {margin:2px 2px;
     width:100%;
    
    }
-   div table#interface tr{ border: solid 1px #aaa;}
+   div table#interface tr{ 
+       border: solid 1px #aaa;
+        height:30px;
+    }
       div table#interface td{
        color: white;/*文字色*/
        font-size:18px;
