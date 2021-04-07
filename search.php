@@ -163,11 +163,15 @@ require_once './Function/verifyUser.php';
         <tr class="cdp_c2">
             <td>
             Value Chain : <br>
+            <div>
                 <label><input type="checkbox" name="value_chain[]" value="1"/>Upstream/Supply chain</label>
                 <label><input type="checkbox" name="value_chain[]" value="2"/>Direct operations</label>
                 <label><input type="checkbox" name="value_chain[]" value="3"/>Downstream/Customer</label>
+            </div>
+            <div>
                 <label><input type="checkbox" name="value_chain[]" value="4"/>Investment Chain</label>
                 <label><input type="checkbox" name="value_chain[]" value="5"/>Please select</label>
+            </div>
             </td>
           </tr>
 
