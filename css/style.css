@@ -1,6 +1,7 @@
 @charset "utf-8";
  div.ph_style2 {
      border:red solid;
+     width:100%;
     position: relative;
 } 
     div.ph_style2 table#interface{
@@ -15,6 +16,9 @@
         margin-right:auto;
         margin-bottom:0;
         margin-left:auto; */
+        width:80%;
+        margin-right:auto;
+        margin-left:auto;
         text-align:center;
          /*検索フォームを中央配置にする場合 */
        /*  transform: translateX(-50%);
