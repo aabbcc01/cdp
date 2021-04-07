@@ -75,28 +75,28 @@ require_once './Function/verifyUser.php';
         </td>
       </tr>  
        <tr class="chapter">
-          <td>
+          <td class="chapter">
               Chapter : <br>
               <div>
-              <label><input type="checkbox" name="chapter[]" value="1"/>C0. Introduction</label>
-              <label><input type="checkbox" name="chapter[]" value="2"/>C1. Governance</label>
-              <label><input type="checkbox" name="chapter[]" value="3"/>C2. Risks and opportunities</label>
-              <label><input type="checkbox" name="chapter[]" value="5"/>C2.3a</label>
-              <label><input type="checkbox" name="chapter[]" value="7"/>C2.4a</label>
-              <label><input type="checkbox" name="chapter[]" value="10"/>C3. Business Strategy</label>
-              <label><input type="checkbox" name="chapter[]" value="11"/>C4. Targets and performance</label>
-              <label><input type="checkbox" name="chapter[]" value="12"/>C5. Emissions methodology</label>
+                <label><input type="checkbox" name="chapter[]" value="1"/>C0. Introduction</label>
+                <label><input type="checkbox" name="chapter[]" value="2"/>C1. Governance</label>
+                <label><input type="checkbox" name="chapter[]" value="3"/>C2. Risks and opportunities</label>
+                <label><input type="checkbox" name="chapter[]" value="5"/>C2.3a</label>
+                <label><input type="checkbox" name="chapter[]" value="7"/>C2.4a</label>
+                <label><input type="checkbox" name="chapter[]" value="10"/>C3. Business Strategy</label>
+                <label><input type="checkbox" name="chapter[]" value="11"/>C4. Targets and performance</label>
+                <label><input type="checkbox" name="chapter[]" value="12"/>C5. Emissions methodology</label>
               </div>
               <div>
-              <label><input type="checkbox" name="chapter[]" value="13"/>C6. Emissions data</label>
-              <label><input type="checkbox" name="chapter[]" value="14"/>C7. Emissions breakdowns</label>
-              <label><input type="checkbox" name="chapter[]" value="151"/>C8. Energy</label>
-              <label><input type="checkbox" name="chapter[]" value="16"/>C9. Additional metrics</label>
-              <label><input type="checkbox" name="chapter[]" value="17"/>C10. Verification</label>
-              <label><input type="checkbox" name="chapter[]" value="18"/>C11. Carbon pricing</label>
-              <label><input type="checkbox" name="chapter[]" value="19"/>C12. Engagement</label>
-              <label><input type="checkbox" name="chapter[]" value="20"/>C14. Signoff</label>
-              <label><input type="checkbox" name="chapter[]" value="21"/>C15. Signoff</label>
+                <label><input type="checkbox" name="chapter[]" value="13"/>C6. Emissions data</label>
+                <label><input type="checkbox" name="chapter[]" value="14"/>C7. Emissions breakdowns</label>
+                <label><input type="checkbox" name="chapter[]" value="151"/>C8. Energy</label>
+                <label><input type="checkbox" name="chapter[]" value="16"/>C9. Additional metrics</label>
+                <label><input type="checkbox" name="chapter[]" value="17"/>C10. Verification</label>
+                <label><input type="checkbox" name="chapter[]" value="18"/>C11. Carbon pricing</label>
+                <label><input type="checkbox" name="chapter[]" value="19"/>C12. Engagement</label>
+                <label><input type="checkbox" name="chapter[]" value="20"/>C14. Signoff</label>
+                <label><input type="checkbox" name="chapter[]" value="21"/>C15. Signoff</label>
               </div>
           </td>
       </tr> 
@@ -161,7 +161,7 @@ require_once './Function/verifyUser.php';
             </td>
           </tr>  
         <tr class="cdp_c2">
-            <td>
+            <td class="value_chain">
             Value Chain : <br>
             <div>
                 <label><input type="checkbox" name="value_chain[]" value="1"/>Upstream/Supply chain</label>

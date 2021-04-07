@@ -75,6 +75,14 @@ td label,input {margin:2px 2px;
             display: flex;
             flex-wrap: wrap;
         }
+          td.chapter div{
+                display:flex;
+                flex-wrap:wrap;
+            }
+            td.value_chain div{
+                display:flex;
+                flex-wrap:wrap;
+            } 
 }
 
 div.back-ground{
