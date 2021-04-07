@@ -12,6 +12,8 @@ verifyUser($_SESSION['user'],getDb());
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/c2_table.css">
+        <link rel="stylesheet" href="css/scrollbtn.css">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/scrollbtn.js"></script> 
 	</head>
@@ -24,9 +26,6 @@ verifyUser($_SESSION['user'],getDb());
     require_once('./Model/ChartData.php');
     require_once('./Function/comp_uniqueArray.php');
     require_once('./Function/CountComp.php');
-    //require('css/style.css');
-    require('css/c2_table.css');
-    require('css/scrollbtn.css');
 
     /* $CdpData = getCDP($_GET); */
     $stored_procedure='sp_cht_comp';

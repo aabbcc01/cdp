@@ -2,6 +2,8 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrollbtn.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
 	<script src="js/scrollbtn.js"></script> 
 	</head>
@@ -12,8 +14,7 @@
 //データ取得ロジックを呼び出す
 require_once('./Model/CdpAnswer.php');
 require_once('./Function/comp_uniqueArray.php');
-require('css/style.css');
-require('css/scrollbtn.css');
+
 
 $CdpData = getCDP($_GET);
 
