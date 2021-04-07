@@ -176,7 +176,7 @@ require_once './Function/verifyUser.php';
           </tr>
 
           <tr class="cdp_c2">
-              <td>
+              <td class="draw_chart">
                 <label>Draw chart<select name="chart">  
                 <option value=""></option>
                 <option value="1">Company</option>
