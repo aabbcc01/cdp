@@ -8,7 +8,7 @@ div.ph_style2 img{
     height:100%;
 }
 td label,input {margin:2px 2px;
-    height:4px;}
+    }
 @media screen and (min-width:960px) and ( max-width:1280px) {
   
        div.ph_style2 table#interface{
