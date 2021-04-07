@@ -23,7 +23,7 @@
     div table#interface tr{ border: solid 1px #aaa;}
        div table#interface td{
         color: white;/*文字色*/
-        font-size:18;
+        font-size:18px;
         font-weight: bold;
         line-height:2.0;
         text-align:left;
