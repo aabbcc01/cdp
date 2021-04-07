@@ -25,10 +25,10 @@ td label,input {margin:2px 2px;
           div table#interface td{
            color: white;/*文字色*/
            font-size:18px;
+           line-height:28px;
            font-weight: bold;
-           line-height:2.0;
            text-align:left;
-           padding:5px 12px; line-height:28px;
+           padding:5px 12px; 
           
            }
    
@@ -58,9 +58,9 @@ td label,input {margin:2px 2px;
        color: white;/*文字色*/
        font-size:18px;
        font-weight: bold;
-       line-height:2.0;
+       line-height:28px;
        text-align:left;
-       padding:5px 12px; line-height:28px;
+       padding:5px 12px; 
       
        }
 
