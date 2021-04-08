@@ -110,7 +110,7 @@ require_once './Function/verifyUser.php';
       <td class="question"> 
         <p>C1.</p>
           <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
-        <p>C2.</p>
+        <p>C2.2</p>
           <label><input type="checkbox" name="question[]" value="2"/>(C2.2a) Which risk types are considered in your organization's climate-related risk assessments?</label>
           <label><input type="checkbox" name="question[]" value="3"/>Value chain stage(s) covered</label>
          <p> C2.3a Risk</p>
@@ -132,7 +132,7 @@ require_once './Function/verifyUser.php';
           <label><input type="checkbox" name="question[]" value="19"/>Description of response and explanation of cost calculation</label>
         
         <p> C2.4a Opportunity</p>
-        <label><input type="checkbox" name="question[]" value="20"/>Where in the value chain does the opportunity occur?</label>
+          <label><input type="checkbox" name="question[]" value="20"/>Where in the value chain does the opportunity occur?</label>
           <label><input type="checkbox" name="question[]" value="21"/>Opportunity type</label>
           <label><input type="checkbox" name="question[]" value="22"/>Primary climate-related opportunity driver</label>
           <label><input type="checkbox" name="question[]" value="23"/>Cost to realize opportunity</label>
@@ -148,10 +148,10 @@ require_once './Function/verifyUser.php';
           <label><input type="checkbox" name="question[]" value="31"/>(C3.1d) Provide details of your organization’s use of climate-related scenario analysis.</label>
           <label><input type="checkbox" name="question[]" value="32"/>C3.1c</label>
           <label><input type="checkbox" name="question[]" value="33"/>C3.1a</label>
-          </div>
-        <div>
+          
+        <p>C4</p>
         <label><input type="checkbox" name="question[]" value="29"/>(C4.3c) What methods do you use to drive investment in emissions reduction activities?</label>
-        </div>
+        
       </td>
       </tr>
 
