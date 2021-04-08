@@ -8,24 +8,31 @@
 </head>
 
 <body>
-<div id="registrant">
-<ul >
-    <form action="search.php" method="post">
-       <input type="text" name="name" placeholder="Name" value="<?php if(isset($_SESSION['user']['name']))
-        {echo $_SESSION['user']['name'];};?>"><br> 
-        <input type="password" placeholder="Password" name="password" ><br>
-        <!-- <input type="submit" value="Login"> -->
-        <input type="image" id="btn1" src="img/btn1.png" alt="Login">
-        <div class="clear"></div>
-</ul>
-</div>
-<div class ="ph_style1">
-        <img src="img/cape-banner.jpg"  class="ph1">
-        <p>We focus investors, companies and cities <br>
-            on taking urgent action to build a truly <br>
+
+<div id="entrance">
+        <img src="img/cape-banner.jpg"  class="entrance">
+        <div id="registrant">
+
+            <form action="search.php" method="post">
+            
+                    <input type="text" name="name" placeholder="Name" value="<?php if(isset($_SESSION['user']['name']))
+                    {echo $_SESSION['user']['name'];};?>">
+                    <input type="password" placeholder="Password" name="password" >
+                    <input type="image" id="btn1" src="img/btn1.png" alt="Login">
+            </form>
+            <div class="claer"></div>
+
+        </div>
+        
+        <p class="text">We focus investors, companies and cities <br>
+           &nbsp on taking urgent action to build a truly <br>
             sustainable economy by measuring and <br>
             understanding their environmental impact
         </p>
+       
 </div>
+
+
+
 </body>
 </html>
