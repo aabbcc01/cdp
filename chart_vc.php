@@ -182,7 +182,7 @@
             <!-- Table and divs that hold the bubble charts  -->
             <div id="<?=$toggle,'_',htmlspecialchars($u_row['year']),htmlspecialchars($u_row['ind_type']),
             htmlspecialchars($u_row['tr_ph']),htmlspecialchars($u_row['vc_type']),htmlspecialchars($u_row['type']);?>"></div>
-            <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 100%; height: 500px;"></div></td>
+            <div id="Chart_<?= $toggle,'_',$c ; ?>" style="height: 88%;margin-left:0;margin-right:0;"></div></td>
             <br>
             <div id="c2_exp" >
                 <table >
