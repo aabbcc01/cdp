@@ -60,50 +60,74 @@ div#entrance p.text{
 
 } 
 }
-/* for Smart phone or Tablet */
-@media screen and  (max-width:959px){
+/* for Smart phone(wide) or Tablet */
+@media screen and  (min-width:481px) and (max-width:959px){
+    img.entrance{
+     position:absolute;
+     top:20%;   
+    }
     div#registrant{
     
         position:absolute;
         top:0;
-        height:160px;
+        height:10%;
         width:100%;
         background-color: white;
       
     }
-    
-    div#registrant form input{
-        height:32px;
-        width:240px;
-        margin-top:30.5px;
-        margin-left:16px;
-        float:left;
-    }
-    div#registrant form input[type="image"]{
-        width:138px;
-        float:none;
-    }
-    
-    div.clear{
-        clear:both;
-    }
-    
-    div#entrance p.text{
-        
-        position:absolute;
-        
-        top:30%;
-        width: 64%;
-        height:50%;
-        color:white;
-        font-size:24px;
-        font-family:Meiryo UI;
-        font-weight: bold;
-        line-height:32px;
-        margin-top:4%;
-        margin-left:22%;
-     
-    
-    } 
+   
 
+}
+/* smart phone(height) */
+@media screen and (max-width:480px){
+    img.entrance{
+        position:absolute;
+        top:20%;   
+       }
+       div#registrant{
+       
+           position:absolute;
+           top:0;
+           height:30%;
+           width:100%;
+           background-color: white;
+         
+       }
+   
+}
+
+@media screen and (max-width:959px){
+ 
+div#registrant form input{
+    height:32px;
+    width:240px;
+    margin-top:30.5px;
+    margin-left:16px;
+    float:left;
+}
+div#registrant form input[type="image"]{
+    width:138px;
+    float:none;
+}
+
+div.clear{
+    clear:both;
+}
+
+div#entrance p.text{
+    
+    position:absolute;
+    
+    top:30%;
+    width: 64%;
+    height:50%;
+    color:white;
+    font-size:24px;
+    font-family:Meiryo UI;
+    font-weight: bold;
+    line-height:32px;
+    margin-top:4%;
+    margin-left:22%;
+
+} 
 }
