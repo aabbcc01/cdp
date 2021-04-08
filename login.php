@@ -16,6 +16,7 @@
         <input type="password" placeholder="Password" name="password" ><br>
         <!-- <input type="submit" value="Login"> -->
         <input type="image" id="btn1" src="img/btn1.png" alt="Login">
+        <div class="clear"></div>
 </ul>
 </div>
 <div class ="ph_style1">
