@@ -107,7 +107,7 @@ require_once './Function/verifyUser.php';
       </tr>  
 
       <tr class="question">
-      <td class="question"> 
+      <td> 
         <p>C1.</p>
           <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
         <p>C2.2</p>
