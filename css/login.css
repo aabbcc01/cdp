@@ -1,7 +1,10 @@
-<style>
-/* div#registrant{
-    position:relative;
-} */
+@charset "utf-8";
+*{
+    margin:0;
+    padding:0;
+}
+
+@media screen and (min-width:960px) and ( max-width:1280px) {
 div#registrant  {
 position:relative;
 }
@@ -9,27 +12,36 @@ position:relative;
 div#registrant ul input[type="text"]{
 position:absolute;
 top:15px;
-left:30;
+/* left:30; */
+float:left;
+margin-left:3px;
 height:30px;
 width:170px;
 }
 div#registrant ul input[type="password"]{
     position:absolute;
     top:15px;
-    left:220;
+    /* left:220; */
+    float:left;
+    margin-left:3px;
     height:30px;
     width:170px;
     }
 div#registrant input#btn1{
     position:absolute;
     top:15px;
-    left:420;
+    /* left:420; */
+    float:left;
+    margin-left:3px;
     height:30px;
     width:170px;
 }
+div.clear{
+    clear:both;
+}
 
 div.ph_style1 {/*親div*/
-        position: relative;/*相対配置*/
+        position: relative;
         top:0px;
         }
 
@@ -43,11 +55,25 @@ div.ph_style1 img.ph1 {
         
 div.ph_style1 p{
    
-        position: absolute;/*絶対配置*/
+        position: absolute;
         color: white;/*文字は白に*/
         top: 130;
         left: 285;
         font-weight: bold;
         font-size:34px;
 }
-</style>
+}
+
+/* smart phone or Tablet */
+@media screen and  (max-width:959px){
+
+
+
+
+
+
+
+
+
+
+}
