@@ -156,7 +156,7 @@ verifyUser($_SESSION['user'],getDb());
     
             <!-- Table and divs that hold the bubble charts  -->
             <div id="<?=$toggle,'_',htmlspecialchars($u_row['year']),htmlspecialchars($u_row['company_id']);?>"></div>
-            <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 100%; height: 500px;"></div></td>
+            <div id="Chart_<?= $toggle,'_',$c ; ?>" style="width: 98%; height: 88%;margin-left:auto;margin-right:auto;"></div></td>
             <br>
             <div id="c2_exp" >
                 <table >
