@@ -90,6 +90,10 @@ td label,input {margin:2px 2px;
                 display:flex;
                 flex-wrap:wrap;
             }
+            td.question {
+                display:flex;
+                flex-wrap:wrap;
+            }
             td.value_chain{
                 display:flex;
                 flex-wrap:wrap;
