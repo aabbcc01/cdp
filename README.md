@@ -1,4 +1,4 @@
-Hear is the link of this app.  You chan enter it with followin Name and password.  
+Hear is the link of this app.  You can enter it with following Name and password.  
 Name : trial  
 Password : testusr  
 http://13.112.39.220/cdp/login.php  
