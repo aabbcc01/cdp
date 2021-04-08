@@ -24,9 +24,9 @@
 
         </div>
         
-        <p class="text">We focus investors, companies and cities <br>
-           &nbsp on taking urgent action to build a truly <br>
-            sustainable economy by measuring and <br>
+        <p class="text">We focus investors, companies and cities 
+           on taking urgent action to build a truly 
+            sustainable economy by measuring and 
             understanding their environmental impact
         </p>
        
