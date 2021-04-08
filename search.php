@@ -108,10 +108,10 @@ require_once './Function/verifyUser.php';
 
       <tr class="question">
       <td> 
-        <div>
+        <p>C1.</p>
           <label><input type="checkbox" name="question[]" value="1"/>(C1.2) Provide the highest management-level position(s) or committee(s) with responsibility for climate-related issues.</label>
+        <p>C2.</p>
           <label><input type="checkbox" name="question[]" value="2"/>(C2.2a) Which risk types are considered in your organization's climate-related risk assessments?</label>
-          </div>
           <label><input type="checkbox" name="question[]" value="3"/>Value chain stage(s) covered</label>
          <p> C2.3a Risk</p>
           <label><input type="checkbox" name="question[]" value="4"/>Identifier</label>
