@@ -4,6 +4,7 @@
     padding:0;
   }
 body{
+    height:100%;
     background-color: rgba(4, 5, 29, 0.5); 
 }
 td label,input {margin:2px 2px;
