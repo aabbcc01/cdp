@@ -26,7 +26,7 @@ td label,input {margin:2px 2px;
            height:30px;
         }
           div table#interface td{
-           color: white;/*文字色*/
+           color: white;
            font-size:18px;
            line-height:28px;
            font-weight: bold;
@@ -64,7 +64,7 @@ td label,input {margin:2px 2px;
         height:35px;
     }
       div table#interface td{
-       color: white;/*文字色*/
+       color: white;
        font-size:18px;
        font-weight: bold;
        line-height:30px;

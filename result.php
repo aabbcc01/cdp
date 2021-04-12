@@ -11,7 +11,7 @@
 <?php
 
 
-//データ取得ロジックを呼び出す
+
 require_once('./Model/CdpAnswer.php');
 require_once('./Function/comp_uniqueArray.php');
 

@@ -27,7 +27,7 @@
         <p class="text">We focus investors, companies and cities 
            on taking urgent action to build a truly 
             sustainable economy by measuring and 
-            understanding their environmental impact
+            understanding their environmental impact.
         </p>
        
 </div>
