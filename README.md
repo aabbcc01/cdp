@@ -10,4 +10,5 @@ http://13.112.39.220/cdp/login.php
 ![intf2r](https://user-images.githubusercontent.com/66505498/114058405-616ab480-98ce-11eb-80b2-017ea5713c3d.jpg)  
 ## Draw bubble charts!
 Like above explanation, You can draw bubble charts for chapter 2.3a and 2.4a. Those chapters are known for detailed explanation of climate related risk and opportunity which companies face.  
-![intf3r](https://user-images.githubusercontent.com/66505498/114059776-acd19280-98cf-11eb-949d-8d7a1770d116.jpg)
+![intf3r](https://user-images.githubusercontent.com/66505498/114059776-acd19280-98cf-11eb-949d-8d7a1770d116.jpg)  
+![図1](https://user-images.githubusercontent.com/66505498/114347290-b4c75600-9b9f-11eb-8b87-5f7219a32396.jpg)
