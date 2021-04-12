@@ -35,7 +35,6 @@ require_once './Function/verifyUser.php';
     ?> 
 
 <div class ="ph_style2">
-<img src="img/2-1.png"  class="ph2">
 
     <table  frame="void" id="interface">
         <?php if(intval($registrant['per_key']) & 4 ):?>
