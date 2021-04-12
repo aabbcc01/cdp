@@ -10,7 +10,7 @@
 <body>
 
 <div id="entrance">
-        <img src="img/cape-banner.jpg"  class="entrance">
+       
         <div id="registrant">
 
             <form action="search.php" method="post">

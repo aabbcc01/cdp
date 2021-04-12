@@ -5,9 +5,12 @@
 }
 
 div#entrance{
-    position:relative;
+    position:relative; /* take out */
     width:100%;
     height:100%;
+    background-image: url("../img/cape-banner.jpg");
+    background-repeat:no-repeat;
+    background-position:center;
     /* border:black solid; */
 }
 img.entrance{
